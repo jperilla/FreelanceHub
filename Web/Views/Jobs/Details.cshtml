@@ -1,0 +1,40 @@
+﻿@model Web.Model.Job
+
+@{
+    ViewBag.Title = "gofer.io - Job Detail";
+    Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Job</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">URL</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.URL)
+    </div>
+
+    <div class="display-label">Budget</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Budget)
+    </div>
+
+    <div class="display-label">ShortDescription</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShortDescription)
+    </div>
+
+    <div class="display-label">JobStatus</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JobStatus.Status)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

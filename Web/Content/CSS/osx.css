@@ -1,0 +1,39 @@
+/*
+ * SimpleModal OSX Style Modal Dialog
+ * http://www.ericmmartin.com/projects/simplemodal/
+ * http://code.google.com/p/simplemodal/
+ *
+ * Copyright (c) 2010 Eric Martin - http://ericmmartin.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Revision: $Id: osx.css 254 2010-07-23 05:14:44Z emartin24 $
+ */
+
+#osx-modal-content, #osx-modal-data, #osx-modal-content-login, #osx-modal-data-login {display:none;}
+
+/* Overlay */
+#osx-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#osx-container {background-color:#fff; color:#113D49; padding-bottom:4px; width:600px; font-size: 1.5em; -moz-border-radius-bottomleft:6px; -webkit-border-bottom-left-radius:6px; -moz-border-radius-bottomright:6px; -webkit-border-bottom-right-radius:6px; border-radius:0 0 6px 6px; -moz-box-shadow:0 0 64px #000; -webkit-box-shadow:0 0 64px #000; box-shadow:0 0 64px #000;}
+#osx-container a {color:#ddd;}
+#osx-container #osx-modal-title, #osx-container #osx-modal-title-login {color:#fff; background-color:#113D49; border-bottom:1px solid #113D49; font-family: 'Raleway', sans-serif; font-weight:bold; padding:6px 8px;}
+#osx-container .close {display:none; position:absolute; right:0; top:0;}
+#osx-container .close a {display:block; color:#777; font-weight:bold; padding:6px 12px 0; text-decoration:none;}
+#osx-container .close a:hover {color:#000;}
+#osx-container #osx-modal-data, #osx-container #osx-modal-data-login {font-size: .7em; padding:6px 12px;}
+#osx-container h2 {margin:10px 0 6px;}
+#osx-container p {margin-bottom:10px;}
+
+#osx-modal-content, #osx-modal-content-login
+{
+    text-align: center;
+}
+
+ul.signup-buttons li
+{
+    display: block;
+    padding-bottom: 5px;
+}

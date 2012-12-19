@@ -1,0 +1,51 @@
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale:1.0" />
+
+        <!-- Css style sheets -->
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Style.css")" />        
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Reset.css")" />       
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:600|Arvo' />
+
+    </head>
+    <body>
+ <div id="wrapper">
+            <header>        
+                <nav>
+                    <ul id="nav-list">
+                        <li id="home">@Html.ActionLink("home", "Index", "LandingPage")</li>
+                        <li id="contact"><a href="mailto:julie.perilla@gmail.com" target="_blank">contact</a></li>
+                        <li id="jobs">@Html.ActionLink("my jobs", "Index", "Jobs")</li>
+                        <li id="logout">@Html.ActionLink("logout", "Logout", "Account")</li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <div id="content">
+                @RenderBody()
+            </div>
+            
+            <footer>
+                <p>Copyright ©  Julie Perilla 2012</p>
+                <ul id="social-media">
+                    <li id="gmail"><a href="mailto:julie.perilla@gmail.com" target="_blank"><img alt="gmail" src="/Content/images/gmail.png" /></a></li>
+                    <li id="facebook"><a href="https://www.facebook.com/julie.perilla" target="_blank"><img alt="facebook" src="/Content/images/facebook.png" /></a></li>
+                    <li id="twitter"><a href="https://twitter.com/geekgirl907" target="_blank"><img alt="twitter" src="/Content/images/twitter.png" /></a></li>                   
+                </ul>
+            </footer>
+        </div>
+        <!-- JQuery libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="@Url.Content("~/Scripts/jquery.simplemodal.js")"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/osx.js")"></script>
+
+    </body>
+</html>
+

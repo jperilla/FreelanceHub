@@ -1,0 +1,55 @@
+﻿@model Web.Model.Account
+
+<div id="osx-modal-content">
+    <div id="osx-modal-title" class="gofer">gofer.<span>io</span></div>
+    <div class="close"><a href="#" class="simplemodal-close">x</a></div>
+    <div id="osx-modal-data">
+        
+        @using (Html.BeginForm("SignUp", "Account"))
+        {
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+        
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        
+            <div class="editor-label">
+                @Html.Label("Email")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        
+            <div class="editor-label">
+                @Html.Label("Password")
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>  
+            <div class="editor-label">
+                @Html.Label("Confirm Password")
+            </div>
+            
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.RemeberMe) Remember me?
+            </div>
+            
+            <ul class="signup-buttons">
+                <li><input id="signup-modal" type="submit" class="red large" value="Sign Up!" /></li>
+                <li><input id="facebook-login" type="button" class="blue small" value="Facebook Login" onclick="login();" /></li>
+            </ul>
+            
+            <div id="signupMessage" class="message"></div>
+        }
+    </div>
+</div>

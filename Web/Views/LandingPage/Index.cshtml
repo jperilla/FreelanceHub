@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<section id="main">
+    <section id="logo">
+        <div id="gofer" class="gofer">gofer<span>.io</span></div>
+        <p id="tagline">Less time searching for work.<br /> More time getting paid.</p>
+    </section>
+    <section id="takeAction">
+        <h2>Search for freelance work now.</h2>
+        <input class="long" type="text" /><button class="light-blue small">Search</button>
+        <p>Want to organize your work in one place?</p>
+        <button id="sign-up" class="red large osx">Sign Up!</button>
+    </section>
+</section>
+<section id="features">
+    <ul id="feature-list">
+        <li class="plaid-box"></li>
+        <li class="plaid-box"></li>
+        <li class="plaid-box"></li>
+    </ul>
+</section>
+
+<!-- Sign Up - hidden -->
+@Html.Partial("_SignUp")
+
+<!-- Login - hidden -->
+@Html.Partial("_Login")
+

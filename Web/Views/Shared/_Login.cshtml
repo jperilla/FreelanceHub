@@ -1,0 +1,29 @@
+﻿@model Web.Model.Account
+
+<div id="osx-modal-content-login">
+	<div id="osx-modal-title-login" class="gofer">gofer.<span>io</span></div>
+	<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+	<div id="osx-modal-data-login">
+        <div class="editor-label">
+                @Html.Label("Email")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        
+            <div class="editor-label">
+                @Html.Label("Password")
+            </div>
+	        <div class="editor-field">
+	            @Html.PasswordFor(model => model.Password)
+	            @Html.ValidationMessageFor(model => model.Password)
+	        </div>
+            <fb:login-button perms="email,user_checkins" onlogin="afterFacebookConnect();" autologoutlink="false" ></fb:login-button>
+            <div id="fb-root2" style="display:inline; margin-left:20px;"></div>
+        <ul class="signup-buttons">
+            <li>@Html.ActionLink("Login", "Login", "Account", null, new { @id="signup-modal", @class="red large" })</li>
+        </ul>
+	</div>
+</div>
+
