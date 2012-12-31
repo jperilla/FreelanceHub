@@ -145,6 +145,7 @@
     <Content Include="Content\images\plaid_dark.png" />
     <Content Include="Content\images\relax.png" />
     <Content Include="Content\images\ricepaper2.png" />
+    <Content Include="Content\images\search.png" />
     <Content Include="Content\images\search_screenshot.png" />
     <Content Include="Content\images\search_screenshot_large.png" />
     <Content Include="Content\images\twitter.png" />
