@@ -9,19 +9,26 @@ namespace Web.Controllers
 {
     public class AccountController : BaseController
     {
-        //
-        // GET: /SignIn/
+      
+
+        // POST: /Login/
+        [HttpPost]
         public ActionResult Login(Account account)
         {
-            MvcApplication.Store.Credentials = new NetworkCredential(account.Id, account.Password);
-            RavenSession.Store(new AuthenticationUser
+            if (ModelState.IsValid)
             {
-                Name = account.Name,
-                Id = String.Format("Raven/Users/{0}", account.Id),
-                AllowedDatabases = new[] { "*" }
-            }.SetPassword(account.Password));
+                MvcApplication.Store.Credentials = new NetworkCredential(account.Id, account.Password);
+                RavenSession.Store(new AuthenticationUser
+                {
+                    Name = account.Name,
+                    Id = String.Format("Raven/Users/{0}", account.Id),
+                    AllowedDatabases = new[] { "*" }
+                }.SetPassword(account.Password));
 
-            return View("_Home", account);
+                return View("_Home", account);
+            }
+
+            return Json("Oops! Something went wrong, try again.");
         }
 
         public ActionResult FacebookLogin(string name, string email)

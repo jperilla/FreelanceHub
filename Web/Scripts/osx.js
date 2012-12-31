@@ -54,6 +54,20 @@ jQuery(function ($) {
                 });
 
             });
+
+            $("input#login-modal").click(function (e) {
+                e.preventDefault();
+
+                $.post("/Account/Login", $('form').serialize(), function (data) {
+                    if (data == "success") {
+                        window.location = "/LandingPage/Index";
+                    } else {
+                        $('#signupMessage').html(data);
+                    }
+
+                });
+
+            });
         },
         open: function (d) {
             var self = this;

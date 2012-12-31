@@ -8,74 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale:1.0" />
 
         <!-- Css style sheets -->
+        
+        <!-- DC Pricing Tables CSS -->
+        <link type="text/css" rel="stylesheet" href="http://www.dreamtemplate.com/dreamcodes/pricingtables/css/tsc_pricingtables.css" />
+        <!-- DC Pricing Tables JS -->
+        <script type="text/javascript" src="http://www.dreamtemplate.com/dreamcodes/pricingtables/js/tsc_pricingtables.js"></script>
+
         <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Style.css")" />        
         <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Reset.css")" />    
         <link rel="stylesheet" href="@Url.Content("~/Content/CSS/osx.css")" />         
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:600|Arvo' />
 
+
     </head>
     <body>
-        <!-- Facebook Login script -->
-        <div id="fb-root"></div>
-        <script>
-            // Additional JS functions here
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '427149900684281', // App ID
-                    channelUrl: 'http://localhost:62947/', // Channel File
-                    status: true, // check login status
-                    cookie: true, // enable cookies to allow the server to access the session
-                    xfbml: true  // parse XFBML
-                });
-            };
-
-            function login() {
-                FB.login(function (response) {
-                    if (response.authResponse) {
-                        // connected
-                        loginWithFacebook();
-                    } else {
-                        // cancelled
-                    }
-                });
-            }
-
-            function loginWithFacebook() {
-                FB.api('/me', function (response) {
-                    $.ajax({
-                        url: "/Account/FacebookLogin/",
-                        data: {
-                            name: response.name,
-                            email: response.email
-                        }
-                    });
-                    
-                });
-            }
-            
-            function testAPI() {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function (response) {
-                    alert('Good to see you, ' + response.name + '.');
-                });
-            }
-
-
-            // Load the SDK Asynchronously
-            (function (d) {
-                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                if (d.getElementById(id)) { return; }
-                js = d.createElement('script'); js.id = id; js.async = true;
-                js.src = "//connect.facebook.net/en_US/all.js";
-                ref.parentNode.insertBefore(js, ref);
-            } (document));
-        </script>
         <div id="wrapper">
             <header>        
                 <nav>
                     <ul id="nav-list">
                         <li id="home">@Html.ActionLink("home", "Index", "LandingPage")</li>
-                        <li id="contact"><a href="mailto:julie.perilla@gmail.com" target="_blank">contact</a></li>
+                        <li id="howitworks">@Html.ActionLink("how it works", "Index", "HowItWorks")</li>
+                        <li id="pricing">@Html.ActionLink("pricing", "Index", "Pricing")</li>
+                        <li id="search">@Html.ActionLink("search", "Index", "Search")</li>
                         <li id="signin"><a href='#' class='osx-login'>login</a></li>
                     </ul>
                 </nav>
@@ -86,14 +40,22 @@
             </div>
             
             <footer>
-                <p>Copyright ©  Julie Perilla 2012</p>
+                <p>Copyright ©  <a href="http://www.geekgirlsoftware.com">Geek Girl Software</a> 2012-2013</p>
                 <ul id="social-media">
-                    <li id="gmail"><a href="mailto:julie.perilla@gmail.com" target="_blank"><img alt="gmail" src="/Content/images/gmail.png" /></a></li>
-                    <li id="facebook"><a href="https://www.facebook.com/julie.perilla" target="_blank"><img alt="facebook" src="/Content/images/facebook.png" /></a></li>
+                    <li id="gmail"><a href="mailto:julie@geekgirlsoftware.com" target="_blank"><img alt="gmail" src="/Content/images/gmail.png" /></a></li>
+                    <li id="facebook"><a href="https://www.facebook.com/freelancehub.io" target="_blank"><img alt="facebook" src="/Content/images/facebook.png" /></a></li>
                     <li id="twitter"><a href="https://twitter.com/geekgirl907" target="_blank"><img alt="twitter" src="/Content/images/twitter.png" /></a></li>                   
                 </ul>
             </footer>
         </div>
+
+        
+<!-- Sign Up - hidden -->
+@Html.Partial("_SignUp")
+
+<!-- Login - hidden -->
+@Html.Partial("_Login")
+
         <!-- JQuery libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="@Url.Content("~/Scripts/jquery.simplemodal.js")"></script>

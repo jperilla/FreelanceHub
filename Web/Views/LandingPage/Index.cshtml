@@ -1,31 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "freelancehub.io";
 }
 
 
 <section id="main">
     <section id="logo">
-        <div id="gofer" class="gofer">gofer<span>.io</span></div>
-        <p id="tagline">Less time searching for work.<br /> More time getting paid.</p>
+        <div id="gofer" class="gofer">freelance<span>Hub</span></div>
+        <p id="tagline">Less time searching for work.<br />
+         More time getting paid<br />
+          ...or doing whatever you like.</p>
     </section>
     <section id="takeAction">
         <h2>Search for freelance work now.</h2>
-        <input class="long" type="text" /><button class="light-blue small">Search</button>
-        <p>Want to organize your work in one place?</p>
+        <button class="blue medium" onclick="location.href='@Url.Action("Index", "Search")'">Search for free!</button>
+        <p>Want to customize your search and<br /> organize your work in one place?</p>
         <button id="sign-up" class="red large osx">Sign Up!</button>
     </section>
 </section>
+
 <section id="features">
     <ul id="feature-list">
-        <li class="plaid-box"></li>
-        <li class="plaid-box"></li>
-        <li class="plaid-box"></li>
+        <li class="plaid-box">1. <br />Search
+            <div class="small_text">The sites you want.</div>
+            <a href="/Content/images/search_screenshot_large.png" target="_blank">
+            <img class="screenshot" src="/Content/images/search.png" /></a></li>
+        <li class="plaid-box">2.<br />Save Leads
+            <div class="small_text">Organize jobs in one place.</div>
+            <a href="/Content/images/my_jobs_large.png" target="_blank">
+            <img class="screenshot" src="/Content/images/my_jobs.png" /></a></li>
+        <li class="plaid-box">3.<br />Relax
+            <div class="small_text">Have more time to do what you want.</div>
+             
+            <img class="screenshot" src="/Content/images/relax.png" /></li>
+            
     </ul>
 </section>
 
-<!-- Sign Up - hidden -->
-@Html.Partial("_SignUp")
-
-<!-- Login - hidden -->
-@Html.Partial("_Login")
 

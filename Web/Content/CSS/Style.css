@@ -5,6 +5,17 @@ body
     font-family: 'Arvo', serif;
 }
 
+img
+{
+    max-width: 90%;
+    margin-top: 15px;
+}
+
+a:link, a:hover, a:visited
+{
+    color: #b93831;
+}
+
 span.red {
     color: #b93831;
 }
@@ -30,7 +41,7 @@ a.red
 }
 
 
-button.light-blue
+button.light-blue,  input.light-blue
 {
     font-family: 'Arvo', serif;
     -moz-border-bottom-colors: none;
@@ -59,8 +70,8 @@ a.large
     height: 38px;
 }
 
-input.blue {
-    background-color: #3b5998;
+input.blue, button.blue {
+    background-color: #113D49;
     font-family: 'Arvo', serif;
     font-size: 1.2em;
     -moz-border-bottom-colors: none;
@@ -89,7 +100,9 @@ input.blue {
 
 .editor-label 
 {
-    padding-top: 10px;
+    padding-top: 10px; 
+    font-family: 'Arvo', serif;
+    margin-right: 1.041667%;
 }
 
 .editor-label label 
@@ -104,12 +117,12 @@ input.blue {
 button.large, input.large
 {    
     width: 200px;
-    height: 50px;
+    height: 60px;
 }
 
 input.long
 {
-    width: 35%;
+    width: 28%;
 }
 
 #wrapper 
@@ -128,6 +141,7 @@ header
     margin-left: 1.0416667%;
     width: 97.9166667%;
 }
+
 
 header a:link, header a:visited
 {    
@@ -180,36 +194,39 @@ nav ul li a
 
 #content
 {    
+    background: url('../images/ricepaper2.png') repeat;
     margin-right: 1.0416667%;
     margin-left: 1.0416667%;
     margin-bottom: 0%;
     padding-bottom: 0%;
     width: 97.9166667%;
+    min-height: 800px;
 }
 
 section#main
 {
-    height: 432px;    
+    height: 300px;
+    text-align: center;
+    padding-top: 30px; 
 }
 
 section#logo
-{    
-    margin-left: 9.18367%;
-    position: relative;
-    top: 119px;
-    width: 28%;
+{
+    width: 50%;
+    height: 100%;
+    float: left;
 }
 
 #gofer
 {
     font-family: 'Raleway', sans-serif;
-    font-size: 3.8em;
+    font-size: 3.2em;
     color: #b93831;
 }
 
 .gofer span
 {
-    color: #b93831;
+    color: #113D49;
 }
 
 div.message
@@ -219,38 +236,58 @@ div.message
 
 #tagline
 {
-    font-family: 'Arvo', serif;
-    font-size: 1.2em;
-    line-height: 1.1;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.3;
+}
+
+.email {
+    text-align: center;
 }
 
 section#features
 {
-    height:340px;        
+    min-height:340px;       
+    text-align: center; 
 }
 
 .plaid-box
 {
     height: 300px;
-    width: 30.0%;
-    background: url('../images/plaid.png') repeat;
+    width: 27.9166666%;
+    background-color: #cdd6d8;
     border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+    padding: 1.0416667%;
 }
 
+ul#feature-list
+{
+    margin: 0;
+    padding: 0;
+}
+    
 ul#feature-list li
 {
     display: inline-block;    
     margin-right: 1.0416667%;
     margin-left: 1.0416667%;
+    font-size: 2.2em;
+}
+
+.small_text {
+    font-size: .4em;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.2em;
 }
 
 section#takeAction
 {
-    font-family: 'Raleway', sans-serif;
-    position: relative;
-    left: 20%;
     text-align: center;
 }
+    
 
 footer
 {
@@ -262,6 +299,8 @@ footer
     color: #cdd6d8;
     padding-left: 1.0415%;
     padding-right: 1.0415%;
+    position: relative;
+    top: -16px;
 }
 
 footer p
@@ -271,6 +310,12 @@ footer p
     top: 250px;
 }
 
+ul#social-media
+{
+    margin: 0;
+    padding: 0;
+}
+    
 ul#social-media li
 {
     display: inline-block;
@@ -279,26 +324,167 @@ ul#social-media li
 }
 
 
+/* How it Works Page */
+section#feature1
+{
+    height: 400px; 
+}
 
-/* iPad and other table width */
+section#feature2
+{
+    height: 400px;
+    background-color: #cdd6d8;
+}
+
+section#feature3
+{
+    height: 400px; 
+}
+
+.left
+{
+    float: left;
+    margin-top: 100px;
+    margin-left: 19.23076923%;
+}
+
+.right
+{
+    float: right;
+    margin-top: 100px;
+    margin-right: 11.538461538%;
+}
+
+/* Pricing Table */
+#pricing_main
+{
+    height: 500px;
+    width: 45%;
+    padding-top: 30px;
+    margin: 0px auto;
+}
+
+#tsc_pricingtable01 .signup {
+    background-color: #b93831;
+    background-image: linear-gradient(#b93831, #b93831);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 0 rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    display: inline-block;
+    font: bold 14px Arial,Helvetica;
+    margin: 20px 0 0;
+    padding: 8px 20px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+#tsc_pricingtable01 .signup:hover {
+    background-color: #cdd6d8;
+    background-image: linear-gradient(#cdd6d8, #cdd6d8);
+}
+
+/* Search Page */
+section#search_main
+{
+    background-color: #FFFFFF;
+    min-height: 800px;
+}
+
+/* iPad and other tablet width */
 @media screen and (max-width: 768px)
 {
-   #wrapper,header, footer, nav
-   {
-       width: 768px;
-       margin: 0px;
-   }
+    #wrapper,header, footer, nav
+    {
+        width: 768px;
+        margin: 0px;
+    }
    
-   #logo
-   {
-       text-align: center;
-   }
+   section#main
+    {
+        height: 500px;
+    }
+    
+    section#logo
+    {
+        text-align: center;
+        float: none;
+        width: 100%;
+        height: 40%;
+    }
    
-   nav
-   {
-       text-align: center;
-   }
+    nav
+    {
+        text-align: center;
+    }
+   
+    section#features
+    {
+        text-align: center;
+    }
+   
+    ul#feature-list li
+    {
+        display: block;    
+        margin-top: 1.0416667%;
+        margin-bottom: 1.0416667%;
+        font-size: 2.2em;
+        
+    }
+       
+    .plaid-box
+    {
+        height: 300px;
+        width: 96%;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        text-align: center;
+        padding: 1.0416667%;
+    }
+    
+    ul#social-media
+    {    
+        text-align: center;
+    }
+    
+    ul#social-media li
+    {
+        display: inline-block;
+        float: none;
+    }
+    
+    /* How it Works Page */
+    section#feature1
+    {
+        height: 400px; 
+    }
 
+    section#feature2
+    {
+        height: 400px;
+        background-color: #cdd6d8;
+    }
+
+    section#feature3
+    {
+        height: 400px; 
+    }
+
+    .left
+    {
+        float: none;
+        text-align: center;
+        margin: 0;
+    }
+
+    .right
+    {
+        float: none;
+        text-align: center;
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 550px)
@@ -319,24 +505,113 @@ ul#social-media li
        text-align: center;
    }
    
+   #gofer
+    {
+        font-family: 'Raleway', sans-serif;
+        font-size: 3em;
+        color: #b93831;
+    }
+
+   #tagline
+    {
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.3em;
+        line-height: 1.3;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media screen and (max-width: 320px)
 {
    #wrapper,header, footer, nav
    {
-       width: 320px;
+       max-width: 320px;
        margin: 0px;
    }
    
-   #logo
+   section#main
    {
-       text-align: center;
+        height: 500px;
+   }
+    
+   section#takeAction h2
+   {
+       font-size: 1em;
    }
    
-   header, footer, nav
+   nav
+   {
+       float: none;
+   }
+    
+   section#logo
    {
        text-align: center;
+       height: 33%;
    }
+   
+    #gofer
+    {
+        font-family: 'Raleway', sans-serif;
+        font-size: 2em;
+        color: #b93831;
+    }
+
+   #tagline
+    {
+        font-family: 'Raleway', sans-serif;
+        font-size: 1em;
+        line-height: 1.3;
+        max-width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    button.large, input.large
+    {    
+        width: 200px;
+        height: 50px;
+    }
+    
+    button.medium, input.medium
+    {    
+        min-width: 100px;
+        height: 50px;
+    }
+    
+    input.long
+    {
+        width: 40%;
+    }
+    
+    #content 
+    {
+        margin-bottom: 0;
+        margin-left: 0%;
+        margin-right: 0%;
+        padding-bottom: 0;
+    }
+    .screenshot
+    {
+        max-width: 160px;
+    }
+    
+    .plaid-box
+    {
+        height: 260px;
+        padding: 0%;
+    }
+    
+    section#features
+    {
+        text-align: center;
+    }
+    
+    ul#feature-list li
+    {
+        font-size: 2em;
+    }
    
 }

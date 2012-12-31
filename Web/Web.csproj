@@ -92,6 +92,7 @@
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\Spatial4n.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -106,7 +107,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -122,6 +122,7 @@
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\PricingController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -137,8 +138,15 @@
     <Content Include="Content\css\Style.css" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
+    <Content Include="Content\images\logo_tiny.png" />
+    <Content Include="Content\images\my_jobs.png" />
+    <Content Include="Content\images\my_jobs_large.png" />
     <Content Include="Content\images\plaid.png" />
     <Content Include="Content\images\plaid_dark.png" />
+    <Content Include="Content\images\relax.png" />
+    <Content Include="Content\images\ricepaper2.png" />
+    <Content Include="Content\images\search_screenshot.png" />
+    <Content Include="Content\images\search_screenshot_large.png" />
     <Content Include="Content\images\twitter.png" />
     <Content Include="Global.asax" />
     <Content Include="Raven.Studio.xap" />
@@ -194,6 +202,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pricing\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HowItWorks\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PaidSearch.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -11,14 +11,7 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
-            return View(RavenSession.Query<Job>());
-        }
-
-        public ActionResult Create(Job job)
-        {
-            RavenSession.Store(job);
-
-            return RedirectToAction("Index");
+            return View();
         }
 
     }
