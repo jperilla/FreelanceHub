@@ -40,8 +40,10 @@
                 @Html.PasswordFor(model => model.ConfirmPassword)
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
             </div>
-            <div class="editor-field">
-                @Html.CheckBoxFor(model => model.RemeberMe) Remember me?
+            
+            <div>                
+               @Html.CheckBoxFor(model => model.RemeberMe)
+               @Html.Label("Remember Me?")  
             </div>
             
             <ul class="signup-buttons">

@@ -31,21 +31,6 @@ namespace Web.Controllers
             return Json("Oops! Something went wrong, try again.");
         }
 
-        public ActionResult FacebookLogin(string name, string email)
-        {
-            Account newAccount = new Account();
-            var newUser = new AuthenticationUser
-            {
-                Name = name,
-                Id = String.Format("Raven/Users/{0}", email),
-                AllowedDatabases = new[] { "*" }
-            };
-            newAccount.User = newUser;
-            newAccount.FacebookLogin = true;
-            RavenSession.Store(newAccount);
-            SetAuthenticationCookie(email, true);
-            return View("../LandingPage/Index");
-        }
 
         // GET: /SignUp/
         public ActionResult SignUp()

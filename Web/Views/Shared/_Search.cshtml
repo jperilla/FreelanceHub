@@ -22,7 +22,7 @@
         </div>
     </div>
 
-  <div id="base_thumbnail">
+  <div id="fria_thumbnail">
     <div data-attr="0" data-vars="{tn:Vars.thumbnail && thumbnail.src
         ? thumbnail : {src:Vars.document && document.thumbnailUrl}}">
       <div data-if="tn.src" class="gs-image-box gs-web-image-box">
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div id="base_action">
+  <div id="fria_action">
     <div data-foreach="Vars.action" data-attr="0">
       <div data-attr="{'class': 'gs-action ' + Cur['class']}"
           data-if="Cur.url && Cur.label">
@@ -60,7 +60,7 @@
       '017060715910446842244:syxqx4wot3o', customSearchOptions);
         google.search.Csedr.addOverride("fria_");
         customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-        customSearchControl.setOnKeepCallback(this, onFavorite, "Sign Up to Save this Job");
+        customSearchControl.setOnKeepCallback(this, onFavorite, "Sign Up to<br /> Save this Job");
         customSearchControl.draw('cse');
     }, true);
 

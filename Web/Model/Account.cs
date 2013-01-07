@@ -27,7 +27,7 @@ namespace Web.Model
 
 
         public AuthenticationUser User { get; set; }
-        public bool FacebookLogin { get; set; }
+
         public bool RemeberMe { get; set; }
 
         #endregion

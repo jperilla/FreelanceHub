@@ -33,7 +33,7 @@ namespace Web
 
             RegisterRoutes(RouteTable.Routes);
 
-            /* Initialize the Document Store - for local db only 
+            /* Initialize the Document Store - for local db only */
             Store = new EmbeddableDocumentStore
             {
                 ConnectionStringName = "RavenDB",
@@ -41,11 +41,11 @@ namespace Web
             };
             NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
 
-            Store.Initialize();*/
-
-            /* for the server*/
-            Store = new DocumentStore { ConnectionStringName = "RavenDB" };
             Store.Initialize();
+
+            /* for the server
+            Store = new DocumentStore { ConnectionStringName = "RavenDB" };
+            Store.Initialize();*/
 
             IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
         }

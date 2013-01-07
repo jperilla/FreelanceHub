@@ -78,9 +78,7 @@ jQuery(function ($) {
                 title.show();
                 d.container.slideDown('slow', function () {
                     setTimeout(function () {
-                        var h = $("#osx-modal-data", self.container).height()
-							+ title.height()
-							+ 20; // padding
+                        var h = $("#osx-modal-data", self.container).height(); // padding
                         d.container.animate(
 							{ height: h },
 							200,
@@ -135,9 +133,7 @@ jQuery(function ($) {
                 title.show();
                 d.container.slideDown('slow', function () {
                     setTimeout(function () {
-                        var h = $("#osx-modal-data-login", self.container).height()
-							    + title.height()
-							    + 20; // padding
+                        var h = $("#osx-modal-data-login", self.container).height(); // padding
                         d.container.animate(
 							    { height: h },
 							    200,
