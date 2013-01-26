@@ -2,33 +2,55 @@
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
-using Raven.Bundles.Authentication;
 using Web.Model;
+using Web.Utilities;
 
 namespace Web.Controllers
 {
     public class AccountController : BaseController
     {
-      
+
+        public ActionResult Index(Account account)
+        {
+            return View();
+        }
+
+        public ActionResult AccountSuspended(Account account)
+        {
+            return View();
+        }
 
         // POST: /Login/
         [HttpPost]
-        public ActionResult Login(Account account)
+        public ActionResult Login(Login login)
         {
-            if (ModelState.IsValid)
+            try
             {
-                MvcApplication.Store.Credentials = new NetworkCredential(account.Id, account.Password);
-                RavenSession.Store(new AuthenticationUser
+                if (ModelState.IsValid)                    
                 {
-                    Name = account.Name,
-                    Id = String.Format("Raven/Users/{0}", account.Id),
-                    AllowedDatabases = new[] { "*" }
-                }.SetPassword(account.Password));
-
-                return View("_Home", account);
+                    Account user = RavenSession.Load<Account>(login.EmailAddress.Trim());
+                    if (null != user)
+                    {
+                        //if (user.User.ValidatePassword(login.PasswordText))
+                        {
+                            SetAuthenticationCookie(login.EmailAddress, login.RememberMe);
+                            return Json("success");
+                        }
+                        //else
+                            return Json("Invalid Password");
+                    }
+                    else
+                        return Json("User cannot be found");
+                }
+                else
+                {
+                    return Json("Please correct input errors.");
+                }
             }
-
-            return Json("Oops! Something went wrong, try again.");
+            catch (Exception ex)
+            {
+                return Json("Oops! Something went wrong, try again.");
+            }
         }
 
 
@@ -42,31 +64,54 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult SignUp(Account account)
         {
-            if(ModelState.IsValid)
+            try
             {
-                // Since we are using a natural key for users (email address)
-                // we need this to avoid overwriting a user
-                if (null != Account.GetById(RavenSession, account.Id))
+                if (ModelState.IsValid)
                 {
-                    return Json("This email address is already in use.");
-                }
-                else
-                {
-                    var newUser = new AuthenticationUser
+                    // Since we are using a natural key for users (email address)
+                    // we need this to avoid overwriting a user
+                    if (null != Account.GetById(RavenSession, account.Id))
                     {
-                        Name = account.Name,
-                        Id = String.Format("Raven/Users/{0}", account.Id),
-                        AllowedDatabases = new[] { "*" }
-                    }.SetPassword(account.Password);
-                    account.User = newUser;
-                    RavenSession.Store(account);
-                    SetAuthenticationCookie(account.Id, account.RemeberMe);
-                    return Json("success");
+                        return PartialView("_AlreadySignedUp");
+                    }
+                    else
+                    {
+                       /* var newUser = new AuthenticationUser
+                        {
+                            Name = account.Name,
+                            Id = String.Format("Raven/Users/{0}", account.Id),
+                            AllowedDatabases = new[] { "*" }
+                        }.SetPassword(account.Password);*/
+                        //account.User = newUser;
+                        RavenSession.Store(account);
+                        SetAuthenticationCookie(account.Id, account.RememberMe);
+                        
+                        if (account.Plan == "Monthly")
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BASIC_MONTHLY_PLAN_URL, 
+                                                    CustomerUtilities.GetFirstName(account.Name),
+                                                    CustomerUtilities.GetLastName(account.Name),
+                                                    account.Id,
+                                                    account.Id));
+                        }
+                        else
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BASIC_YEARLY_PLAN_URL,
+                                                    CustomerUtilities.GetFirstName(account.Name),
+                                                    CustomerUtilities.GetLastName(account.Name),
+                                                    account.Id,
+                                                    account.Id));
+                        }
+                    }
+
                 }
-                
             }
-               
-            return Json("Oops! Something went wrong, try again.");
+            catch (Exception ex)
+            {
+                return Json("Oops! Something went wrong, try again.");
+            }
+
+            return View();
         }
 
         // GET: /Logout/

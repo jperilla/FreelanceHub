@@ -33,19 +33,21 @@ namespace Web
 
             RegisterRoutes(RouteTable.Routes);
 
-            /* Initialize the Document Store - for local db only 
+            /* Initialize the Document Store - for local db only */
+
+            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
             Store = new EmbeddableDocumentStore
             {
-                ConnectionStringName = "RavenDB",
-                UseEmbeddedHttpServer = true
+                ConnectionStringName = "RavenDB"//,
+                //UseEmbeddedHttpServer = true
+
             };
-            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
 
-            Store.Initialize();*/
-
-            /* for the server*/
-            Store = new DocumentStore { ConnectionStringName = "RavenDB" };
             Store.Initialize();
+
+            /* for the server
+            Store = new DocumentStore { ConnectionStringName = "RavenDB" };
+            Store.Initialize();*/
 
             IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
         }

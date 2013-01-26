@@ -8,7 +8,6 @@ using Web.Model;
 
 namespace Web.Controllers
 { 
-    [Authorize]
     public class JobsController : BaseController
     {
 
@@ -21,20 +20,28 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Job jobClicked)
+        [ValidateInput(false)]
+        public JsonResult SaveFavorite(Job jobClicked)
         {
-            var job = new Job
-                {
-                    JobStatus = new JobStatus(),
-                    ShortDescription = jobClicked.ShortDescription,
-                    Title = jobClicked.Title,
-                    URL = jobClicked.URL,
-                    Budget = "$100"
-                };
-            job.JobStatus.Status = "Lead";
+            try
+            {
+                var job = new Job
+                    {
+                        JobStatus = new JobStatus(),
+                        ShortDescription = jobClicked.ShortDescription,
+                        Title = jobClicked.Title,
+                        URL = jobClicked.URL,
+                        Budget = "$100"
+                    };
+                job.JobStatus.Status = "Lead";
 
-            RavenSession.Store(job);
-            return Json("success", JsonRequestBehavior.AllowGet);
+                RavenSession.Store(job);
+                return Json("success", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json("error");
+            }
         }
 
         public ActionResult Applied(int id)

@@ -1,30 +1,38 @@
-﻿@model Web.Model.Account
-
+﻿@model Web.Model.Login
+           
 <div id="osx-modal-content-login">
 	<div id="osx-modal-title" class="gofer">freelance<span style="color: #fff;">Hub</span></div>
 	<div class="close"><a href="#" class="simplemodal-close">x</a></div>
 	<div id="osx-modal-data-login">
-        <div class="editor-label">
-                @Html.Label("Email")
+         @using (Html.BeginForm("Login", "Account"))
+         {
+             
+            <div class="editor-label">
+                    @Html.Label("Email")
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Id)
-                @Html.ValidationMessageFor(model => model.Id)
+                @Html.EditorFor(model => model.EmailAddress)
+                @Html.ValidationMessageFor(model => model.EmailAddress)
             </div>
         
             <div class="editor-label">
                 @Html.Label("Password")
             </div>
 	        <div class="editor-field">
-	            @Html.PasswordFor(model => model.Password)
-	            @Html.ValidationMessageFor(model => model.Password)
+	            @Html.PasswordFor(model => model.PasswordText)
+	            @Html.ValidationMessageFor(model => model.PasswordText)
 	        </div>
-
+            <div>                
+               @Html.CheckBoxFor(model => model.RememberMe)
+               @Html.Label("Remember Me?")  
+            </div>
+             
             <ul class="signup-buttons">
                 <li><input id="login-modal" type="submit" class="red large" value="Login" /></li>
             </ul>
             
-            <div id="signupMessage" class="message"></div>
-	</div>
+            <div id="loginMessage" class="message"></div>
+         }
+    </div>
 </div>
 

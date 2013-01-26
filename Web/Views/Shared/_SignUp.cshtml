@@ -5,7 +5,7 @@
     <div class="close"><a href="#" class="simplemodal-close">x</a></div>
     <div id="osx-modal-data">
         
-        @using (Html.BeginForm("SignUp", "Account"))
+        @using (@Html.BeginForm("SignUp", "Account", FormMethod.Post, new { id = "signupform" }))
         {
     
             <div class="editor-label">
@@ -41,11 +41,15 @@
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
             </div>
             
-            <div>                
-               @Html.CheckBoxFor(model => model.RemeberMe)
-               @Html.Label("Remember Me?")  
+            <div class="editor-label">
+                Please Select a Plan
             </div>
             
+            <div class="editor-radio">
+                @Html.RadioButtonFor(model => model.Plan, "Monthly", new { @checked = true }) Basic Monthly Plan (Free Trial! then $9/month)<br />
+                @Html.RadioButtonFor(model =>model.Plan,"Yearly", false) Basic Yearly Plan (Free Trial! then $99/year)
+            </div>
+    
             <ul class="signup-buttons">
                 <li><input id="signup-modal" type="submit" class="red large" value="Sign Up!" /></li>
             </ul>

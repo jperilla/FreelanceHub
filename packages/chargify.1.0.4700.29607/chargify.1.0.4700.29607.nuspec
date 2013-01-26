@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>chargify</id>
+    <version>1.0.4700.29607</version>
+    <title>chargify</title>
+    <authors>Clinical Support Systems,  Inc.</authors>
+    <owners>Clinical Support Systems,  Inc.</owners>
+    <projectUrl>http://chargify.codeplex.com/</projectUrl>
+    <iconUrl>http://www.clinicalsupportsystems.com/chargifyDotNET/chargifyDotNet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Chargify.NET is a comprehensive C# API wrapper library for accessing Chargify.com, using XML or JSON to read/write.</description>
+    <copyright>Copyright Kori Francis, 2012</copyright>
+    <tags>Chargify</tags>
+  </metadata>
+</package>

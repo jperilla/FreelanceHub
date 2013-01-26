@@ -15,7 +15,14 @@ namespace Web.Controllers
                 Account authenticatedAccount = RavenSession.Load<Account>(User.Identity.Name);
                 if (null != authenticatedAccount)
                 {
-                    return RedirectToAction("Index", "Home", authenticatedAccount);
+                    if (authenticatedAccount.IsAccountCurrent())
+                    {
+                        return RedirectToAction("Index", "Home", authenticatedAccount);
+                    }
+                    else
+                    {
+                        return RedirectToAction("AccountSuspended", "Account");
+                    }
                 }
             }
 

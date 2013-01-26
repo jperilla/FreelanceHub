@@ -41,28 +41,29 @@ jQuery(function ($) {
                 });
             });
 
-            $("input#signup-modal").click(function (e) {
+            /*$("input#signup-modal").click(function (e) {
                 e.preventDefault();
+                if ($("signupform").validate()) {
+                    $.post("/Account/SignUp", $('signupform').serialize(), function (data) {
+                        if (data == "success") {
+                            window.location = '/LandingPage/Index';
+                        } else {
+                            $('#signupMessage').html(data);
+                        }
 
-                $.post("/Account/SignUp", $('form').serialize(), function (data) {
-                    if (data == "success") {
-                        window.location = "/LandingPage/Index";
-                    } else {
-                        $('#signupMessage').html(data);
-                    }
+                    });
+                }
 
-                });
-
-            });
+            });*/
 
             $("input#login-modal").click(function (e) {
                 e.preventDefault();
 
-                $.post("/Account/Login", $('form').serialize(), function (data) {
+                $.post('/Account/Login', $('form').serialize(), function (data) {
                     if (data == "success") {
-                        window.location = "/LandingPage/Index";
+                        window.location = '/LandingPage/Index';
                     } else {
-                        $('#signupMessage').html(data);
+                        $('#loginMessage').html(data);
                     }
 
                 });
@@ -78,7 +79,7 @@ jQuery(function ($) {
                 title.show();
                 d.container.slideDown('slow', function () {
                     setTimeout(function () {
-                        var h = $("#osx-modal-data", self.container).height(); // padding
+                        var h = $("#osx-modal-data", self.container).height() + 40; // padding
                         d.container.animate(
 							{ height: h },
 							200,
