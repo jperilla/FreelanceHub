@@ -3,17 +3,22 @@ using System.ComponentModel.DataAnnotations;
 using Raven.Client;
 using Raven.Client.Linq;
 using Raven.Imports.Newtonsoft.Json;
+using ChargifyNET;
+using System.Configuration;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Web.Model
 {
     public partial class Account
     {
         #region Constants
-
-        public const string BASIC_MONTHLY_PLAN_URL = "https://geekgirlsoftware.chargify.com/h/3283078/subscriptions/new";
-        public const string BASIC_YEARLY_PLAN_URL = "https://geekgirlsoftware.chargify.com/h/3283079/subscriptions/new";
+        
+        public static readonly string BASIC_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlySubscriptionUrl"];
+        public static readonly string BASIC_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerYearlySubscriptionUrl"];
 
         #endregion
+
         #region Properties
         [Required(ErrorMessage = "* Email Required")]
         public string Id { get; set; }
@@ -31,13 +36,24 @@ namespace Web.Model
 
         public bool RememberMe { get; set; }
 
-        //public AuthenicationUser User { get; set; }
-
         public string Plan { get; set; }
+
+        [JsonIgnore]
+        private static ChargifyConnect Chargify { get; set; }
 
         #endregion
 
         #region Public Methods
+
+        public Account()
+        {
+            // Create Chargify object
+            Chargify = new ChargifyConnect();
+            Chargify.apiKey = ConfigurationManager.AppSettings["ChargifyApiKey"];
+            Chargify.Password = ConfigurationManager.AppSettings["ChargifyApiPassword"];
+            Chargify.URL = ConfigurationManager.AppSettings["ChargifyUrl"];
+            Chargify.SharedKey = ConfigurationManager.AppSettings["ChargifySharedKey"];
+        }
 
         public static Account GetById(IDocumentSession session, string id)
         {
@@ -47,9 +63,20 @@ namespace Web.Model
         public bool IsAccountCurrent()
         {
             bool isCurrent = false;
-            Chargify chargify = new Chargify();
-            if(chargify.IsCustomerSubscriptionCurrent(this.Id))
-                isCurrent = true;
+            ICustomer customer = Chargify.LoadCustomer(Id);
+            IDictionary<int, ISubscription> customerSubscriptions = Chargify.GetSubscriptionListForCustomer(customer.ChargifyID);
+            // Does this customer have any current subscriptions? TODO: needs more work, add other states, can a customer have more than one subscription (loop), what plan, set role
+            foreach (KeyValuePair<int,ISubscription> subscription in customerSubscriptions)
+            {
+                // Is the customer active or trialing?
+                 if (subscription.Value.State == SubscriptionState.Active
+                    || subscription.Value.State == SubscriptionState.Trialing)
+                 {
+                    isCurrent = true;
+                    break;
+                }
+            }           
+           
             return isCurrent;
         }
 

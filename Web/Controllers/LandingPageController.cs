@@ -1,20 +1,31 @@
 ﻿using System.Web.Mvc;
 using Web.Model;
+using System.Web.Security;
 
 namespace Web.Controllers
 {
     public class LandingPageController : BaseController
     {
         //
-        // GET: /Home/
-
-        public ActionResult Index()
+        // GET: /Index/
+        public ActionResult Index(string id)
         {
-            if (Request.IsAuthenticated)
+            string userEmail = string.IsNullOrWhiteSpace(id) ? User.Identity.Name : id;
+            return SignIn(userEmail);
+        }
+
+        private ActionResult SignIn(string id)
+        {
+            // Is there a valid id?
+            if(!string.IsNullOrWhiteSpace(id))
             {
-                Account authenticatedAccount = RavenSession.Load<Account>(User.Identity.Name);
+                // Set user authentication cookie
+                FormsAuthentication.SetAuthCookie(id, false);
+            
+                Account authenticatedAccount = RavenSession.Load<Account>(id);
                 if (null != authenticatedAccount)
                 {
+                    // Check if subscription is current
                     if (authenticatedAccount.IsAccountCurrent())
                     {
                         return RedirectToAction("Index", "Home", authenticatedAccount);
@@ -26,8 +37,7 @@ namespace Web.Controllers
                 }
             }
 
-            return View();
+            return View("Index");
         }
-
     }
 }

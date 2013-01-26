@@ -84,7 +84,6 @@ namespace Web.Controllers
                         }.SetPassword(account.Password);*/
                         //account.User = newUser;
                         RavenSession.Store(account);
-                        SetAuthenticationCookie(account.Id, account.RememberMe);
                         
                         if (account.Plan == "Monthly")
                         {

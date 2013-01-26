@@ -126,9 +126,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Chargify.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\JobStatus.cs" />
     <Compile Include="Model\Login.cs" />
@@ -224,6 +221,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\AccountSuspended.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

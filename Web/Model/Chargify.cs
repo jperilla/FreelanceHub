@@ -6,7 +6,7 @@ using ChargifyNET;
 
 namespace Web.Model
 {
-    public class Chargify : ChargifyConnect
+    public class Chargify
     {
         public bool IsCustomerSubscriptionCurrent(string accountId)
         {
