@@ -1,0 +1,18 @@
+{
+  "Name": "Temp/Jobs",
+  "Map": "from doc in docs.Jobs\r\nselect new {  }",
+  "Maps": [
+    "from doc in docs.Jobs\r\nselect new {  }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}
