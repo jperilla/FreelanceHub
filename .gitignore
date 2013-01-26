@@ -13,7 +13,7 @@
 *.sln.docstates
 
 # Server files
-#*.asax.cs
+*.asax.cs
 
 # Build results
 [Dd]ebug/
