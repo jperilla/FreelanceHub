@@ -5,187 +5,187 @@
     Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
 }
 
-<div class="header page">
-    <h1>My Jobs</h1>
-</div>
+<section id="jobs_main">
+    <h2>My Jobs</h2>
 
-<div id="jobs" class="padding">
-    <div class="section_title">
-        <h3>Leads</h3>
-    </div>
-    @if (Model.Where(model => model.JobStatus.Status == "Lead").Count() == 0) {
-        <h5>You have no leads at this time.</h5>
-    }
-    else
-    {
-        <div class="jobs_table">
-            <table cellpadding="0" cellspacing="0">
-                <thead>
-				    <tr>
-					    <td>
-						    <h6>Title</h6>
-					    </td>
-					    <td>
-					    </td>
-					    <td>
-						    <h6>Budget</h6>
-					    </td>
-					    <td>
-						    <h6>Description</h6>
-					    </td>
-                        <td class="last">
-					    </td>
-				    </tr>
-			    </thead>
-                <tbody>
-
-                @foreach (var item in Model)
-                {
-                    if ((item.JobStatus != null) && (item.JobStatus.Status == "Lead"))
-                    {
-                        <tr>
-                            <td>
-                                @Html.Raw(@item.Title)
-                            </td>
-                            <td>
-                                <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>Apply</span></a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Budget)
-                            </td>
-                            <td>
-                                @Html.Raw(@item.ShortDescription)
-                            </td>
+    <div id="jobs" class="padding">
+        <div class="section_title">
+            <h3>Leads</h3>
+        </div>
+        @if (Model.Where(model => model.JobStatus.Status == "Lead").Count() == 0) {
+            <h5>You have no leads at this time.</h5>
+        }
+        else
+        {
+            <div class="jobs_table">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+				        <tr>
+					        <td>
+						        <h6>Title</h6>
+					        </td>
+					        <td>
+					        </td>
+					        <td>
+						        <h6>Budget</h6>
+					        </td>
+					        <td>
+						        <h6>Description</h6>
+					        </td>
                             <td class="last">
-                                @Html.ActionLink("Applied", "Applied", new { id = item.Id })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
+					        </td>
+				        </tr>
+			        </thead>
+                    <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((item.JobStatus != null) && (item.JobStatus.Status == "Lead"))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Raw(@item.Title)
+                                </td>
+                                <td>
+                                    <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>Apply</span></a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Budget)
+                                </td>
+                                <td>
+                                    @Html.Raw(@item.ShortDescription)
+                                </td>
+                                <td class="last">
+                                    @Html.ActionLink("Applied", "Applied", new { id = item.Id })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
                     }
-                }
 
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
       
+            </div>
+        }
+
+        <div class="section_title">
+            <h3>Active Proposals</h3>
         </div>
-    }
-
-    <div class="section_title">
-        <h3>Active Proposals</h3>
-    </div>
-    @if (Model.Where(model => model.JobStatus.Status == "Applied").Count() == 0)
-    {
-        <h5>You have no proposals at this time.</h5>
-    }
-    else
-    {   
-        <div class="jobs_table">
-            <table cellpadding="0" cellspacing="0">
-                 <thead>
-			        <tr>
-				        <td>
-					        <h6>Title</h6>
-				        </td>
-				        <td>
-				        </td>
-				        <td>
-					        <h6>Budget</h6>
-				        </td>
-				        <td>
-					        <h6>Description</h6>
-				        </td>
-                        <td class="last">
-				        </td>
-			        </tr>
-		        </thead>
-                <tbody>
-
-                @foreach (var item in Model)
-                {
-                    if ((item.JobStatus != null) && (item.JobStatus.Status == "Applied"))
-                    {
-                        <tr>
-                            <td>
-                                @Html.Raw(@item.Title)
-                            </td>
-                            <td>
-                                <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Budget)
-                            </td>
-                            <td>
-                                @Html.Raw(@item.ShortDescription)
-                            </td>
+        @if (Model.Where(model => model.JobStatus.Status == "Applied").Count() == 0)
+        {
+            <h5>You have no proposals at this time.</h5>
+        }
+        else
+        {   
+            <div class="jobs_table">
+                <table cellpadding="0" cellspacing="0">
+                     <thead>
+			            <tr>
+				            <td>
+					            <h6>Title</h6>
+				            </td>
+				            <td>
+				            </td>
+				            <td>
+					            <h6>Budget</h6>
+				            </td>
+				            <td>
+					            <h6>Description</h6>
+				            </td>
                             <td class="last">
-                                @Html.ActionLink("Current Project", "Current", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
-                    }
-                }
-                </tbody>
-            </table>
-        </div>
-    }
+				            </td>
+			            </tr>
+		            </thead>
+                    <tbody>
 
-    <div class="section_title">
-        <h3>Current Projects</h3>
-    </div>  
-    @if (Model.Where(model => model.JobStatus.Status == "Current").Count() == 0)
-    {
-        <h5>You have no Current Projects at this time.</h5>
-    }
-    else
-    {
-        <div class="jobs_table">
-            <table cellpadding="0" cellspacing="0">
+                    @foreach (var item in Model)
+                    {
+                        if ((item.JobStatus != null) && (item.JobStatus.Status == "Applied"))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Raw(@item.Title)
+                                </td>
+                                <td>
+                                    <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Budget)
+                                </td>
+                                <td>
+                                    @Html.Raw(@item.ShortDescription)
+                                </td>
+                                <td class="last">
+                                    @Html.ActionLink("Current Project", "Current", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <div class="section_title">
+            <h3>Current Projects</h3>
+        </div>  
+        @if (Model.Where(model => model.JobStatus.Status == "Current").Count() == 0)
+        {
+            <h5>You have no Current Projects at this time.</h5>
+        }
+        else
+        {
+            <div class="jobs_table">
+                <table cellpadding="0" cellspacing="0">
         
-                <thead>
-			        <tr>
-				        <td>
-					        <h6>Title</h6>
-				        </td>
-				        <td>
-				        </td>
-				        <td>
-					        <h6>Budget</h6>
-				        </td>
-				        <td>
-					        <h6>Description</h6>
-				        </td>
-                        <td class="last">
-				        </td>
-			        </tr>
-		        </thead>
-                <tbody>
-
-                @foreach (var item in Model)
-                {
-                    if ((item.JobStatus != null) && (item.JobStatus.Status == "Current"))
-                    {
-                        <tr>
-                            <td>
-                                @Html.Raw(@item.Title)
-                            </td>
-                            <td>
-                                <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Budget)
-                            </td>
-                            <td>
-                                @Html.Raw(@item.ShortDescription)
-                            </td>
+                    <thead>
+			            <tr>
+				            <td>
+					            <h6>Title</h6>
+				            </td>
+				            <td>
+				            </td>
+				            <td>
+					            <h6>Budget</h6>
+				            </td>
+				            <td>
+					            <h6>Description</h6>
+				            </td>
                             <td class="last">
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
+				            </td>
+			            </tr>
+		            </thead>
+                    <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((item.JobStatus != null) && (item.JobStatus.Status == "Current"))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Raw(@item.Title)
+                                </td>
+                                <td>
+                                    <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Budget)
+                                </td>
+                                <td>
+                                    @Html.Raw(@item.ShortDescription)
+                                </td>
+                                <td class="last">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
                     }
-                }
-                </tbody>
-            </table>
-        </div>
-    }
-</div>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</section>

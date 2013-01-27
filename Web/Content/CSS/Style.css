@@ -5,6 +5,11 @@ body
     font-family: 'Arvo', serif;
 }
 
+body#body-signed-in
+{    
+    background: url('../images/ricepaper2.png') repeat;
+}
+
 img
 {
     max-width: 90%;
@@ -142,6 +147,11 @@ input.long
     max-width: 1200px;
 }
 
+#wrapper-signed-in
+{
+    width: 100%;
+}
+
 header
 {
     background-color: #113D49;
@@ -165,6 +175,26 @@ header a:hover
 header a:active
 {
     color: #f64f45;
+}
+
+header#signed-in
+{
+    background: url('../images/ricepaper2.png') repeat;
+    height: 72px;
+}
+header#signed-in a:link, header#signed-in a:visited
+{    
+    color: #113D49;
+}
+
+header#signed-in a:hover
+{
+    color: #113D49;
+}
+
+header#signed-in a:active
+{
+    color: #113D49;
 }
 
 .selected a:link
@@ -212,6 +242,20 @@ nav ul li a
     min-height: 800px;
 }
 
+#content-signed-in
+{    
+    background-color: #fff;
+    margin-right: 1.0416667%;
+    margin-left: 1.0416667%;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    width: 97.9166667%;
+    min-height: 800px;
+    -moz-box-shadow: 0px 0px 5px #ccc;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
 section#main
 {
     height: 300px;
@@ -234,6 +278,23 @@ section#logo
 }
 
 .gofer span
+{
+    color: #113D49;
+}
+
+.logo
+{
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.2em;
+    color: #b93831;
+    width: 25%;
+    float: left;
+    position: relative;
+    top: 25px;
+    margin-left: 1.0416667%;
+}
+
+.logo span
 {
     color: #113D49;
 }
@@ -319,6 +380,14 @@ footer p
     top: 250px;
 }
 
+footer#footer-signed-in
+{
+    color: #113D49;
+    background: url('../images/ricepaper2.png') repeat; 
+    position: relative;
+    top: -10px;   
+}
+
 ul#social-media
 {
     margin: 0;
@@ -329,6 +398,19 @@ ul#social-media li
 {
     display: inline-block;
     float: right;
+    margin-right: 1.0416667%;
+}
+
+ul#social-media-signed-in
+{
+    text-align: center;
+    position: relative;
+    top: 160px;
+}
+
+ul#social-media-signed-in li
+{
+    display: inline-block;
     margin-right: 1.0416667%;
 }
 
@@ -409,6 +491,32 @@ section#search_main h2
 
 /* Home Page */
 section#home_main h2
+{
+    margin-top: 0;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+/* My Jobs Page */
+section#jobs_main
+{
+    min-height: 800px;
+}
+
+section#jobs_main h2
+{
+    margin-top: 0;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+/* My Account Page */
+section#account_main
+{
+    min-height: 800px;
+}
+
+section#account_main h2
 {
     margin-top: 0;
     padding-top: 50px;
@@ -696,7 +804,6 @@ div.gs-result
 
 div.gsc-control-cse
 {    
-    background: url('../images/ricepaper2.png') repeat;
     border: none;
 }
 
@@ -705,6 +812,7 @@ div.gsc-results
     background-color: #fff;
     font-family: 'Arvo', serif;
     font-size: 1em;
+    border: none;
 }
 
 input.gsc-search-button {

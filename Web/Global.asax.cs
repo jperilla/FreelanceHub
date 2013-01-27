@@ -1,10 +1,11 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using Raven.Client.Document;
-using Raven.Client.Embedded;
 using Raven.Client.Indexes;
 using System.Reflection;
 using Raven.Database.Server;
+using Raven.Client;
+using Raven.Client.Embedded;
 
 namespace Web
 {
@@ -13,7 +14,7 @@ namespace Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static DocumentStore Store { get; set; }
+        public static EmbeddableDocumentStore Store { get; set; }
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -33,18 +34,18 @@ namespace Web
 
             RegisterRoutes(RouteTable.Routes);
 
-            /* Initialize the Document Store - for local db only 
-
-            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+            /* Initialize the Document Store - for local db only          
             Store = new EmbeddableDocumentStore
             {
-                ConnectionStringName = "RavenDB"//,
-                //UseEmbeddedHttpServer = true
+                ConnectionStringName = "RavenDB",
+                UseEmbeddedHttpServer = true,
+                Configuration = { Port = 8080 }
 
             };
+            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+            Store.Initialize();*/  
 
-            Store.Initialize();
-*/
+
             /* for the server*/
             Store = new DocumentStore { ConnectionStringName = "RavenDB" };
             Store.Initialize();
