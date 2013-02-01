@@ -94,7 +94,6 @@ C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Griffin
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Griffin.MvcContrib.RavenDb.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\HtmlTags.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Newtonsoft.Json.dll
-C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\SimpleSocialAuth.MVC3.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\DotNetOpenAuth.xml
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Griffin.MvcContrib.pdb
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Griffin.MvcContrib.xml
@@ -104,4 +103,3 @@ C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\HtmlTag
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\HtmlTags.xml
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Newtonsoft.Json.pdb
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Newtonsoft.Json.xml
-C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\SimpleSocialAuth.MVC3.pdb
