@@ -45,6 +45,11 @@ a.red
     text-decoration:none;
 }
 
+.authButtons
+{
+    width: 40%;
+    margin: auto;
+}
 
 button.light-blue,  input.light-blue
 {
@@ -271,10 +276,23 @@ section#logo
 }
 
 #gofer
-{
+{    
+    height: 115px;
+    width: 100%;
+    background: url('../images/logo.png') no-repeat center;
     font-family: 'Raleway', sans-serif;
     font-size: 3.2em;
     color: #b93831;
+}
+
+#gofer-small
+{    
+    height: 90px;
+    width: 30%;
+    background: url('../images/logomedium.png') no-repeat left;
+    float: left;
+    position: relative;
+    left: -20px;
 }
 
 .gofer span

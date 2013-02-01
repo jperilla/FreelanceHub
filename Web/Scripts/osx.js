@@ -134,7 +134,7 @@ jQuery(function ($) {
                 title.show();
                 d.container.slideDown('slow', function () {
                     setTimeout(function () {
-                        var h = $("#osx-modal-data-login", self.container).height(); // padding
+                        var h = $("#osx-modal-data-login", self.container).height() + 100; // padding
                         d.container.animate(
 							    { height: h },
 							    200,

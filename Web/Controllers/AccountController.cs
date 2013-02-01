@@ -37,7 +37,7 @@ namespace Web.Controllers
                             return Json("success");
                         }
                         //else
-                            return Json("Invalid Password");
+                            //return Json("Invalid Password");
                     }
                     else
                         return Json("User cannot be found");

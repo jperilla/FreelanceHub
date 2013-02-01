@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Griffin.MvcContrib.RavenDb</id>
+    <version>1.0.4</version>
+    <title>Griffin.MvcContrib.RavenDb</title>
+    <authors>Jonas Gauffin</authors>
+    <owners>Jonas Gauffin</owners>
+    <licenseUrl>http://www.gnu.org/licenses/lgpl.txt</licenseUrl>
+    <projectUrl>https://github.com/jgauffin/griffin.mvccontrib</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Contains an implementation of the membership provider and the localization features.</description>
+    <summary>RavenDb integration package for Griffin.MvcContrib</summary>
+    <releaseNotes>Updated to latest raven package.</releaseNotes>
+    <dependencies>
+      <dependency id="griffin.mvccontrib" version="0.0.8" />
+    </dependencies>
+  </metadata>
+</package>

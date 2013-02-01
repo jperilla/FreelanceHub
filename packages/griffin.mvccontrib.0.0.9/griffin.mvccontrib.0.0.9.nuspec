@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>griffin.mvccontrib</id>
+    <version>0.0.9</version>
+    <title>Griffin MvcContrib</title>
+    <authors>jgauffin</authors>
+    <owners>jgauffin</owners>
+    <licenseUrl>http://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
+    <projectUrl>https://github.com/jgauffin/griffin.mvccontrib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>* Zero code localization. You don't even have to use the [Display] attribute.
+
+* A MembershipProvider that uses the DependencyResolver and a few interfaces to make it easier to understand.
+
+* Better HtmlHelpers which lets you modify the HTML tags before they are written to the view.
+
+Read the homepage for more information</description>
+    <summary>Extras for ASP.NET MVC3. For example an easier way to handle model/validation localization and a more SOLID MembershipProvider .</summary>
+    <releaseNotes>Added support for version independent type loading for the type localization features and refactored the membership provider a bit</releaseNotes>
+    <copyright>(c) 2011 Jonas Gauffin</copyright>
+    <tags>asp.net,mvc3,datannotations,localization,contrib</tags>
+  </metadata>
+</package>
