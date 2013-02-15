@@ -2,11 +2,11 @@
 using System.ComponentModel.DataAnnotations;
 using Raven.Client;
 using Raven.Client.Linq;
-using Raven.Imports.Newtonsoft.Json;
 using ChargifyNET;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Griffin.MvcContrib.Providers.Membership;
 
 namespace Web.Model
 {
@@ -20,27 +20,12 @@ namespace Web.Model
         #endregion
 
         #region Properties
-        [Required(ErrorMessage = "* Email Required")]
-        public string Id { get; set; }
-
-        [Required(ErrorMessage = "* Name Required")]
-        public string Name { get; set; }
-
-        [JsonIgnore]
-        [Required(ErrorMessage = "* Password Required")]
-        public string Password { get; set; }
-
-        [JsonIgnore]
-        [Required(ErrorMessage = "* Confirm Password")]
-        public string ConfirmPassword { get; set; }
-
-        public bool RememberMe { get; set; }
-
-        public string Plan { get; set; }
-
-        [JsonIgnore]
+        public string Email { get; set; }
         private static ChargifyConnect Chargify { get; set; }
-
+        // Jobs
+        // Saved Searches
+        // Custom Search
+        
         #endregion
 
         #region Public Methods
@@ -55,15 +40,10 @@ namespace Web.Model
             Chargify.SharedKey = ConfigurationManager.AppSettings["ChargifySharedKey"];
         }
 
-        public static Account GetById(IDocumentSession session, string id)
-        {
-            return session.Load<Account>(id);
-        }
-
         public bool IsAccountCurrent()
         {
             bool isCurrent = false;
-            ICustomer customer = Chargify.LoadCustomer(Id);
+            ICustomer customer = Chargify.LoadCustomer(Email);
             IDictionary<int, ISubscription> customerSubscriptions = Chargify.GetSubscriptionListForCustomer(customer.ChargifyID);
             // Does this customer have any current subscriptions? TODO: needs more work, add other states, can a customer have more than one subscription (loop), what plan, set role
             foreach (KeyValuePair<int,ISubscription> subscription in customerSubscriptions)
@@ -80,6 +60,12 @@ namespace Web.Model
             return isCurrent;
         }
 
+        public static bool IsAccountAtLimit(string email)
+        {
+            // TODO: check if account is at based on current subscription, number of saved searches,
+            // jobs, etc, if so redirect to Account Page to Upgrade
+            return false;
+        }
         #endregion
 
         

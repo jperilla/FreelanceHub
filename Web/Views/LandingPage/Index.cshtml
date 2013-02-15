@@ -9,7 +9,7 @@
     <section id="takeAction">
         <div id="gofer" class="gofer"></div>
         <h2>Search for freelance work now.</h2>
-        <button id="sign-up" class="red large osx">Sign Up for a<br />Free One Month Trial!</button>
+        @Html.ActionLink("Start Your Free Trial!", "Index", "Pricing", null, new { @class = "red large" })
     </section>
 </section>
 
@@ -26,7 +26,7 @@
         <li class="plaid-box">3.<br />Relax
             <div class="small_text">Have more time to do what you want.</div>
              
-            <img class="screenshot" src="/Content/images/relax.png" /></li>
+         <img src="/Content/images/relax.png" /></li>
             
     </ul>
 </section>

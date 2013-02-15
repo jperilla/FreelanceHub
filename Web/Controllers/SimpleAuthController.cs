@@ -60,7 +60,7 @@ namespace Web.Controllers
       {
           // Check if subscription is current, if not redirect to account page
           // for user to update their subscription
-          if (!authenticatedAccount.IsAccountCurrent())
+          if (!Account.IsAccountCurrent(userData.Email))
           {
               return RedirectToAction("AccountSuspended", "Account");
           }
@@ -69,7 +69,7 @@ namespace Web.Controllers
       return 
         Session["ReturnUrl"] != null
         ? (ActionResult) Redirect((string) Session["ReturnUrl"])
-        : RedirectToAction("Index", "Home", authenticatedAccount);
+        : RedirectToAction("Index", "Home");
     }
   }
 }

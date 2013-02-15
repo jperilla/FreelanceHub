@@ -28,6 +28,8 @@ jQuery(function ($) {
             $("input.osx, a.osx, button.osx").click(function (e) {
                 e.preventDefault();
 
+                $('#plan').val(this.id);
+
                 $("#osx-modal-content").modal({
                     overlayId: 'osx-overlay',
                     containerId: 'osx-container',
@@ -41,34 +43,36 @@ jQuery(function ($) {
                 });
             });
 
+
+
             /*$("input#signup-modal").click(function (e) {
-                e.preventDefault();
-                if ($("signupform").validate()) {
-                    $.post("/Account/SignUp", $('signupform').serialize(), function (data) {
-                        if (data == "success") {
-                            window.location = '/LandingPage/Index';
-                        } else {
-                            $('#signupMessage').html(data);
-                        }
-
-                    });
-                }
-
-            });*/
-
-            $("input#login-modal").click(function (e) {
-                e.preventDefault();
-
-                $.post('/Account/Login', $('form').serialize(), function (data) {
-                    if (data == "success") {
-                        window.location = '/LandingPage/Index';
-                    } else {
-                        $('#loginMessage').html(data);
-                    }
-
-                });
+            e.preventDefault();
+            if ($("signupform").validate()) {
+            $.post("/Account/SignUp", $('signupform').serialize(), function (data) {
+            if (data == "success") {
+            window.location = '/LandingPage/Index';
+            } else {
+            $('#signupMessage').html(data);
+            }
 
             });
+            }
+
+            });
+
+            $("input#login-modal").click(function (e) {
+            e.preventDefault();
+
+            $.post('/Account/Login', $('form').serialize(), function (data) {
+            if (data == "success") {
+            window.location = '/LandingPage/Index';
+            } else {
+            $('#loginMessage').html(data);
+            }
+
+            });
+
+            });*/
         },
         open: function (d) {
             var self = this;
@@ -134,7 +138,7 @@ jQuery(function ($) {
                 title.show();
                 d.container.slideDown('slow', function () {
                     setTimeout(function () {
-                        var h = $("#osx-modal-data-login", self.container).height() + 100; // padding
+                        var h = $("#osx-modal-data-login", self.container).height() + 40; // padding
                         d.container.animate(
 							    { height: h },
 							    200,

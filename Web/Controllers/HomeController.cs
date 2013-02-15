@@ -8,9 +8,14 @@ namespace Web.Controllers
     {
         //
         // GET: /Home/
-        public ActionResult Index(Account account)
+        public ActionResult Index()
         {
-            return View("_Home", account);
+            if (User.Identity.IsAuthenticated)
+            {
+                return View("_Home", RavenSession.Load<Account>(User.Identity.Name));
+            }
+
+            return View("Index", "Landing Page");
         }
 
     }

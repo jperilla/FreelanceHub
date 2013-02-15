@@ -7,6 +7,7 @@ using Raven.Database.Server;
 using Raven.Client;
 using Raven.Client.Embedded;
 
+
 namespace Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -14,7 +15,8 @@ namespace Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static DocumentStore Store { get; set; }
+        // Create a singleton dependency injection container
+        public static IDocumentStore Store { get; set; }
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -30,11 +32,36 @@ namespace Web
 
         protected void Application_Start()
         {
+            // Initialize container for ravendb membership provider
+            /*var builder = new ContainerBuilder();
+            builder.RegisterType<HashPasswordStrategy>().AsImplementedInterfaces();
+            builder.RegisterType<RavenDbAccountRepository>().AsImplementedInterfaces()
+            builder.RegisterInstance(new PasswordPolicy
+            {
+                IsPasswordQuestionRequired = false,
+                IsPasswordResetEnabled = true,
+                IsPasswordRetrievalEnabled = false,
+                MaxInvalidPasswordAttempts = 5,
+                MinRequiredNonAlphanumericCharacters = 0,
+                PasswordAttemptWindow = 10,
+                PasswordMinimumLength = 6,
+                PasswordStrengthRegularExpression = null
+            }).AsImplementedInterfaces();
+            //Register all controllers of the current Assembly
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            builder.Register(c => c.For<IDocumentStore>().Singleton().Use(Store));
+            builder.Register(c => c.For<IDocumentSession>().Use(ctx => ctx.GetInstance<IDocumentStore>().OpenSession());
+
+            IContainer container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));*/
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterRoutes(RouteTable.Routes);
 
-            /* Initialize the Document Store - for local db only  */        
+
+            /* Initialize the Document Store - for local db only  */
             Store = new EmbeddableDocumentStore
             {
                 ConnectionStringName = "RavenDB",
@@ -43,8 +70,7 @@ namespace Web
 
             };
             NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-            Store.Initialize();  
-
+            Store.Initialize(); 
 
             /* for the server
             Store = new DocumentStore { ConnectionStringName = "RavenDB" };

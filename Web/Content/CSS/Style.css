@@ -28,14 +28,15 @@ span.red {
 button.red, a.red, input.red
 {
     font-family: 'Arvo', serif;
-    font-size: 1.2em;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
+    font-size: 1.2em;    
+    -moz-box-shadow: 0px 0px 5px #ccc;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     border-radius: 10px;
     background-color: #b93831;
-    border-width: 0px;
+    border-width: 1px;
     color: #FFFFFF;
     text-align: center;
 }
@@ -43,12 +44,26 @@ button.red, a.red, input.red
 a.red
 {
     text-decoration:none;
+    position:relative;
+    z-index:0;
 }
 
 .authButtons
 {
     width: 40%;
     margin: auto;
+}
+
+.screenshot
+{
+    width: 500px;
+    max-height: 160px;
+}
+
+.screenshot2
+{
+    width: 500px;
+    max-height: 250px;
 }
 
 button.light-blue,  input.light-blue
@@ -59,6 +74,11 @@ button.light-blue,  input.light-blue
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    position:relative;
+    z-index:0;
+    behavior: url(/Scripts/css-fixes/PIE.htc);
     background-color: #cdd6d8;
     border-width: 0px;
     color: #FFFFFF;
@@ -66,18 +86,16 @@ button.light-blue,  input.light-blue
     margin-left: 5px;
 }
 
-button.small
+input.small, button.small
 {    
     width: 80px;
     height: 25px;
 }
 
-a.large
+button.medium, input.medium
 {    
-    display: block;
-    padding-top: 8px;
-    width: 180px;
-    height: 38px;
+    width: 100px;
+    height: 40px;
 }
 
 input.blue, button.blue {
@@ -89,6 +107,11 @@ input.blue, button.blue {
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    position:relative;
+    z-index:0;
+    behavior: url(/Scripts/css-fixes/PIE.htc);
     border-width: 0px;
     color: #FFFFFF;
     text-align: center;
@@ -133,10 +156,15 @@ input.blue, button.blue {
     margin-right: 1.041667%;
 }
 
-button.large, input.large
+button.large, input.large 
 {    
     width: 260px;
     height: 60px;
+}
+
+a.large
+{
+    padding: 10px;
 }
 
 input.long
@@ -347,6 +375,9 @@ section#features
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    position:relative;
+    z-index:0;
+    behavior: url(/Scripts/css-fixes/PIE.htc);
     text-align: center;
     padding: 1.0416667%;
 }
@@ -374,6 +405,7 @@ ul#feature-list li
 section#takeAction
 {
     text-align: center;
+    height: 300px;
 }
     
 
@@ -436,10 +468,31 @@ ul#social-media-signed-in li
 /* How it Works Page */
 section#feature1
 {
-    height: 400px; 
+    height: 380px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3em;
+    line-height: 1em;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 40px;
 }
 
-section#feature2
+section#feature1 span
+{    
+    font-size: 1.em;
+}
+
+.list_text
+{
+    font-size: .8em;
+    line-height: .5em;
+    color: #b93831; 
+    text-align: left;
+    margin-left:25%;
+}
+
+section#feature2, section#feature4
 {
     height: 400px;
     background-color: #cdd6d8;
@@ -453,45 +506,82 @@ section#feature3
 .left
 {
     float: left;
-    margin-top: 100px;
-    margin-left: 19.23076923%;
+    margin-left: 8%;
+    width: 40%;   
 }
 
 .right
 {
     float: right;
-    margin-top: 100px;
-    margin-right: 11.538461538%;
+    margin-right: 5%;
+    width: 40%;
+}
+
+.text
+{	
+    margin-top: 30px;
+}
+
+.image 
+{    
+    margin-top: 60px;
+}
+
+.relax_large {
+    width: 300px;
+    margin-left:15%;
 }
 
 /* Pricing Table */
 #pricing_main
 {
-    height: 500px;
-    width: 45%;
+    width: 50%;
     padding-top: 30px;
-    margin: 0px auto;
+    margin: auto;
 }
 
-#tsc_pricingtable01 .signup {
-    background-color: #b93831;
-    background-image: linear-gradient(#b93831, #b93831);
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 0 rgba(0, 0, 0, 0.7);
+#pricing_main h2 {
+    text-align: center;
+}
+
+.tsc_pricingtable04 ul.price-box li.pricing-header {
+    background: none repeat scroll 0 0 #cdd6d8;
+    border: 1px solid #FFFFFF;
+    border-radius: 14px 14px 0 0;
+    -moz-border-radius: 14px 14px 0 0;
+    -webkit-border-radius: 14px 14px 0 0;
+    position:relative;
+    z-index:0;
+    behavior: url(/Scripts/css-fixes/PIE.htc);
+}
+
+.tsc_pricingtable04 ul.price-box li.pricing-header li.most-popular-label span {
+    background: none repeat scroll 0 0 #b93831;
+    border: 3px solid #FFFFFF;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     color: #FFFFFF;
-    display: inline-block;
-    font: bold 14px Arial,Helvetica;
-    margin: 20px 0 0;
-    padding: 8px 20px;
-    position: relative;
-    text-decoration: none;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 10px;
 }
 
-#tsc_pricingtable01 .signup:hover {
-    background-color: #cdd6d8;
-    background-image: linear-gradient(#cdd6d8, #cdd6d8);
+.tsc_pricingtable04 ul.price-box li.pricing-footer a.buy-now {
+    background: none repeat scroll 0 0 #b93831;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 32px;
+    text-decoration: none;
+}
+
+.tsc_pricingtable04 ul.price-box li.pricing-footer a.buy-now:hover {
+    background: none repeat scroll 0 0 #B93831;
 }
 
 /* Search Page */
@@ -589,6 +679,9 @@ section#account_main h2
         border-radius: 10px;
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
+        position:relative;
+        z-index:0;
+        behavior: url(/Scripts/css-fixes/PIE.htc);
         text-align: center;
         padding: 1.0416667%;
     }
@@ -605,12 +698,7 @@ section#account_main h2
     }
     
     /* How it Works Page */
-    section#feature1
-    {
-        height: 400px; 
-    }
-
-    section#feature2
+    section#feature2, section#feature4
     {
         height: 400px;
         background-color: #cdd6d8;
@@ -618,21 +706,38 @@ section#account_main h2
 
     section#feature3
     {
+        font-size: 1em;
         height: 400px; 
     }
 
     .left
     {
-        float: none;
-        text-align: center;
-        margin: 0;
+        float: left;
+        margin-left: 6%;
+        width: 40%;   
     }
 
     .right
     {
-        float: none;
-        text-align: center;
-        margin: 0;
+        float: right;
+        margin-right: 5%;
+        width: 40%;
+    }
+
+    .text
+    {	        
+        font-size: .9em;
+        margin-top: 20px;
+    }
+
+    .image 
+    {    
+        margin-top: 60px;
+    }
+
+    .relax_large {
+        width: 200px;
+        margin-left:15%;
     }
 }
 
@@ -670,6 +775,51 @@ section#account_main h2
         margin-left: auto;
         margin-right: auto;
     }
+    
+    /* How it Works */
+    section#feature1
+    {
+        height: 350px;
+        font-size: 1.1em;
+        width: 90%;
+    }
+    
+    section#feature2, section#feature4
+    {
+        height: 600px;
+        background-color: #cdd6d8; 
+    }
+
+    section#feature3
+    {
+        font-size: 1em;
+        height: 600px;        
+    }
+
+    .left, .right
+    {
+        float: none;       
+        width: 80%;
+        margin: auto; 
+    }
+
+    .text
+    {	        
+        font-size: .8em;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .image 
+    {    
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    .relax_large {
+        width: 200px;
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: 320px)
@@ -685,6 +835,11 @@ section#account_main h2
         height: 500px;
    }
     
+   h3 
+   {
+	    font-size: .7em;
+   }
+   
    section#takeAction h2
    {
        font-size: 1em;
@@ -726,7 +881,7 @@ section#account_main h2
     
     button.medium, input.medium
     {    
-        min-width: 100px;
+        width: 100px;
         height: 50px;
     }
     
@@ -762,6 +917,27 @@ section#account_main h2
     {
         font-size: 2em;
     }
+    
+   
+    .editor-field 
+    {
+	    text-align: center;
+    }
+    .editor-label 
+    {
+        padding-top: 0px; 
+    }
+    
+    .editor-label label 
+    {
+        display: inline;
+        width: 200px;
+        float: none;
+        text-align: center;
+        margin-right: 0%;
+    }
+    
+    
    
 }
 
@@ -785,16 +961,19 @@ div.gsc-keeper
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     border-top: 1px solid #cdd6d8;
-   background: #cdd6d8;
-   background: -webkit-gradient(linear, left top, left bottom, from(#cdd6d8), to(#cdd6d8));
-   background: -webkit-linear-gradient(top, #cdd6d8, #cdd6d8);
-   background: -moz-linear-gradient(top, #cdd6d8, #cdd6d8);
-   background: -ms-linear-gradient(top, #cdd6d8, #cdd6d8);
-   background: -o-linear-gradient(top, #cdd6d8, #cdd6d8);
+    background: #cdd6d8;
+    background: -webkit-gradient(linear, left top, left bottom, from(#cdd6d8), to(#cdd6d8));
+    background: -webkit-linear-gradient(top, #cdd6d8, #cdd6d8);
+    background: -moz-linear-gradient(top, #cdd6d8, #cdd6d8);
+    background: -ms-linear-gradient(top, #cdd6d8, #cdd6d8);
+    background: -o-linear-gradient(top, #cdd6d8, #cdd6d8);
     padding: 14px 28px;
     webkit-border-radius: 6px;
    -moz-border-radius: 6px;
     border-radius: 6px;
+    position:relative;
+    z-index:0;
+    behavior: url(/Scripts/css-fixes/PIE.htc);
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
     color: #113d49;
