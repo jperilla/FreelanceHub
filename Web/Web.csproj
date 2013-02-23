@@ -93,9 +93,9 @@
     <Reference Include="Raven.Database">
       <HintPath>..\packages\RavenDB.Database.2.0.2230\lib\net40\Raven.Database.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleSocialAuth.MVC3">
-      <HintPath>..\..\..\..\..\..\Documents\GitHub\SimpleSocialAuth\bin\Release\SimpleSocialAuth.MVC3.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="SimpleSocialAuth.MVC3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\SimpleSocialAuth.MVC3.dll</HintPath>
     </Reference>
     <Reference Include="Spatial4n.Core.NTS">
       <HintPath>..\packages\RavenDB.Database.2.0.2230\lib\net40\Spatial4n.Core.NTS.dll</HintPath>
@@ -247,7 +247,9 @@
     <Folder Include="App_Data\Database\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\css-fixes\PIE.php" />
