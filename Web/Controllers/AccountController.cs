@@ -45,6 +45,7 @@ namespace Web.Controllers
                     // TODO: Authenticate
                     
                     LogUserIn(login.Email);
+                    return View("Index", "Home");
                 }
                 else
                 {

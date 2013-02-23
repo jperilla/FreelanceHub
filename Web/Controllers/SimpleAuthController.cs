@@ -2,11 +2,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using SimpleSocialAuth.MVC3;
-using Web.Model;
 
-namespace Web.Controllers
+namespace MvcApplication1.Controllers
 {
-  public class SimpleAuthController : BaseController
+  public class SimpleAuthController : Controller
   {
     public ActionResult LogIn()
     {
@@ -53,18 +52,6 @@ namespace Web.Controllers
       }
 
       FormsAuthentication.SetAuthCookie(userData.UserName, true);
-        
-      // Load user account
-      Account authenticatedAccount = RavenSession.Load<Account>(userData.Email);
-      if (null != authenticatedAccount)
-      {
-          // Check if subscription is current, if not redirect to account page
-          // for user to update their subscription
-          if (!Account.IsAccountCurrent(userData.Email))
-          {
-              return RedirectToAction("AccountSuspended", "Account");
-          }
-      }
 
       return 
         Session["ReturnUrl"] != null

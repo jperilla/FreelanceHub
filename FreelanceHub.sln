@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "MvcApplication1\Web.csproj", "{D7AE8ADA-DC3F-49D4-95ED-12BC3EF0C343}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{D7AE8ADA-DC3F-49D4-95ED-12BC3EF0C343}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
