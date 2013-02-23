@@ -95,6 +95,7 @@
     </Reference>
     <Reference Include="SimpleSocialAuth.MVC3">
       <HintPath>..\..\..\..\..\..\Documents\GitHub\SimpleSocialAuth\bin\Release\SimpleSocialAuth.MVC3.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spatial4n.Core.NTS">
       <HintPath>..\packages\RavenDB.Database.2.0.2230\lib\net40\Spatial4n.Core.NTS.dll</HintPath>

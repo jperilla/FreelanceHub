@@ -21,7 +21,6 @@ C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.A
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Client.Embedded.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Client.Lightweight.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Database.dll
-C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\SimpleSocialAuth.MVC3.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Spatial4n.Core.NTS.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\System.Net.Http.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\System.Net.Http.Formatting.dll
@@ -57,7 +56,6 @@ C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.C
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Client.Lightweight.pdb
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Client.Lightweight.xml
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Raven.Database.pdb
-C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\SimpleSocialAuth.MVC3.pdb
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Spatial4n.Core.NTS.pdb
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Spatial4n.Core.NTS.xml
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Newtonsoft.Json.xml
