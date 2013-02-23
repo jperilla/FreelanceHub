@@ -62,21 +62,25 @@ namespace Web
 
 
             /* Initialize the Document Store - for local db only  */
-            Store = new EmbeddableDocumentStore
+            if (Store == null)
             {
-                ConnectionStringName = "RavenDB",
-                UseEmbeddedHttpServer = true,
-                Configuration = { Port = 8080 }
+                Store = new EmbeddableDocumentStore
+                {
+                    RunInMemory = true,
+                    ConnectionStringName = "RavenDB",
+                    UseEmbeddedHttpServer = true,
+                    Configuration = { Port = 8080 }
 
-            };
-            NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-            Store.Initialize(); 
+                };
+                NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+                Store.Initialize();
 
-            /* for the server
-            Store = new DocumentStore { ConnectionStringName = "RavenDB" };
-            Store.Initialize();*/
+                /* for the server
+                Store = new DocumentStore { ConnectionStringName = "RavenDB" };
+                Store.Initialize();*/
 
-            IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
+                IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
+            }            
         }
     }
 }

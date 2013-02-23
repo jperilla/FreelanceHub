@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "freelancehub.io - How it Works";
+}
+
+<section id="feature1">    
+     <p>As a <span>freelance worker</span>, you probably spend way too much time searching for work.</p> 
+     <p>Let's break it down...</p> 
+     <p class="list_text">1. Your time is worth $10, $20, $50 per hour or more!</p>
+     <p class="list_text">2. Let's say you spend 10 hours a month searching for work.</p>
+     <p class="list_text">3. That's $100, $200, $500 a month wasted. </p>
+     <p>You could be spending this time doing PAID WORK. </p>
+     <p>We want to help. Here's how.  </p>     
+</section>
+
+<section id="feature2">    
+    <section class="right text"><h1>Search your favorite sites.</h1>
+        <p>You can search all of your favorite job boards from one place. Choose from a list of the best freelance job sites on the web. Elance, Freelancer, FreelanceSwitch, Authentic Jobs, and many more. </p>
+        <p>If you choose a premium plan, you'll be able to choose the sites you want to search and skip the ones you don't.</p>
+    </section>
+    <section class="left image">
+        <a href="/Content/images/search_screenshot_large.png" target="_blank">
+        <img class="screenshot2" alt="search" src="/Content/images/search.png" /></a>
+    </section>            
+</section>
+
+<section id="feature3">    
+    <section class="left text"><h1>Organize your jobs in one place.</h1>
+        <p>When you find a job that looks promising, save it to "My Leads". Come back when you have time, review your leads, and apply to the ones you want.</p>
+        <p>Keep track of your leads, jobs you've applied to, and jobs you've landed - all from one place.</p></section>
+
+    <section class="right image">
+        <a href="/Content/images/my_jobs_large.png" target="_blank">
+        <img class="screenshot2" alt="jobs" src="/Content/images/my_jobs.png" /></a>
+    </section>   
+</section>
+
+<section id="feature4">    
+    <section class="right text"><h1>Have more time to do what you want.</h1>
+    <p>Let us take care of the searching and organizing for you.</p>
+    <p>You can spend your new found free time doing paid work, playing with your kids, skiing, reading, gardening, or whatever you like.</p>
+    </section>
+    <section class="left image">            
+        <img class="relax_large" alt="relax" src="/Content/images/relax.png" />
+    </section>    
+</section>
+
+<section id="takeAction">
+    <div id="gofer" class="gofer"></div>
+    <h2>Find freelance freedom now.</h2>
+    @Html.ActionLink("Start Your Free Trial!", "Index", "Pricing", null, new { @class = "red large" })
+</section>

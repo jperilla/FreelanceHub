@@ -24,12 +24,12 @@ namespace Web.Controllers
             _accountRepository = new RavenDbAccountRepository(RavenSession);
         }
 
-        public ActionResult Index(Account account)
+        public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult AccountSuspended(Account account)
+        public ActionResult AccountSuspended()
         {
             return View();
         }
@@ -42,22 +42,9 @@ namespace Web.Controllers
             {
                 if (ModelState.IsValid)                    
                 {
-                    int total;
-                    IEnumerable<IMembershipAccount> accounts = 
-                        _accountRepository.FindByUserName(login.Email.Trim(),0, 100, out total);
-                    Account user = RavenSession.Load<Account>(login.Email.Trim());
-                    if (null != user)
-                    {
-                        //if (user.User.ValidatePassword(login.PasswordText))
-                        {
-                            SetAuthenticationCookie(login.Email, true);
-                            return Json("success");
-                        }
-                        //else
-                            //return Json("Invalid Password");
-                    }
-                    else
-                        return Json("User cannot be found");
+                    // TODO: Authenticate
+                    
+                    LogUserIn(login.Email);
                 }
                 else
                 {
@@ -76,8 +63,23 @@ namespace Web.Controllers
             // Is there a valid id?
             if (!string.IsNullOrWhiteSpace(email))
             {
-                // Load the account from Raven
-                Account account = RavenSession.Load<Account>(email);
+                return LogUserIn(email);              
+            }
+
+            return View("Index", "LandingPage");
+        }
+
+        private ActionResult LogUserIn(string email)
+        {
+            // Load the account from Raven
+            int totalRecords;
+            IEnumerable<IMembershipAccount> member = _accountRepository.FindByEmail(email, 1, 1, out totalRecords);
+            Account account = null;
+            if (member.Count() > 0)
+            {
+                // Load Account
+                account = new Account(email);
+
                 // Check that the account is current in Chargify
                 if (account.IsAccountCurrent())
                 {
@@ -87,11 +89,14 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("AccountSuspended", "Account");
+                    // Go to user account page - will show suspended
+                    return View("Index", "Account");
                 }
             }
-
-            return View("Index");
+            else
+            {
+                return View("Index", "LandingPage");
+            }
         }
 
 
@@ -117,15 +122,38 @@ namespace Web.Controllers
                         };
                     _accountRepository.Register(newMember);
                     //RavenSession.Store(newMember);
-                        
-                    if (signup.Plan == "full-time")
+
+                    switch (signup.Plan)
                     {
-                        return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BASIC_MONTHLY_PLAN_URL, 
-                                                CustomerUtilities.GetFirstName(signup.Name),
-                                                CustomerUtilities.GetLastName(signup.Name),
-                                                signup.Email,
-                                                signup.Email));
+                        case "full-time":
+                            {
+                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
+                                                        CustomerUtilities.GetFirstName(signup.Name),
+                                                        CustomerUtilities.GetLastName(signup.Name),
+                                                        signup.Email,
+                                                        signup.Email));
+                            }
+                            break;
+                        case "part-time":
+                            {
+                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BUDGET_MONTHLY_PLAN_URL,
+                                                        CustomerUtilities.GetFirstName(signup.Name),
+                                                        CustomerUtilities.GetLastName(signup.Name),
+                                                        signup.Email,
+                                                        signup.Email));
+                            }
+                            break;
+                        case "agency":
+                            {
+                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.AGENCY_MONTHLY_PLAN_URL,
+                                                        CustomerUtilities.GetFirstName(signup.Name),
+                                                        CustomerUtilities.GetLastName(signup.Name),
+                                                        signup.Email,
+                                                        signup.Email));
+                            }
+                            break;
                     }
+
                 }
             }
             catch (Exception ex)
@@ -200,6 +228,7 @@ namespace Web.Controllers
         }
 
         #endregion
+
         public virtual void SetAuthenticationCookie(string email, bool remember)
         {
             FormsAuthentication.SetAuthCookie(email, remember);
