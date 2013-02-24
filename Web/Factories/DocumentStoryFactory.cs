@@ -29,7 +29,7 @@ namespace Web.Factories
 
         public static IDocumentStore CreateDocumentStoreServer()
         {
-            var documentStore = new DocumentStore { ConnectionStringName = "RavenDB", DefaultDatabase = "freelanceHub" };
+            var documentStore = new DocumentStore { ConnectionStringName = "RavenDB" };
             documentStore.Initialize();
 
             return documentStore;
