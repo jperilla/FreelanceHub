@@ -87,56 +87,51 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult SignUp(Signup signup)
         {
-            try
+            
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                // Check for existing account
+                var existingAccount = Account.GetAccount(signup.Email, RavenSession);
+                if (existingAccount != null)
+                    return Json("User already exists");
+
+                MembershipUser newMember = Membership.CreateUser(signup.Email, signup.Password);
+                var newAccount = new Account(signup.Email);
+                RavenSession.Store(newAccount);
+
+                switch (signup.Plan)
                 {
-                    // Check for existing account
-                    var existingAccount = Account.GetAccount(signup.Email, RavenSession);
-                    if (existingAccount != null)
-                        return Json("User already exists");
-
-                    MembershipUser newMember = Membership.CreateUser(signup.Email, signup.Password);
-                    var newAccount = new Account(signup.Email);
-                    RavenSession.Store(newAccount);
-
-                    switch (signup.Plan)
-                    {
-                        case "full-time":
-                            {
-                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
-                                                        CustomerUtilities.GetFirstName(signup.Name),
-                                                        CustomerUtilities.GetLastName(signup.Name),
-                                                        signup.Email,
-                                                        signup.Email));
-                            }
-                            break;
-                        case "part-time":
-                            {
-                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BUDGET_MONTHLY_PLAN_URL,
-                                                        CustomerUtilities.GetFirstName(signup.Name),
-                                                        CustomerUtilities.GetLastName(signup.Name),
-                                                        signup.Email,
-                                                        signup.Email));
-                            }
-                            break;
-                        case "agency":
-                            {
-                                return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.AGENCY_MONTHLY_PLAN_URL,
-                                                        CustomerUtilities.GetFirstName(signup.Name),
-                                                        CustomerUtilities.GetLastName(signup.Name),
-                                                        signup.Email,
-                                                        signup.Email));
-                            }
-                            break;
-                    }
-
+                    case "full-time":
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
+                                                    CustomerUtilities.GetFirstName(signup.Name),
+                                                    CustomerUtilities.GetLastName(signup.Name),
+                                                    signup.Email,
+                                                    signup.Email));
+                        }
+                        break;
+                    case "part-time":
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BUDGET_MONTHLY_PLAN_URL,
+                                                    CustomerUtilities.GetFirstName(signup.Name),
+                                                    CustomerUtilities.GetLastName(signup.Name),
+                                                    signup.Email,
+                                                    signup.Email));
+                        }
+                        break;
+                    case "agency":
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.AGENCY_MONTHLY_PLAN_URL,
+                                                    CustomerUtilities.GetFirstName(signup.Name),
+                                                    CustomerUtilities.GetLastName(signup.Name),
+                                                    signup.Email,
+                                                    signup.Email));
+                        }
+                        break;
                 }
+
             }
-            catch (Exception ex)
-            {
-                return Json("Oops! Something went wrong, try again.");
-            }
+           
 
             return View();
         }

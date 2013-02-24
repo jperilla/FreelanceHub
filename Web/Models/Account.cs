@@ -54,6 +54,9 @@ namespace Web.Models
         {
             bool isCurrent = false;
             ICustomer customer = Chargify.LoadCustomer(Email);
+            if (customer == null)
+                return false;
+
             IDictionary<int, ISubscription> customerSubscriptions = Chargify.GetSubscriptionListForCustomer(customer.ChargifyID);
             // Does this customer have any current subscriptions? TODO: needs more work, add other states, can a customer have more than one subscription (loop), what plan, set role
             foreach (KeyValuePair<int,ISubscription> subscription in customerSubscriptions)

@@ -35,36 +35,30 @@ namespace Web.Controllers
         [ValidateInput(false)]
         public JsonResult SaveFavorite(Job jobClicked)
         {
-            try
-            {
-                // Create the job
-                var job = new Job
-                    {
-                        JobStatus = new JobStatus(),
-                        ShortDescription = jobClicked.ShortDescription,
-                        Title = jobClicked.Title,
-                        URL = jobClicked.URL,
-                        Budget = "$100"
-                    };
-                job.JobStatus.Status = "Lead";
-
-                // Load the current account
-                Account account = Account.GetAccount(User.Identity.Name, RavenSession);
-                if (account != null)
+            // Create the job
+            var job = new Job
                 {
-                    if (account.Jobs == null)
-                        account.Jobs = new List<Job>();
+                    JobStatus = new JobStatus(),
+                    ShortDescription = jobClicked.ShortDescription,
+                    Title = jobClicked.Title,
+                    URL = jobClicked.URL,
+                    Budget = "$100"
+                };
+            job.JobStatus.Status = "Lead";
 
-                    account.Jobs.Add(job);
-                    RavenSession.Store(account);
-                }
-
-                return Json("success", JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
             {
-                return Json("error");
+                if (account.Jobs == null)
+                    account.Jobs = new List<Job>();
+
+                account.Jobs.Add(job);
+                RavenSession.Store(account);
             }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
+            
         }
 
         public ActionResult Applied(int id)
