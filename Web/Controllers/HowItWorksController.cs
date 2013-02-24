@@ -19,8 +19,7 @@ namespace Web.Controllers
         // GET: /HowItWorks/
         public ActionResult Index()
         {
-            throw new Exception("Test exception");
-               // return View();
+            return View();
         }
     }
 }
