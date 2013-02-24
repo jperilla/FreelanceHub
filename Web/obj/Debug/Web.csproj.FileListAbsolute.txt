@@ -73,3 +73,11 @@ C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\System.
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\obj\Debug\MvcApplication1.dll
 C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\obj\Debug\MvcApplication1.pdb
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.Unity.dll
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Unity.Mvc4.dll
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.Unity.xml
+C:\Users\jperilla\Dropbox\Career\Projects\Freelance\FreelanceHub\Web\bin\Microsoft.Practices.Unity.Configuration.xml

@@ -4,19 +4,31 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Web.Model;
+using Web.Models;
+using Raven.Client;
 
 namespace Web.Controllers
 { 
+    [Authorize]
     public class JobsController : BaseController
     {
-
+        public JobsController(IDocumentSession documentSession)
+            : base(documentSession)
+        {
+        }
         // 
         // GET: /Jobs/
 
         public ViewResult Index()
         {
-            return View(RavenSession.Query<Job>());
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                return View(account.Jobs);
+            }
+
+            return View();
         }
 
         [HttpPost]
@@ -25,6 +37,7 @@ namespace Web.Controllers
         {
             try
             {
+                // Create the job
                 var job = new Job
                     {
                         JobStatus = new JobStatus(),
@@ -35,7 +48,17 @@ namespace Web.Controllers
                     };
                 job.JobStatus.Status = "Lead";
 
-                RavenSession.Store(job);
+                // Load the current account
+                Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+                if (account != null)
+                {
+                    if (account.Jobs == null)
+                        account.Jobs = new List<Job>();
+
+                    account.Jobs.Add(job);
+                    RavenSession.Store(account);
+                }
+
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

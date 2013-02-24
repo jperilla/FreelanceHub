@@ -6,6 +6,8 @@ using System.Reflection;
 using Raven.Database.Server;
 using Raven.Client;
 using Raven.Client.Embedded;
+using Web.Factories;
+using System.Web.Configuration;
 
 
 namespace Web
@@ -32,56 +34,9 @@ namespace Web
 
         protected void Application_Start()
         {
-            // Initialize container for ravendb membership provider
-            /*var builder = new ContainerBuilder();
-            builder.RegisterType<HashPasswordStrategy>().AsImplementedInterfaces();
-            builder.RegisterType<RavenDbAccountRepository>().AsImplementedInterfaces()
-            builder.RegisterInstance(new PasswordPolicy
-            {
-                IsPasswordQuestionRequired = false,
-                IsPasswordResetEnabled = true,
-                IsPasswordRetrievalEnabled = false,
-                MaxInvalidPasswordAttempts = 5,
-                MinRequiredNonAlphanumericCharacters = 0,
-                PasswordAttemptWindow = 10,
-                PasswordMinimumLength = 6,
-                PasswordStrengthRegularExpression = null
-            }).AsImplementedInterfaces();
-            //Register all controllers of the current Assembly
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-
-            builder.Register(c => c.For<IDocumentStore>().Singleton().Use(Store));
-            builder.Register(c => c.For<IDocumentSession>().Use(ctx => ctx.GetInstance<IDocumentStore>().OpenSession());
-
-            IContainer container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));*/
-
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
-
-
-            
-            if (Store == null)
-            {
-                /* Initialize the Document Store - for local db only 
-                Store = new EmbeddableDocumentStore
-                {
-                    RunInMemory = true,
-                    ConnectionStringName = "RavenDB",
-                    UseEmbeddedHttpServer = true,
-                    Configuration = { Port = 8080 }
-
-                };
-                NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-                Store.Initialize(); */
-
-                /* for the server*/
-                Store = new DocumentStore { ConnectionStringName = "RavenDB" };
-                Store.Initialize();
-
-                IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
-            }            
+            Bootstrapper.Initialise();
         }
     }
 }

@@ -5,10 +5,10 @@ using Raven.Client.Linq;
 using ChargifyNET;
 using System.Configuration;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+using System.Linq;
 using Griffin.MvcContrib.Providers.Membership;
 
-namespace Web.Model
+namespace Web.Models
 {
     public partial class Account
     {
@@ -25,10 +25,11 @@ namespace Web.Model
         #endregion
 
         #region Properties
+        public int Id { get; set; }
         public string Email { get; set; }
         private static ChargifyConnect Chargify { get; set; }
-        // Jobs
-        // Saved Searches
+        public IList<Job> Jobs { get; set; }
+        public IList<Search> Searches { get; set; }
         // Custom Search
         
         #endregion
@@ -38,6 +39,8 @@ namespace Web.Model
         public Account(string email)
         {
             Email = email;
+            Jobs = new List<Job>();
+            Searches = new List<Search>();
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
@@ -72,6 +75,21 @@ namespace Web.Model
             // TODO: check if account is at based on current subscription, number of saved searches,
             // jobs, etc, if so redirect to Account Page to Upgrade
             return false;
+        }
+
+        public static Account GetAccount(string email, IDocumentSession session)
+        {
+            // Load Account
+            IEnumerable<Account> accounts = from account in session.Query<Account>()
+                                            where account.Email == email
+                                            select account;
+
+            // Check that the account is current in Chargify
+            if (accounts != null &&
+                accounts.Count() == 1)
+                return accounts.FirstOrDefault();
+
+            return null;
         }
         #endregion
 

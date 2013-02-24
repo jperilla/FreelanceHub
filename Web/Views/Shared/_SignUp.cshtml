@@ -1,5 +1,5 @@
 ﻿@using SimpleSocialAuth.MVC3
-@model Web.Model.Signup
+@model Web.Models.Signup
 
 <div id="osx-modal-content">
     <div id="osx-modal-title" class="gofer">freelance<span style="color: #fff;">Hub</span></div>
@@ -50,30 +50,6 @@
             
             <div id="signupMessage" class="message"></div>
         }
-        </div>
-
-        <h2>OR</h2>
-
-        <div class="login-with-them">
-            <h3>Sign up with your Facebook or Google Account</h3>
-
-            @Html.RenderAuthStylesheet()
-            @Html.RenderAuthScript()
-            @Html.RenderAuthWarnings()
-
-            @if (TempData["authError"] != null)
-            {
-              <p class="error-messasge">
-                @TempData["authError"]
-              </p>
-            }
-
-            @using (Html.BeginForm("SimpleAuthenticate", "Account", FormMethod.Post, new { id = "authForm" }))
-            {
-              <div class="authButtons">
-                @Html.AuthButtons()
-              </div>
-            }
         </div>
     </div>
 </div>

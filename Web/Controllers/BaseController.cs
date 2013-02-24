@@ -8,9 +8,9 @@ namespace Web.Controllers
     {
         public IDocumentSession RavenSession { get; private set; }
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        protected BaseController(IDocumentSession documentSession)
         {
-            RavenSession = MvcApplication.Store.OpenSession();
+            RavenSession = documentSession;
         }
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)

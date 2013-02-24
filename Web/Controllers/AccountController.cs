@@ -2,26 +2,23 @@
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
-using Web.Model;
+using Web.Models;
 using Web.Utilities;
-using Griffin.MvcContrib.RavenDb.Providers;
-using Griffin.MvcContrib.Providers.Membership;
 using System.Collections.Generic;
 using System.Linq;
 using SimpleSocialAuth.MVC3;
 using System.Web;
-using Griffin.MvcContrib.Providers.Membership.SqlRepository;
+using Raven.Client;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class AccountController : BaseController
     {
-        private static IAccountRepository _accountRepository;
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        public AccountController(IDocumentSession documentSession)
+            : base(documentSession)
         {
-            base.OnActionExecuting(filterContext);                
-            _accountRepository = new RavenDbAccountRepository(RavenSession);
         }
 
         public ActionResult Index()
@@ -36,29 +33,22 @@ namespace Web.Controllers
 
         // POST: /Login/
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(Login login)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)                    
+                if(Membership.ValidateUser(login.Email, login.Password))
                 {
-                    // TODO: Authenticate
-                    
-                    LogUserIn(login.Email);
-                    return View("Index", "Home");
-                }
-                else
-                {
-                    return Json("Please correct input errors.");
+                    return LogUserIn(login.Email);
                 }
             }
-            catch (Exception ex)
-            {
-                return Json("Oops! Something went wrong, try again.");
-            }
+
+            return Json("Invalid email or password");
         }
 
         // Coming Back from Chargify
+        [AllowAnonymous]
         public ActionResult Login(string email)
         {
             // Is there a valid id?
@@ -67,41 +57,26 @@ namespace Web.Controllers
                 return LogUserIn(email);              
             }
 
-            return View("Index", "LandingPage");
+            return RedirectToAction("Index", "LandingPage");
         }
 
         private ActionResult LogUserIn(string email)
         {
-            // Load the account from Raven
-            int totalRecords;
-            IEnumerable<IMembershipAccount> member = _accountRepository.FindByEmail(email, 1, 1, out totalRecords);
-            Account account = null;
-            if (member.Count() > 0)
+            Account account = Account.GetAccount(email, RavenSession);
+            if(account.IsAccountCurrent())
             {
-                // Load Account
-                account = new Account(email);
-
-                // Check that the account is current in Chargify
-                if (account.IsAccountCurrent())
-                {
-                    // Set user authentication cookie
-                    FormsAuthentication.SetAuthCookie(email, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    // Go to user account page - will show suspended
-                    return View("Index", "Account");
-                }
+                // Set user authentication cookie
+                FormsAuthentication.SetAuthCookie(email, false);
+                return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                return View("Index", "LandingPage");
-            }
+            
+            // Go to user account page - will show suspended, user must take action
+            return View("Index");
         }
 
 
         // GET: /SignUp/
+        [AllowAnonymous]
         public ActionResult SignUp()
         {
             return View("../LandingPage/Index");
@@ -109,20 +84,21 @@ namespace Web.Controllers
 
         // POST: /SignUp/
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult SignUp(Signup signup)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    IMembershipAccount newMember = new MembershipAccount()
-                        {
-                            Email = signup.Email,
-                            Password = signup.Password,
-                            UserName = signup.Email
-                        };
-                    _accountRepository.Register(newMember);
-                    //RavenSession.Store(newMember);
+                    // Check for existing account
+                    var existingAccount = Account.GetAccount(signup.Email, RavenSession);
+                    if (existingAccount != null)
+                        return Json("User already exists");
+
+                    MembershipUser newMember = Membership.CreateUser(signup.Email, signup.Password);
+                    var newAccount = new Account(signup.Email);
+                    RavenSession.Store(newAccount);
 
                     switch (signup.Plan)
                     {
@@ -166,6 +142,7 @@ namespace Web.Controllers
         }
 
         // GET: /Logout/
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
@@ -176,6 +153,7 @@ namespace Web.Controllers
         #region SimpleSocialAuth
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult SimpleAuthenticate(AuthType authType)
         {
             var authHandler =
@@ -192,6 +170,7 @@ namespace Web.Controllers
         }
 
         // Returning from Facebook or Google
+        [AllowAnonymous]
         public ActionResult DoAuth(AuthType authType)
         {
             var authHandler =
@@ -230,6 +209,7 @@ namespace Web.Controllers
 
         #endregion
 
+        [AllowAnonymous]
         public virtual void SetAuthenticationCookie(string email, bool remember)
         {
             FormsAuthentication.SetAuthCookie(email, remember);

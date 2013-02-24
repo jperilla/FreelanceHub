@@ -1,5 +1,5 @@
 ﻿@using SimpleSocialAuth.MVC3
-@model Web.Model.Login
+@model Web.Models.Login
            
 <div id="osx-modal-content-login">
 	<div id="osx-modal-title" class="gofer">freelance<span style="color: #fff;">Hub</span></div>
@@ -8,7 +8,7 @@
         <div class="login-with-us">   
         @using (@Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginform" }))
         {   
-            <h3>Login with us</h3>
+            <h3>Login now!</h3>
             <div class="editor-label">
                 @Html.Label("Email")
             </div>
@@ -26,30 +26,6 @@
             </div>
             <input id="login-modal" type="submit" class="red medium" value="Login" />
         }
-        </div>
-
-        <h2>OR</h2>
-
-        <div class="login-with-them">
-            <h3>Login with Facebook or Google</h3>
-
-            @Html.RenderAuthStylesheet()
-            @Html.RenderAuthScript()
-            @Html.RenderAuthWarnings()
-
-            @if (TempData["authError"] != null)
-            {
-              <p class="error-messasge">
-                @TempData["authError"]
-              </p>
-            }
-
-            @using (Html.BeginForm("SimpleAuthenticate", "Account", FormMethod.Post, new { id = "authForm" }))
-            {
-              <div class="authButtons">
-                @Html.AuthButtons()
-              </div>
-            }
         </div>
     </div>
 </div>

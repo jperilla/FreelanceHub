@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Raven.Imports.Newtonsoft.Json;
 
-namespace Web.Model
+namespace Web.Models
 {
     public class Login
     {

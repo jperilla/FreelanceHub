@@ -1,11 +1,18 @@
 ﻿
 using System.Web.Mvc;
-using Web.Model;
+using Web.Models;
+using Raven.Client;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class HomeController : BaseController
     {
+        public HomeController(IDocumentSession documentSession)
+            : base(documentSession)
+        {
+        }
+
         //
         // GET: /Home/
         public ActionResult Index()
