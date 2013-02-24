@@ -63,18 +63,42 @@ namespace Web.Controllers
 
         public ActionResult Applied(int id)
         {
-            Job job = RavenSession.Load<Job>(id);
-            job.JobStatus.Status = "Applied";
-            RavenSession.Store(job);
-            return View("Index", RavenSession.Query<Job>());
+            var account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                var jobs = from j in account.Jobs
+                          where j.Id == id
+                          select j;
+
+                if (jobs != null)
+                {
+                    Job job = jobs.First();
+                    job.JobStatus.Status = "Applied";
+                    RavenSession.Store(account);
+                }
+            }
+
+            return View("Index", account.Jobs);
         }
 
         public ActionResult Current(int id)
         {
-            Job job = RavenSession.Load<Job>(id);
-            job.JobStatus.Status = "Current";
-            RavenSession.Store(job);
-            return View("Index", RavenSession.Query<Job>());
+            var account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                var jobs = from j in account.Jobs
+                           where j.Id == id
+                           select j;
+
+                if (jobs != null)
+                {
+                    Job job = jobs.First();
+                    job.JobStatus.Status = "Current";
+                    RavenSession.Store(account);
+                }
+            }
+
+            return View("Index", account.Jobs);
         }    
 
         public ViewResult Details(int id)
@@ -84,15 +108,42 @@ namespace Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View(RavenSession.Load<Job>(id));
+            var account = Account.GetAccount(User.Identity.Name, RavenSession);
+            Job jobToDelete = null;
+            if (account != null)
+            {
+                var jobs = from j in account.Jobs
+                           where j.Id == id
+                           select j;
+
+                if (jobs != null)
+                {
+                    jobToDelete = jobs.First();
+                }
+            }
+
+            return View(jobToDelete);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Job job = RavenSession.Load<Job>(id);
-            RavenSession.Delete<Job>(job);
-            return RedirectToAction("Index");
+        {
+            var account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                var jobs = from j in account.Jobs
+                           where j.Id == id
+                           select j;
+
+                if (jobs != null)
+                {
+                    Job job = jobs.First();
+                    account.Jobs.Remove(job);
+                    RavenSession.Store(account);
+                }
+            }
+
+            return View("Index", account.Jobs);
         }
        
 /*        
