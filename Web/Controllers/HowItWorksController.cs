@@ -10,7 +10,7 @@ namespace Web.Controllers
 {
     public class HowItWorksController : BaseController
     {
-        HowItWorksController(IDocumentSession documentSession)
+        public HowItWorksController(IDocumentSession documentSession)
             : base(documentSession)
         {
         }
