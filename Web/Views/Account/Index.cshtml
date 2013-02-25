@@ -7,4 +7,67 @@
 
 <section id="account_main">
     <h2>Your Account</h2>
+    <section class="page_section">
+        <div class="section_title">
+            <h3>Profile</h3>
+            <table cellpadding="0" cellspacing="0">                
+                <tbody>                                   
+                    <tr>
+                        <td>
+                            <label><b>Full Name:</b></label> @Html.DisplayFor(m => m.CustomerFullName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label><b>Email:</b></label> @Html.DisplayFor(m => m.Email)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="page_section">
+        <div class="section_title">
+            <h3>Subscription</h3>
+            <table cellpadding="0" cellspacing="0">                
+                <tbody>                       
+                    <tr>
+                        <td>
+                            <label><b>Current Subscription:</b></label> @Html.DisplayFor(m => m.CustomerSubscriptionProductName)
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <label><b>Current Status:</b></label> @Html.DisplayFor(m => m.CustomerSubscriptionStatus)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label><b>Credit Card:</b></label> @Html.DisplayFor(m => m.CreditCard)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => m.Statistics)<br />
+                            @Html.DisplayFor(m => m.BalanceSummary)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="page_section">
+        <div class="section_title">
+            <h3>Email Preferences</h3>
+        </div>
+        <table cellpadding="0" cellspacing="0">                
+            <tbody>                       
+                <tr>
+                    <td>
+                        You are not signed up to recieve emails.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </section>

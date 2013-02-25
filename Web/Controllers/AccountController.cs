@@ -23,7 +23,14 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                account.LoadChargifyInfo();
+                return View(account);
+            }
+
+            return View("../LandingPage/Index");
         }
 
         public ActionResult AccountSuspended()

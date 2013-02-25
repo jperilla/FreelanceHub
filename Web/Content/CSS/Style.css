@@ -283,7 +283,7 @@ nav ul li a
     margin-bottom: 0%;
     padding-bottom: 0%;
     width: 97.9166667%;
-    min-height: 800px;
+    min-height: 1200px;
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
@@ -631,7 +631,7 @@ section#account_main h2
     padding-left: 20px;
 }
 
-.job_section
+.job_section, .account_section
 {
     padding: 1.0416667%;
 }
@@ -1036,28 +1036,28 @@ div.gs-result
 }
 
 /* Tables */
-.job_section table h6
+.page_section table h6
 {
     font-family: Raleway, sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
 
-.job_section table a:link {
+.page_section table a:link {
 	font-weight: bold;
 	text-decoration:none;
 }
-.job_section table a:visited {
+.page_section table a:visited {
 	color: #999999;
 	font-weight:bold;
 	text-decoration:none;
 }
-.job_section table a:active,
-.job_section table a:hover {
+.page_section table a:active,
+.page_section table a:hover {
 	color: #bd5a35;
 	text-decoration:underline;
 }
-.job_section table {
+.page_section table {
 	font-size:14px;
 	text-shadow: 1px 1px 0px #fff;
 	margin:20px;
@@ -1071,36 +1071,36 @@ div.gs-result
 	-webkit-box-shadow: 1px 1px 1px 2px #d1d1d1;
 	box-shadow: 1px 1px 1px 2px #d1d1d1;
 }
-.job_section table th {
+.page_section table th {
 	padding:21px 25px 22px 25px;
 	border-top:1px solid #e0e0e0;
 	border-bottom:1px solid #e0e0e0;
 
 }
-.job_section table th:first-child {
+.page_section table th:first-child {
 	text-align: left;
 	padding-left:20px;
 }
-.job_section table tr:first-child th:first-child {
+.page_section table tr:first-child th:first-child {
 	-moz-border-radius-topleft:3px;
 	-webkit-border-top-left-radius:3px;
 	border-top-left-radius:3px;
 }
-.job_section table tr:first-child th:last-child {
+.page_section table tr:first-child th:last-child {
 	-moz-border-radius-topright:3px;
 	-webkit-border-top-right-radius:3px;
 	border-top-right-radius:3px;
 }
-.job_section table tr {
+.page_section table tr {
 	text-align: center;
 	padding-left:20px;
 }
-.job_section table td:first-child {
+.page_section table td:first-child {
 	text-align: left;
 	padding-left:20px;
 	border-left: 0;
 }
-.job_section table td {
+.page_section table td {
 	padding:18px;
 	border-top: 1px solid #ffffff;
 	border-bottom:1px solid #e0e0e0;
@@ -1109,25 +1109,25 @@ div.gs-result
 	background: #fdfbf8;
 }
 
-.job_section table tr.even td {
+.page_section table tr.even td {
 	background: #f5f1ef;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f5f1ef), to(#fdfbfa));
 	background: -moz-linear-gradient(top,  #f5f1ef,  #fdfbfa);	
 }
-.job_section table tr:last-child td {
+.page_section table tr:last-child td {
 	border-bottom:0;
 }
-.job_section table tr:last-child td:first-child {
+.page_section table tr:last-child td:first-child {
 	-moz-border-radius-bottomleft:3px;
 	-webkit-border-bottom-left-radius:3px;
 	border-bottom-left-radius:3px;
 }
-.job_section table tr:last-child td:last-child {
+.page_section table tr:last-child td:last-child {
 	-moz-border-radius-bottomright:3px;
 	-webkit-border-bottom-right-radius:3px;
 	border-bottom-right-radius:3px;
 }
-.job_section table tr:hover td {
+.page_section table tr:hover td {
 	background: #f5f1ef;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f5f1ef), to(#fdfbfa));
 	background: -moz-linear-gradient(top,  #f5f1ef,  #fdfbfa);	

@@ -7,6 +7,8 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using Griffin.MvcContrib.Providers.Membership;
+using Raven.Imports.Newtonsoft.Json;
+using System;
 
 namespace Web.Models
 {
@@ -27,11 +29,98 @@ namespace Web.Models
         #region Properties
         public int Id { get; set; }
         public string Email { get; set; }
-        private static ChargifyConnect Chargify { get; set; }
+       
         public IList<Job> Jobs { get; set; }
         public IList<Search> Searches { get; set; }
         // Custom Search
-        
+
+        [JsonIgnore]
+        public ICustomer ChargifyCustomer { get; private set; }
+        [JsonIgnore]
+        public IDictionary<int, ISubscription> CustomerSubscriptions { get; private set; }
+        public string CustomerFullName
+        {
+            get
+            {
+                string fullName = null;
+                if (ChargifyCustomer == null)
+                    LoadChargifyInfo();
+                fullName = ChargifyCustomer.FullName;
+                return fullName;
+            }
+        }
+
+        public string CustomerSubscriptionProductName
+        {
+            get
+            {
+                string subName = null;
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+                
+                subName = CustomerSubscriptions.Values.First().Product.Name;
+
+                return subName;
+            }
+        }
+
+        public string CustomerSubscriptionStatus
+        {
+            get
+            {
+                string status = null;
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+
+                status = CustomerSubscriptions.Values.First().State.ToString();
+
+                return status;
+            }
+        }
+
+        public string Statistics
+        {
+            get
+            {  
+                return ("You currently have " + Jobs.Count + " Jobs saved and " + Searches.Count + " Searches saved.");
+            }
+        }
+
+        public string CreditCard
+        {
+            get
+            {
+                string creditCard = null;
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+
+                creditCard = CustomerSubscriptions.Values.First().CreditCard.FullNumber;
+
+                return creditCard;
+            }
+        }
+
+        public string BalanceSummary
+        {
+            get
+            {
+                decimal balance;
+                decimal nextCharge;
+                DateTime nextChargeDate;
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+
+                balance = CustomerSubscriptions.Values.First().Balance;
+                nextCharge = CustomerSubscriptions.Values.First().Product.Price;
+                nextChargeDate = CustomerSubscriptions.Values.First().CurrentPeriodEndsAt;
+
+                return ("You're balance is $" + balance + 
+                    ". You're next charge for $" + nextCharge + 
+                    " will be made on " + nextChargeDate.ToShortDateString() + ".");
+            }
+        }
+
+        private static ChargifyConnect Chargify;
         #endregion
 
         #region Public Methods
@@ -48,6 +137,13 @@ namespace Web.Models
             Chargify.Password = ConfigurationManager.AppSettings["ChargifyApiPassword"];
             Chargify.URL = ConfigurationManager.AppSettings["ChargifyUrl"];
             Chargify.SharedKey = ConfigurationManager.AppSettings["ChargifySharedKey"];
+        }
+
+        public void LoadChargifyInfo()
+        {
+            ChargifyCustomer = Chargify.LoadCustomer(Email);
+            if(ChargifyCustomer != null)
+                CustomerSubscriptions = Chargify.GetSubscriptionListForCustomer(ChargifyCustomer.ChargifyID);
         }
 
         public bool IsAccountCurrent()
@@ -73,6 +169,8 @@ namespace Web.Models
             return isCurrent;
         }
 
+       
+
         public static bool IsAccountAtLimit(string email)
         {
             // TODO: check if account is at based on current subscription, number of saved searches,
@@ -94,6 +192,7 @@ namespace Web.Models
 
             return null;
         }
+ 
         #endregion
 
         
