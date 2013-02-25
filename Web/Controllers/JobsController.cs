@@ -116,13 +116,14 @@ namespace Web.Controllers
                            where j.Id == id
                            select j;
 
-                if (jobs != null)
+                if (jobs != null && jobs.Count() > 0)
                 {
                     jobToDelete = jobs.First();
+                    return View(jobToDelete);
                 }
             }
 
-            return View(jobToDelete);
+            return View("Index");
         }
 
         [HttpPost, ActionName("Delete")]
@@ -135,7 +136,7 @@ namespace Web.Controllers
                            where j.Id == id
                            select j;
 
-                if (jobs != null)
+                if (jobs != null && jobs.Count() > 0)
                 {
                     Job job = jobs.First();
                     account.Jobs.Remove(job);

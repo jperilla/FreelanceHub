@@ -21,5 +21,10 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult Customize()
+        {
+            return View();
+        }
+
     }
 }

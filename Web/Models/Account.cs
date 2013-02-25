@@ -38,6 +38,9 @@ namespace Web.Models
         public ICustomer ChargifyCustomer { get; private set; }
         [JsonIgnore]
         public IDictionary<int, ISubscription> CustomerSubscriptions { get; private set; }
+
+
+        [JsonIgnore]
         public string CustomerFullName
         {
             get
@@ -50,6 +53,22 @@ namespace Web.Models
             }
         }
 
+
+        [JsonIgnore]
+        public string CustomerFirstName
+        {
+            get
+            {
+                string name = null;
+                if (ChargifyCustomer == null)
+                    LoadChargifyInfo();
+                name = ChargifyCustomer.FirstName;
+                return name;
+            }
+        }
+
+
+        [JsonIgnore]
         public string CustomerSubscriptionProductName
         {
             get
@@ -64,6 +83,8 @@ namespace Web.Models
             }
         }
 
+
+        [JsonIgnore]
         public string CustomerSubscriptionStatus
         {
             get
@@ -78,6 +99,8 @@ namespace Web.Models
             }
         }
 
+
+        [JsonIgnore]
         public string Statistics
         {
             get
@@ -86,6 +109,8 @@ namespace Web.Models
             }
         }
 
+
+        [JsonIgnore]
         public string CreditCard
         {
             get
@@ -100,6 +125,8 @@ namespace Web.Models
             }
         }
 
+
+        [JsonIgnore]
         public string BalanceSummary
         {
             get

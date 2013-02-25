@@ -8,6 +8,45 @@
 
 <section id="home_main">
 <h2>
-    Welcome to your Home Page, @Model.Email!
+    Welcome, @Model.CustomerFirstName!
 </h2>
+    <section class="page_section">    
+        <h3>Your Recent Searches</h3>        
+        <div>@Html.ActionLink("Customize Your Search", "Customize", "Search", null, null)</div>
+        <table cellpadding="0" cellspacing="0">                
+            <tbody>                                   
+                <tr>
+                    <td>
+                        Display recent searches here.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="page_section">
+            <h3>Recent Job Leads</h3>
+            <table cellpadding="0" cellspacing="0">                
+                <tbody>                       
+                    <tr>
+                        <td>
+                            Display Job Leads here.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+    <section class="page_section">
+        <h3>Check on the status of your proposals</h3>
+        <table cellpadding="0" cellspacing="0">                
+            <tbody>                       
+                <tr>
+                    <td>
+                        Display applied jobs here.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
 </section>

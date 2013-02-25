@@ -197,6 +197,7 @@
     </Compile>
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\CustomSearch.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobStatus.cs" />
     <Compile Include="Models\Log.cs" />
@@ -291,6 +292,7 @@
     <Content Include="Views\Shared\_SignUp.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\SimpleAuth\LogIn.cshtml" />
+    <Content Include="Views\Search\Customize.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
