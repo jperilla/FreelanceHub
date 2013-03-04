@@ -172,6 +172,22 @@ input.long
     width: 28%;
 }
 
+input.xlong, div.xlong
+{
+    width: 83%;
+}
+
+input.whole, div.whole
+{
+    width: 100%;
+}
+
+input.tall, div.tall
+{
+    height: 37px;
+    font-size: 1.5em;
+}
+
 #wrapper 
 {
     margin-right: auto;
@@ -505,8 +521,7 @@ section#feature3
 .left
 {
     float: left;
-    margin-left: 8%;
-    width: 40%;   
+    margin-left: 1.0416667%;
 }
 
 .right
@@ -889,7 +904,7 @@ section#account_main h2
         height: 50px;
     }
     
-    input.long
+    input.long, div.long
     {
         width: 40%;
     }
@@ -1060,7 +1075,9 @@ input.gsc-search-button {
 /* Tables */
 .page_section
 {
+    padding-top: 10px;
     padding-bottom: 20px;
+    clear: both;
 }
 
 .page_section div

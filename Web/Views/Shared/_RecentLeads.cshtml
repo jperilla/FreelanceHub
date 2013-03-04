@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Web.Models.Job>
+
+<h3>Recent Job Leads</h3>
+           
+<div class="jobs_table">
+    <table cellpadding="0" cellspacing="0">
+
+        @foreach (var item in Model)
+        {
+            if ((item.JobStatus != null) && (item.JobStatus.Status == "Lead"))
+            {
+                <tr>
+                    <td>
+                        @Html.Raw(@item.Title)
+                    </td>
+                    <td>
+                        @Html.Raw(@item.ShortDescription)
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+      
+</div>
+

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Raven.Client;
+using Bing;
 
 namespace Web.Controllers
 { 
@@ -59,6 +60,36 @@ namespace Web.Controllers
 
             return Json("success", JsonRequestBehavior.AllowGet);
             
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult SaveBingJob(WebResult jobClicked)
+        {
+            // Create the job
+            var job = new Job
+            {
+                JobStatus = new JobStatus(),
+                ShortDescription = jobClicked.Description,
+                Title = jobClicked.Title,
+                URL = jobClicked.Url,
+                Budget = "$100"
+            };
+            job.JobStatus.Status = "Lead";
+
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                if (account.Jobs == null)
+                    account.Jobs = new List<Job>();
+
+                account.Jobs.Add(job);
+                RavenSession.Store(account);
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult Applied(int id)

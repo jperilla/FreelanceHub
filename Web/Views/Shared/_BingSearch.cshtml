@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Bing.WebResult>
+
+<div class="page_section">
+@if (Model.Count() > 0)
+{
+     using (@Html.BeginForm("BingSearchNext", "Search", FormMethod.Post))
+     {
+        <input type="submit" class="right" value="Next" /> 
+     }
+    
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+		    <tr>
+			    <td>
+				    <h6>Title</h6>
+			    </td>
+			    <td>
+                    <h6>Site</h6>
+			    </td>
+			    <td>
+			    </td>
+			    <td>
+				    <h6>Description</h6>
+			    </td>
+			    <td>
+			    </td>
+                <td class="last">
+			    </td>
+		    </tr>
+	    </thead>
+        <tbody>
+   
+
+        @foreach (var item in Model)
+        {        
+            <tr>
+                <td>
+                    @Html.Raw(@item.Title)
+                </td>
+                <td>
+                    @Html.Raw(@item.DisplayUrl)
+                </td>
+                <td>
+                    <a href="@item.Url" target="_blank"><span>Apply</span></a>
+                </td>
+            
+                <td>
+                    @Html.Raw(@item.Description)
+                </td>
+                <td class="last">
+                    @Html.ActionLink("Save Job", "SaveBingJob", "Jobs", Model)
+                </td>
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+}
+</div>
+

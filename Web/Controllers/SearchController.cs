@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Raven.Client;
+using System.Net;
+using BingSearchAPI;
 
 namespace Web.Controllers
 {
@@ -18,13 +20,28 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            Search search = new Search();
+            return View(search);
         }
 
         public ActionResult Customize()
         {
             return View();
         }
+
+        public ActionResult BingSearch(Search search)
+        {
+            // TODO: Get customer's sites and send them to search
+            IList<string> sites = new List<string>();
+            sites.Add("www.freelance.com");
+            sites.Add("www.ifreelance.com");
+            sites.Add("www.authenticjobs.com");
+            BingSearchWeb bingSearch = new BingSearchWeb(sites);
+            search.Results = bingSearch.Search(search.Query);
+            return View("Index", search);
+        }
+
+       
 
     }
 }
