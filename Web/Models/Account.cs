@@ -9,24 +9,30 @@ using System.Linq;
 using Griffin.MvcContrib.Providers.Membership;
 using Raven.Imports.Newtonsoft.Json;
 using System;
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
 
 namespace Web.Models
 {
     public partial class Account
     {
         #region Constants
-        
+
+        public static readonly string BASE_URL = ConfigurationManager.AppSettings["ChargifyUrl"];
         public static readonly string BUDGET_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyBudgetMonthlySubscriptionUrl"];
         public static readonly string BUDGET_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyBudgetYearlySubscriptionUrl"]; 
         public static readonly string FREELANCER_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlySubscriptionUrl"];
         public static readonly string FREELANCER_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerYearlySubscriptionUrl"]; 
         public static readonly string AGENCY_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyAgencyMonthlySubscriptionUrl"];
         public static readonly string AGENCY_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyAgencyYearlySubscriptionUrl"];
-
+        public static readonly string UPDATE_PAYMENT_SHORTNAME = "update_payment";
+        public static readonly string UPGRADE_SHORTNAME = "upgrade";
 
         #endregion
 
         #region Properties
+
         public int Id { get; set; }
         public string Email { get; set; }
        
@@ -48,7 +54,10 @@ namespace Web.Models
                 string fullName = null;
                 if (ChargifyCustomer == null)
                     LoadChargifyInfo();
-                fullName = ChargifyCustomer.FullName;
+
+                if(ChargifyCustomer != null)
+                    fullName = ChargifyCustomer.FirstName + " " + ChargifyCustomer.LastName;
+
                 return fullName;
             }
         }
@@ -62,7 +71,10 @@ namespace Web.Models
                 string name = null;
                 if (ChargifyCustomer == null)
                     LoadChargifyInfo();
-                name = ChargifyCustomer.FirstName;
+
+                if (ChargifyCustomer != null)
+                    name = ChargifyCustomer.FirstName;
+
                 return name;
             }
         }
@@ -76,8 +88,11 @@ namespace Web.Models
                 string subName = null;
                 if (CustomerSubscriptions == null)
                     LoadChargifyInfo();
-                
-                subName = CustomerSubscriptions.Values.First().Product.Name;
+
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                    subName = CustomerSubscriptions.Values.First().Product.Name;
+                else
+                    subName = "You have no current subscriptions.";
 
                 return subName;
             }
@@ -93,10 +108,67 @@ namespace Web.Models
                 if (CustomerSubscriptions == null)
                     LoadChargifyInfo();
 
-                status = CustomerSubscriptions.Values.First().State.ToString();
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                    status = CustomerSubscriptions.Values.First().State.ToString();
+                else
+                {
+                    status = "Inactive";
+                }
 
                 return status;
             }
+        }
+
+        [JsonIgnore]
+        public string UpdatePaymentLink
+        {
+            get
+            {
+                string link = null;
+
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                    link = BASE_URL + UPDATE_PAYMENT_SHORTNAME + "/"
+                        + CustomerSubscriptions.Values.First().SubscriptionID + "/"
+                        + GenerateToken(UPDATE_PAYMENT_SHORTNAME, CustomerSubscriptions.Values.First().SubscriptionID).Substring(0, 10);
+
+                return link;
+            }
+        }
+
+        [JsonIgnore]
+        public string UpgradeSubscriptionLink
+        {
+            get
+            {
+                string link = null;
+
+                if (CustomerSubscriptions == null)
+                    LoadChargifyInfo();
+
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                    link = BASE_URL + UPGRADE_SHORTNAME + "/"
+                        + CustomerSubscriptions.Values.First().SubscriptionID + "/"
+                        + GenerateToken(UPGRADE_SHORTNAME, CustomerSubscriptions.Values.First().SubscriptionID).Substring(0, 10);
+
+                return link;
+            }
+        }
+
+        private string GenerateToken(string shortName, int resourceId)
+        {
+            string value = shortName + "--" + resourceId + "--" + Chargify.SharedKey;
+            var data = System.Text.Encoding.ASCII.GetBytes(value);
+            data = System.Security.Cryptography.SHA1.Create().ComputeHash(data);
+            return ByteArrayToString(data);
+        }
+
+        public static string ByteArrayToString(byte[] ba)
+        {
+            string hex = BitConverter.ToString(ba).ToLower();
+            return hex.Replace("-", "");
         }
 
 
@@ -119,7 +191,10 @@ namespace Web.Models
                 if (CustomerSubscriptions == null)
                     LoadChargifyInfo();
 
-                creditCard = CustomerSubscriptions.Values.First().CreditCard.FullNumber;
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                    creditCard = CustomerSubscriptions.Values.First().CreditCard.FullNumber;
+                else
+                    creditCard = "None Saved.";
 
                 return creditCard;
             }
@@ -131,19 +206,24 @@ namespace Web.Models
         {
             get
             {
-                decimal balance;
-                decimal nextCharge;
-                DateTime nextChargeDate;
+                decimal balance = 0.0M;
+                decimal nextCharge = 0.0M;
+                DateTime nextChargeDate = DateTime.Now;
                 if (CustomerSubscriptions == null)
                     LoadChargifyInfo();
 
-                balance = CustomerSubscriptions.Values.First().Balance;
-                nextCharge = CustomerSubscriptions.Values.First().Product.Price;
-                nextChargeDate = CustomerSubscriptions.Values.First().CurrentPeriodEndsAt;
+                if ((CustomerSubscriptions != null) && (CustomerSubscriptions.Count > 0))
+                {
+                    balance = CustomerSubscriptions.Values.First().Balance;
+                    nextCharge = CustomerSubscriptions.Values.First().Product.Price;
+                    nextChargeDate = CustomerSubscriptions.Values.First().CurrentPeriodEndsAt;
+                }
 
-                return ("You're balance is $" + balance + 
+                return ("You're balance is $" + balance + ((CustomerSubscriptions == null || 
+                                                            CustomerSubscriptions.Count == 0 ||
+                                                            CustomerSubscriptions.Values.First().CurrentPeriodEndsAt == null) ? "" :
                     ". You're next charge for $" + nextCharge + 
-                    " will be made on " + nextChargeDate.ToShortDateString() + ".");
+                    " will be made on " + nextChargeDate.ToShortDateString() + "."));
             }
         }
 
@@ -151,6 +231,19 @@ namespace Web.Models
         #endregion
 
         #region Public Methods
+
+        public Account()
+        {
+            Jobs = new List<Job>();
+            Searches = new List<Search>();
+
+            // Create Chargify object
+            Chargify = new ChargifyConnect();
+            Chargify.apiKey = ConfigurationManager.AppSettings["ChargifyApiKey"];
+            Chargify.Password = ConfigurationManager.AppSettings["ChargifyApiPassword"];
+            Chargify.URL = ConfigurationManager.AppSettings["ChargifyUrl"];
+            Chargify.SharedKey = ConfigurationManager.AppSettings["ChargifySharedKey"];
+        }
 
         public Account(string email)
         {
@@ -184,9 +277,10 @@ namespace Web.Models
             // Does this customer have any current subscriptions? TODO: needs more work, add other states, can a customer have more than one subscription (loop), what plan, set role
             foreach (KeyValuePair<int,ISubscription> subscription in customerSubscriptions)
             {
-                // Is the customer active or trialing?
+                // Is the customer in a live state?
                  if (subscription.Value.State == SubscriptionState.Active
-                    || subscription.Value.State == SubscriptionState.Trialing)
+                    || subscription.Value.State == SubscriptionState.Trialing
+                    || subscription.Value.State == SubscriptionState.Assessing)
                  {
                     isCurrent = true;
                     break;

@@ -33,9 +33,8 @@ namespace Web.Controllers
         {
             // TODO: Get customer's sites and send them to search
             IList<string> sites = new List<string>();
-            sites.Add("www.freelance.com");
-            sites.Add("www.ifreelance.com");
-            sites.Add("www.authenticjobs.com");
+
+            sites.Add("www.flexjobs.com/publicjobs/");
             BingSearchWeb bingSearch = new BingSearchWeb(sites);
             search.Results = bingSearch.Search(search.Query);
             return View("Index", search);

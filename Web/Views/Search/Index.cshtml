@@ -8,7 +8,7 @@
 <section id="search_main">
     @using (@Html.BeginForm("BingSearch", "Search", FormMethod.Post))
     { 
-        <h2>What type of jobs are you looking for?</h2>
+        <h2>What type of work are you looking for?</h2>
    
         <div class="editor-field left xlong">
             @Html.TextBoxFor(model => model.Query, new { @class = "whole tall" })

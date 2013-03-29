@@ -1,7 +1,7 @@
 ﻿@model Web.Models.Account
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Freelance Hub - Account";
     Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
 }
 
@@ -13,12 +13,12 @@
                 <tbody>                                   
                     <tr>
                         <td>
-                            <label><b>Full Name:</b></label> @Html.DisplayFor(m => m.CustomerFullName)
+                            <label><b>Full Name:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerFullName)
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label><b>Email:</b></label> @Html.DisplayFor(m => m.Email)
+                            <label><b>Email:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.Email)
                         </td>
                     </tr>
                 </tbody>
@@ -30,17 +30,19 @@
                 <tbody>                       
                     <tr>
                         <td>
-                            <label><b>Current Subscription:</b></label> @Html.DisplayFor(m => m.CustomerSubscriptionProductName)
+                            <label><b>Current Subscription:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerSubscriptionProductName)
                         </td>
                     </tr>
                      <tr>
                         <td>
-                            <label><b>Current Status:</b></label> @Html.DisplayFor(m => m.CustomerSubscriptionStatus)
+                            <label><b>Current Status:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerSubscriptionStatus)
+                                                                              <a href="@Model.UpgradeSubscriptionLink">Upgrade/Downgrade Subscription</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label><b>Credit Card:</b></label> @Html.DisplayFor(m => m.CreditCard)
+                            <label><b>Credit Card:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CreditCard)
+                                                                           <a href="@Model.UpdatePaymentLink">Update Credit Card</a>
                         </td>
                     </tr>
                     <tr>

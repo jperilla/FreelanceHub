@@ -21,9 +21,15 @@ namespace Web.Controllers
         {
         }
 
-        public ActionResult Index()
+        public ActionResult Index(Account account)
         {
-            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if(account == null)
+                account = Account.GetAccount(User.Identity.Name, RavenSession);
+            else if (account.Email == null && User.Identity.IsAuthenticated)
+            {
+                account.Email = User.Identity.Name;
+            }
+
             if (account != null)
             {
                 account.LoadChargifyInfo();
@@ -31,11 +37,6 @@ namespace Web.Controllers
             }
 
             return View("../LandingPage/Index");
-        }
-
-        public ActionResult AccountSuspended()
-        {
-            return View();
         }
 
         // POST: /Login/
@@ -74,11 +75,11 @@ namespace Web.Controllers
             {
                 // Set user authentication cookie
                 FormsAuthentication.SetAuthCookie(email, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", account);
             }
             
             // Go to user account page - will show suspended, user must take action
-            return View("Index");
+            return RedirectToAction("Index", account);
         }
 
 
@@ -199,7 +200,7 @@ namespace Web.Controllers
             // for user to update their subscription
             if (!account.IsAccountCurrent())
             {
-                return RedirectToAction("AccountSuspended", "Account");
+                return RedirectToAction("Index");
             }
 
 
