@@ -4,7 +4,6 @@
     ViewBag.Title = "Freelance Hub - Account";
     Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
 }
-
 <section id="account_main">
     <h2>Your Account</h2>
     <section class="page_section">
@@ -26,17 +25,32 @@
     </section>
     <section class="page_section">
             <h3>Subscription</h3>
+            
             <table cellpadding="0" cellspacing="0">                
                 <tbody>                       
                     <tr>
                         <td>
-                            <label><b>Current Subscription:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerSubscriptionProductName)
+                            <label><b>Current Subscription:</b></label>&nbsp;&nbsp;@Html.DisplayFor(m => m.CustomerSubscriptionProductName) 
+                                                        &nbsp;&nbsp;@Html.ActionLink("Change Plan", "Upgrade", Model)&nbsp;&nbsp;
+                                                        &nbsp;&nbsp;@if (Model.PendingCancellationOn == null)
+                                                                    {
+                                                                        @Html.ActionLink("Cancel", "Cancel", Model)
+                                                                    }
+                           
                         </td>
                     </tr>
                      <tr>
                         <td>
                             <label><b>Current Status:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerSubscriptionStatus)
-                                                                              <a href="@Model.UpgradeSubscriptionLink">Upgrade/Downgrade Subscription</a>
+                                                                &nbsp;&nbsp;@if (Model.CustomerSubscriptionStatus == "Canceled")
+                                                                            {
+                                                                                @Html.ActionLink("Reactivate", "Reactivate", Model)
+                                                                            }
+                                                                            else if (Model.PendingCancellationOn != null)
+                                                                            {
+                                                                                @Html.Raw("(Pending Cancellation on ") @Html.DisplayFor(m => m.PendingCancellationOn) @Html.Raw(")")
+                                                                            }
+                                                                              
                         </td>
                     </tr>
                     <tr>

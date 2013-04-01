@@ -1,0 +1,13 @@
+﻿@model Web.Models.Account
+
+@{
+    ViewBag.Title = "Freelance Hub - Cancel";
+    Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
+}
+
+<section id="main">
+    <h3>@Model.CustomerFirstName, we are sorry to see you go. Are you sure you want to cancel your account?</h3>
+    <p>You will no longer have access to search and saved leads. However, you can reactivate your account at any time.</p>
+    @Html.ActionLink("Yes, I want to cancel my account.", "ReallyCancel", new { email = Model.Email })<br />
+    @Html.ActionLink("No, I want to continue with my subscription.", "Index")
+</section>

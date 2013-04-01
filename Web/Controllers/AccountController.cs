@@ -9,6 +9,7 @@ using System.Linq;
 using SimpleSocialAuth.MVC3;
 using System.Web;
 using Raven.Client;
+using ChargifyNET;
 
 namespace Web.Controllers
 {
@@ -152,6 +153,105 @@ namespace Web.Controllers
             return View("../LandingPage/Index");
         }
 
+        public ActionResult Upgrade(Account account)
+        {
+            return View(account);
+        }
+
+        public ActionResult ChangePlanToSmall(string email)
+        {
+            Account account = new Account(email);
+
+            // If plan changed, update customer subscription
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (!customerSubscription.Product.Name.Contains("Budget"))
+                {
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.BUDGET_MONTHLY_PLAN_HANDLE);                          
+                }
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
+
+        public ActionResult ChangePlanToMedium(string email)
+        {
+            Account account = new Account(email);
+
+            // If plan changed, update customer subscription
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (!customerSubscription.Product.Name.Contains("Freelancer"))
+                {
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREELANCER_MONTHLY_PLAN_HANDLE); 
+                }
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
+
+        public ActionResult ChangePlanToLarge(string email)
+        {
+            Account account = new Account(email);
+
+            // If plan changed, update customer subscription
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (!customerSubscription.Product.Name.Contains("Agency"))
+                {
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.AGENCY_MONTHLY_PLAN_HANDLE); 
+                }
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
+
+        public ActionResult Cancel(Account account)
+        {
+            return View(account);
+        }
+
+        public ActionResult ReallyCancel(String email)
+        {
+            Account account = new Account(email);
+
+            // If customer has a current subscription, cancel it
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (customerSubscription.State != SubscriptionState.Canceled)
+                {
+                    Account.Chargify.UpdateDelayedCancelForSubscription(customerSubscription.SubscriptionID, true, "");
+                }
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
+
+        public ActionResult Reactivate(String email)
+        {
+            Account account = new Account(email);
+
+            // If customer has a canceled subscription, reactivate it
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (customerSubscription.DelayedCancelAt.Year != 0001)
+                {
+                    Account.Chargify.ReactivateSubscription(customerSubscription.SubscriptionID, false);
+                }
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
 
         #region SimpleSocialAuth
 

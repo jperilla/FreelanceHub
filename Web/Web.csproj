@@ -190,6 +190,7 @@
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\PricingController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Factories\DocumentStoryFactory.cs" />
     <Compile Include="Factories\PasswordPolicyFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,6 +296,8 @@
     <Content Include="Views\Search\Customize.cshtml" />
     <Content Include="Views\Shared\_RecentLeads.cshtml" />
     <Content Include="Views\Shared\_BingSearch.cshtml" />
+    <Content Include="Views\Account\Upgrade.cshtml" />
+    <Content Include="Views\Account\Cancel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
