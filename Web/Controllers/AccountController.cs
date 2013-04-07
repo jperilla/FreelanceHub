@@ -72,7 +72,7 @@ namespace Web.Controllers
         private ActionResult LogUserIn(string email)
         {
             Account account = Account.GetAccount(email, RavenSession);
-            if(account.IsAccountCurrent())
+            if(account != null && account.IsAccountCurrent())
             {
                 // Set user authentication cookie
                 FormsAuthentication.SetAuthCookie(email, false);

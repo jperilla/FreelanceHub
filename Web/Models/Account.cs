@@ -37,11 +37,10 @@ namespace Web.Models
 
         public int Id { get; set; }
         public string Email { get; set; }
-        public string NewPlan { get; set; }
        
         public IList<Job> Jobs { get; set; }
-        public IList<Search> Searches { get; set; }
-        // Custom Search
+        public IList<string> Searches { get; set; }
+        public IList<string> SitesToSearch { get; set; }
 
         [JsonIgnore]
         public ICustomer ChargifyCustomer { get; private set; }
@@ -253,7 +252,8 @@ namespace Web.Models
         public Account()
         {
             Jobs = new List<Job>();
-            Searches = new List<Search>();
+            Searches = new List<string>();
+            SitesToSearch = new List<string>();
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
@@ -267,7 +267,8 @@ namespace Web.Models
         {
             Email = email;
             Jobs = new List<Job>();
-            Searches = new List<Search>();
+            Searches = new List<string>();
+            SitesToSearch = new List<string>();
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
@@ -326,7 +327,7 @@ namespace Web.Models
 
             // Check that the account is current in Chargify
             if (accounts != null &&
-                accounts.Count() == 1)
+                accounts.Count() > 0)
                 return accounts.FirstOrDefault();
 
             return null;

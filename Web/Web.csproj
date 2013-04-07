@@ -112,6 +112,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -183,14 +184,15 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CustomSearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HowItWorksController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\PricingController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Factories\DocumentStoryFactory.cs" />
     <Compile Include="Factories\PasswordPolicyFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -198,7 +200,7 @@
     </Compile>
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\CustomSearch.cs" />
+    <Compile Include="Models\CustomSearchSite.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobStatus.cs" />
     <Compile Include="Models\Log.cs" />
@@ -298,6 +300,13 @@
     <Content Include="Views\Shared\_BingSearch.cshtml" />
     <Content Include="Views\Account\Upgrade.cshtml" />
     <Content Include="Views\Account\Cancel.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\CustomSearch\Index.cshtml" />
+    <Content Include="Views\CustomSearch\Create.cshtml" />
+    <Content Include="Views\CustomSearch\Delete.cshtml" />
+    <Content Include="Views\CustomSearch\Details.cshtml" />
+    <Content Include="Views\CustomSearch\Edit.cshtml" />
+    <Content Include="Views\CustomSearch\UserView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

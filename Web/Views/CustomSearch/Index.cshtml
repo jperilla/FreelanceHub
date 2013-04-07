@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Web.Models.CustomSearchSite>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
+}
+
+<section id="main" class="page_section">
+    <h2>Available Custom Search Sites</h2>
+
+    <p>
+        @Html.ActionLink("Add New Site", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                URL
+            </th>
+            <th>
+                Display Name
+            </th>
+            <th>
+                Job Type
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+            @Html.HiddenFor(modelItem => item.Id)            
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id.Substring(item.Id.IndexOf('/')) }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id.Substring(item.Id.IndexOf('/')) })
+            </td>
+        </tr>
+    }
+
+</table>
+
+</section>

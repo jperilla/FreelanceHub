@@ -8,7 +8,9 @@
 <section id="search_main">
     @using (@Html.BeginForm("BingSearch", "Search", FormMethod.Post))
     { 
+        @Html.Raw("Not happy with your search results?") @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, new { @class = "right" })
         <h2>What type of work are you looking for?</h2>
+        
    
         <div class="editor-field left xlong">
             @Html.TextBoxFor(model => model.Query, new { @class = "whole tall" })

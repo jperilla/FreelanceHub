@@ -31,13 +31,27 @@ namespace Web.Controllers
 
         public ActionResult BingSearch(Search search)
         {
-            // TODO: Get customer's sites and send them to search
-            IList<string> sites = new List<string>();
+            if (User.Identity.IsAuthenticated)
+            {
+                IList<string> sites = new List<string>();
 
-            sites.Add("www.flexjobs.com/publicjobs/");
-            BingSearchWeb bingSearch = new BingSearchWeb(sites);
-            search.Results = bingSearch.Search(search.Query);
-            return View("Index", search);
+                // Get user saved sites
+                Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+                foreach(var customerSite in account.SitesToSearch)
+                {
+                    CustomSearchSite siteToSearch = RavenSession.Load<CustomSearchSite>(customerSite);
+                    if(siteToSearch != null)
+                        sites.Add(siteToSearch.Url);
+                
+                }
+
+                // Search bing
+                BingSearchWeb bingSearch = new BingSearchWeb(sites);
+                search.Results = bingSearch.Search(search.Query);
+                return View("Index", search);
+            }
+
+            return View("LandingPage", "Index");
         }
 
        

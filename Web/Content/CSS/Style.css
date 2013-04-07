@@ -25,6 +25,11 @@ span.red {
     color: #b93831;
 }
 
+p.green
+{
+    color: green;
+}
+
 button.red, a.red, input.red
 {
     font-family: 'Arvo', serif;
@@ -1119,12 +1124,12 @@ input.gsc-search-button {
 	-moz-box-shadow: 1px 1px 1px 2px #d1d1d1;
 	-webkit-box-shadow: 1px 1px 1px 2px #d1d1d1;
 	box-shadow: 1px 1px 1px 2px #d1d1d1;
+	min-width: 97%;
 }
 .page_section table th {
 	padding:21px 25px 22px 25px;
 	border-top:1px solid #e0e0e0;
 	border-bottom:1px solid #e0e0e0;
-
 }
 .page_section table th:first-child {
 	text-align: left;
@@ -1156,6 +1161,8 @@ input.gsc-search-button {
 	border-left: 1px solid #e0e0e0;
     
 	background: #fdfbf8;
+    word-wrap: break-word;
+    max-width: 500px;
 }
 
 .page_section table tr.even td {
