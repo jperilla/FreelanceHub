@@ -48,7 +48,7 @@
                     @Html.Raw(@item.Description)
                 </td>
                 <td class="last">
-                    @Html.ActionLink("Save Job", "SaveBingJob", "Jobs", Model)
+                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", Model)
                 </td>
             </tr>
         }

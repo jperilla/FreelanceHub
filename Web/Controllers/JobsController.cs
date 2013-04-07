@@ -72,8 +72,7 @@ namespace Web.Controllers
                 JobStatus = new JobStatus(),
                 ShortDescription = jobClicked.Description,
                 Title = jobClicked.Title,
-                URL = jobClicked.Url,
-                Budget = "$100"
+                URL = jobClicked.Url
             };
             job.JobStatus.Status = "Lead";
 
@@ -85,11 +84,9 @@ namespace Web.Controllers
                     account.Jobs = new List<Job>();
 
                 account.Jobs.Add(job);
-                RavenSession.Store(account);
             }
-
+                       
             return Json("success", JsonRequestBehavior.AllowGet);
-
         }
 
         public ActionResult Applied(int id)
