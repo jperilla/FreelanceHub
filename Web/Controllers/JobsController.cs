@@ -62,9 +62,8 @@ namespace Web.Controllers
             
         }
 
-        [HttpPost]
         [ValidateInput(false)]
-        public JsonResult SaveBingJob(WebResult jobClicked)
+        public string SaveBingJob(WebResult jobClicked)
         {
             // Create the job
             var job = new Job
@@ -85,8 +84,8 @@ namespace Web.Controllers
 
                 account.Jobs.Add(job);
             }
-                       
-            return Json("success", JsonRequestBehavior.AllowGet);
+
+            return "Saved";
         }
 
         public ActionResult Applied(int id)

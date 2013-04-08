@@ -41,8 +41,7 @@ namespace Web.Controllers
                 {
                     CustomSearchSite siteToSearch = RavenSession.Load<CustomSearchSite>(customerSite);
                     if(siteToSearch != null)
-                        sites.Add(siteToSearch.Url);
-                
+                        sites.Add(siteToSearch.Url);                
                 }
 
                 // Search bing

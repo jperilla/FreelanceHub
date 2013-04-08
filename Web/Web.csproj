@@ -295,7 +295,6 @@
     <Content Include="Views\Shared\_SignUp.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\SimpleAuth\LogIn.cshtml" />
-    <Content Include="Views\Search\Customize.cshtml" />
     <Content Include="Views\Shared\_RecentLeads.cshtml" />
     <Content Include="Views\Shared\_BingSearch.cshtml" />
     <Content Include="Views\Account\Upgrade.cshtml" />

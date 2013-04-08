@@ -1,30 +1,29 @@
 ﻿@model IEnumerable<Bing.WebResult>
 
-<div class="page_section">
+<section id="search_results">
 @if (Model.Count() > 0)
 {
-     using (@Html.BeginForm("BingSearchNext", "Search", FormMethod.Post))
-     {
+    using (@Ajax.BeginForm("BingSearchNext", "Search", new AjaxOptions { HttpMethod = "Post", UpdateTargetId="message" }))
+    {
         <input type="submit" class="right" value="Next" /> 
-     }
-    
-    <table cellpadding="0" cellspacing="0">
+        <p id="message"></p>
+    <table class="minimalist" cellpadding="0" cellspacing="0">
         <thead>
 		    <tr>
 			    <td>
-				    <h6>Title</h6>
+				    <h3>Title</h3>
 			    </td>
 			    <td>
-                    <h6>Site</h6>
-			    </td>
-			    <td>
-			    </td>
-			    <td>
-				    <h6>Description</h6>
+                    <h3>Site</h3>
 			    </td>
 			    <td>
 			    </td>
-                <td class="last">
+			    <td>
+				    <h3>Description</h3>
+			    </td>
+			    <td>
+			    </td>
+                <td>
 			    </td>
 		    </tr>
 	    </thead>
@@ -35,10 +34,10 @@
         {        
             <tr>
                 <td>
-                    @Html.Raw(@item.Title)
+                    <b><a href="@item.Url">@Html.Raw(@item.Title)</a></b>
                 </td>
                 <td>
-                    @Html.Raw(@item.DisplayUrl)
+                    @Html.Raw(@item.DisplayUrl.Substring(0,@item.DisplayUrl.IndexOf('/')))
                 </td>
                 <td>
                     <a href="@item.Url" target="_blank"><span>Apply</span></a>
@@ -47,8 +46,8 @@
                 <td>
                     @Html.Raw(@item.Description)
                 </td>
-                <td class="last">
-                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", Model)
+                <td>
+                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", Model, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "message", InsertionMode = InsertionMode.Replace })
                 </td>
             </tr>
         }
@@ -56,6 +55,8 @@
         </tbody>
 
     </table>
+    
+    }
 }
-</div>
+</section>
 

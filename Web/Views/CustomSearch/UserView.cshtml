@@ -13,14 +13,15 @@
 @using (Html.BeginForm("UserView", "CustomSearch", FormMethod.Post))
 {
 
-    
-    <div class="sites">    
+    <ul id="config-list">
+    <li class="sites">    
     <p><b>@Html.Label("Multiple Job Types")</b></p>
     @for (int i = 0; i < Model.Count(); i++)
     {
         if (Model.ElementAt(i).JobType.ToString() == "All")
         {          
         
+            <p>
             @Html.CheckBoxFor(m => m[i].UserWantsToSearch)
             @Html.DisplayFor(m => m[i].DisplayName)
             @Html.HiddenFor(m => m[i].DisplayName)
@@ -28,16 +29,18 @@
             @Html.HiddenFor(m => m[i].Name)
             @Html.HiddenFor(m => m[i].JobType)
             @Html.HiddenFor(m => m[i].Url)
+            </p>
         }
     }
 
-    </div>   
-    <div class="sites">    
+    </li>   
+    <li class="sites">    
     <p><b>@Html.Label("Writing Jobs")</b></p>
     @for (int i = 0; i < Model.Count(); i++)
     {
         if (Model.ElementAt(i).JobType.ToString() == "Writing")
         {          
+            <p>
             @Html.CheckBoxFor(m => m[i].UserWantsToSearch)
             @Html.DisplayFor(m => m[i].DisplayName)
             @Html.HiddenFor(m => m[i].DisplayName)
@@ -45,16 +48,18 @@
             @Html.HiddenFor(m => m[i].Name)
             @Html.HiddenFor(m => m[i].JobType)
             @Html.HiddenFor(m => m[i].Url)
+            </p>
         }
     }
     
-    </div>   
-    <div class="sites">     
+    </li>   
+    <li class="sites">     
     <p><b>@Html.Label("Design Jobs")</b></p>
     @for (int i = 0; i < Model.Count(); i++)
     {
         if (Model.ElementAt(i).JobType.ToString() == "Design")
         {          
+            <p>
             @Html.CheckBoxFor(m => m[i].UserWantsToSearch)
             @Html.DisplayFor(m => m[i].DisplayName)
             @Html.HiddenFor(m => m[i].DisplayName)
@@ -62,16 +67,18 @@
             @Html.HiddenFor(m => m[i].Name)
             @Html.HiddenFor(m => m[i].JobType)
             @Html.HiddenFor(m => m[i].Url)
+            </p>
         }
     }
     
-    </div>   
-    <div class="sites"> 
+    </li>   
+    <li class="sites"> 
     <p><b>@Html.Label("IT & Programming Jobs")</b></p>
     @for (int i = 0; i < Model.Count(); i++)
     {
         if (Model.ElementAt(i).JobType.ToString() == "IT")
         {          
+            <p>
             @Html.CheckBoxFor(m => m[i].UserWantsToSearch)
             @Html.DisplayFor(m => m[i].DisplayName)
             @Html.HiddenFor(m => m[i].DisplayName)
@@ -79,16 +86,18 @@
             @Html.HiddenFor(m => m[i].Name)
             @Html.HiddenFor(m => m[i].JobType)
             @Html.HiddenFor(m => m[i].Url)
+            </p>
         }
     }
     
-    </div>   
-    <div class="sites"> 
+    </li>   
+    <li class="sites"> 
     <p><b>@Html.Label("Photography Jobs")</b></p>
     @for (int i = 0; i < Model.Count(); i++)
     {
         if (Model.ElementAt(i).JobType.ToString() == "Photography")
         {          
+            <p>
             @Html.CheckBoxFor(m => m[i].UserWantsToSearch)
             @Html.DisplayFor(m => m[i].DisplayName)
             @Html.HiddenFor(m => m[i].DisplayName)
@@ -96,17 +105,16 @@
             @Html.HiddenFor(m => m[i].Name)
             @Html.HiddenFor(m => m[i].JobType)
             @Html.HiddenFor(m => m[i].Url)
+            </p>
         }
     }
     
-    </div> 
-    <p>
-        <input type="submit" id="saveSearches" value="Save" />
-        
-    </p>
-    <p class="green" id="message">
-        @ViewBag.Comment
-    </p>
+    </li>
+    </ul>
+    <div class="right">
+        <p><input type="submit" id="saveSearches" class="red medium" value="Save" /></p>
+        <span id="message">@ViewBag.Comment</span>
+    </div>
 }
 
 </section>
@@ -114,7 +122,7 @@
 <script type="text/javascript">
     $(function () {
         $('input#saveSearches').click(function (e) {
-            $('p#message').html("Saving...");
+            $('span#message').html("Saving...");
         });
     });
 </script>
