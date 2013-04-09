@@ -10,9 +10,8 @@
     <h2>Select the Job Sites that you want to search</h2>
 
 
-@using (Html.BeginForm("UserView", "CustomSearch", FormMethod.Post))
+@using (Html.BeginForm("UserView", "CustomSearch", FormMethod.Post, new { @id = "custom-form"}))
 {
-
     <ul id="config-list">
     <li class="sites">    
     <p><b>@Html.Label("Multiple Job Types")</b></p>
@@ -112,8 +111,8 @@
     </li>
     </ul>
     <div class="right">
-        <p><input type="submit" id="saveSearches" class="red medium" value="Save" /></p>
-        <span id="message">@ViewBag.Comment</span>
+        <p><span id="message">@ViewBag.Comment</span></p>
+        <p class="right"><input type="submit" id="saveSearches" class="red medium" value="Save" /></p>
     </div>
 }
 
@@ -122,7 +121,38 @@
 <script type="text/javascript">
     $(function () {
         $('input#saveSearches').click(function (e) {
-            $('span#message').html("Saving...");
+            e.preventDefault();
+
+            $('span#message').html("Saving...").css('color', 'green');
+
+            // At least one checkbox must be checked
+            var checked = $("#custom-form input:checked").length > 0;
+
+            if (checked) {
+                dataString = $("#custom-form").serialize();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UserView", "CustomSearch")',
+                    data: dataString,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        $('span#message').html("Saved").css('color', 'green');
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $('span#message').html("There was an error saving. Please, try again.").css('color', 'red');
+                    }
+
+                });
+            }
+            else {
+                $('span#message').html("Please fix error: At least ONE must be checked.").css('color', 'red');
+            }
+
         });
+
+
+
     });
 </script>

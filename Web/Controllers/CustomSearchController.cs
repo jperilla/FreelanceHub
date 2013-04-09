@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Raven.Client;
+using Raven.Abstractions.Data;
+using Raven.Abstractions.Smuggler;
 
 namespace Web.Controllers
 {
@@ -162,18 +164,18 @@ namespace Web.Controllers
                 Account account = Account.GetAccount(User.Identity.Name, RavenSession);
                 if (account != null)
                 {
-                    var sitesToSearch = from site in userSites 
-                                       where site.UserWantsToSearch == true 
-                                       select site;
+                    var sitesToSearch = from site in userSites
+                                        where site.UserWantsToSearch == true
+                                        select site;
 
                     var sitesNotToSearch = from site in userSites
-                                        where site.UserWantsToSearch == false
-                                        select site;
+                                           where site.UserWantsToSearch == false
+                                           select site;
 
                     // Add sites to search
                     foreach (var s in sitesToSearch)
                     {
-                        if(!account.SitesToSearch.Contains(s.Id))
+                        if (!account.SitesToSearch.Contains(s.Id))
                             account.SitesToSearch.Add(s.Id);
                     }
 
@@ -185,7 +187,10 @@ namespace Web.Controllers
                     }
 
                     ViewBag.Comment = "Saved";
-                    return View(userSites);
+                    if (Request.IsAjaxRequest())
+                        return Json("success");
+                    else
+                        return View(userSites);
                 }
             }
 

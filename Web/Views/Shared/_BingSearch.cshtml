@@ -37,7 +37,15 @@
                     <b><a href="@item.Url">@Html.Raw(@item.Title)</a></b>
                 </td>
                 <td>
-                    @Html.Raw(@item.DisplayUrl.Substring(0,@item.DisplayUrl.IndexOf('/')))
+                    @if(@item.DisplayUrl.IndexOf('/') != -1)
+                    {
+                        @Html.Raw(@item.DisplayUrl.Substring(0,@item.DisplayUrl.IndexOf('/')))
+                    }
+                    else
+                    {
+                        @Html.Raw(@item.DisplayUrl)
+                    }
+
                 </td>
                 <td>
                     <a href="@item.Url" target="_blank"><span>Apply</span></a>
