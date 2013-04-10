@@ -10,11 +10,6 @@ body#body-signed-in
     background: url('../images/ricepaper2.png') repeat;
 }
 
-img
-{
-    max-width: 90%;
-    margin-top: 15px;
-}
 
 a {
     font-family: 'Arvo', serif;
@@ -73,6 +68,8 @@ a.red
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
+    max-width: 90%;
+    margin-top: 15px;
 }
 
 .screenshot2
@@ -82,6 +79,11 @@ a.red
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
+}
+
+.screenshot3 {
+	max-width: 90%;
+    margin-top: 15px;
 }
 
 button.light-blue,  input.light-blue
@@ -514,11 +516,10 @@ section#feature1
     height: 380px;
     font-family: 'Raleway', sans-serif;
     font-size: 1.3em;
-    line-height: 1em;
-    width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 40px;
+    position: relative;
 }
 
 section#feature1 span
@@ -542,11 +543,13 @@ section#feature2, section#feature4
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
+    position: relative;
 }
 
 section#feature3
 {
     height: 400px; 
+    position: relative;
 }
 
 .left
@@ -567,19 +570,62 @@ section#feature3
     margin-right: 1%;
 }
 
-.text
-{	
-    margin-top: 30px;
+h1.left-half
+{
+    float: left;
+    margin-left: 7%;
+    width: 40%;
+    text-align: left;
+    position:absolute;
+    top:15%;
 }
 
-.image 
-{    
-    margin-top: 60px;
+.left-half {
+	float: left;
+    margin-left: 7%;
+    width: 40%;
+    text-align: left;
 }
+
+section.left-half {
+	position: absolute;
+	top: 15%;
+}
+
+a.left-half, p.left-half
+{
+    
+    position: absolute;
+    top:35%;
+}
+
+section.right-half, a.right-half, p.right-half
+{
+    float: right;
+    width: 49.059333%;
+    text-align: left; 
+    position:relative;
+    top:15%;  
+}
+
+h1.right-half
+{
+    float: right;
+    width: 49.059333%;
+    text-align: left;
+}
+
+.text
+{	
+    font-family: 'Arvo', Serif;
+    font-size: .8em;
+}
+
 
 .relax_large {
     width: 300px;
-    margin-left:15%;
+    margin-left: 13%;
+    margin-top: 5%;
 }
 
 /* Pricing Table */
@@ -859,7 +905,8 @@ section#account_main h2
     section#feature1
     {
         height: 350px;
-        font-size: 1.1em;
+        font-size: 1em;
+        line-height: 2em;
         width: 90%;
     }
     
