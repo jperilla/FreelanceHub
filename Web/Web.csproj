@@ -254,7 +254,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\osx.js" />
     <Content Include="Unity.Mvc4.README.txt" />
-    <Content Include="wallet.ico" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
