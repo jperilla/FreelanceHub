@@ -216,6 +216,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App_ReadMe\Griffin.MvcContrib.RavenDb.txt" />
     <Content Include="App_ReadMe\Griffin.MvcContrib.txt" />
+    <Content Include="Content\CSS\iefixes.css" />
     <Content Include="Content\CSS\osx.css" />
     <Content Include="Content\CSS\Reset.css" />
     <Content Include="Content\CSS\Style.css" />

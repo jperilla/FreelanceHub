@@ -21,8 +21,20 @@
 
         <!--[if lt IE 9]>
              <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+             <script>
+                document.createElement('header');
+                document.createElement('section');
+                document.createElement('article');
+                document.createElement('aside');
+                document.createElement('nav');
+                document.createElement('footer');
+            </script>
+
+             <link rel="stylesheet" href="@Url.Content("~/Content/CSS/iefixes.css")" />       
         
+            
+         <![endif]-->
+
         <!-- JQuery libraries -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script> 
