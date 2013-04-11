@@ -46,7 +46,7 @@ namespace Web.Controllers
 
                 // Search bing
                 BingSearchWeb bingSearch = new BingSearchWeb(sites);
-                search.Results = bingSearch.Search(search.Query);
+                search.Results = bingSearch.Search(search.Query).Cast<SearchResult>().ToList();
                 return View("Index", search);
             }
 

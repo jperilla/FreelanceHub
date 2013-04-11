@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bing.WebResult>
+﻿@model IEnumerable<Web.Models.SearchResult>
 
 <section id="search_results">
 @if (Model.Count() > 0)
@@ -37,18 +37,11 @@
                     <b><a href="@item.Url" target="_blank">@Html.Raw(@item.Title)</a></b>
                 </td>
                 <td>
-                    @if(@item.DisplayUrl.IndexOf('/') != -1)
-                    {
-                        @Html.Raw(@item.DisplayUrl.Substring(0,@item.DisplayUrl.IndexOf('/')))
-                    }
-                    else
-                    {
-                        @Html.Raw(@item.DisplayUrl)
-                    }
+                    <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
 
                 </td>
                 <td>
-                    <a href="@item.Url" target="_blank"><span>Apply</span></a>
+                    @Html.ActionLink("Apply", "Redirect", "Search", new { url = @item.Url }, new { @class="red" })
                 </td>
             
                 <td>

@@ -524,7 +524,7 @@ section#feature1
 
 section#feature1 span
 {    
-    font-size: 1.em;
+    font-size: 1em;
 }
 
 .list_text
@@ -538,6 +538,7 @@ section#feature1 span
 
 section#feature2, section#feature4
 {
+    font-size: 1.3em;
     height: 400px;
     background-color: #fff; 
     -moz-box-shadow: 0px 0px 5px #ccc;
@@ -548,6 +549,7 @@ section#feature2, section#feature4
 
 section#feature3
 {
+    font-size: 1.3em;
     height: 400px; 
     position: relative;
 }
@@ -602,10 +604,11 @@ a.left-half, p.left-half
 section.right-half, a.right-half, p.right-half
 {
     float: right;
-    width: 49.059333%;
+    width: 43%;
     text-align: left; 
     position:relative;
-    top:15%;  
+    top:15%;
+    margin-right: 6%;
 }
 
 h1.right-half
