@@ -620,6 +620,20 @@ section.right-half, a.right-half, p.right-half
     margin-right: 6%;
 }
 
+.left-third {
+	float: left;
+    margin-left: 3%;
+    width: 33%;
+    text-align: left;
+}
+
+.right-two-thirds {
+	float: right;
+    margin-right: 3%;
+    width: 60%;
+    text-align: left;
+}
+
 h1.right-half
 {
     float: right;

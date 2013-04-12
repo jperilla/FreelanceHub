@@ -30,7 +30,7 @@ namespace Web.Models
             get 
             {
                 string shortUrl = null;
-                if(DisplayUrl.IndexOf('/') != -1)
+                if(DisplayUrl != null && DisplayUrl.IndexOf('/') != -1)
                 {
                     shortUrl = DisplayUrl.Substring(0, DisplayUrl.IndexOf('/'));
                 }
