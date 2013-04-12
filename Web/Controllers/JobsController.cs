@@ -62,8 +62,7 @@ namespace Web.Controllers
             
         }
 
-        [ValidateInput(false)]
-        public string SaveBingJob(SearchResult jobClicked)
+        public PartialViewResult SaveBingJob(SearchResult jobClicked)
         {
             // Create the job
             var job = new Job
@@ -85,7 +84,7 @@ namespace Web.Controllers
                 account.Jobs.Add(job);
             }
 
-            return "Saved";
+            return PartialView("JobSaved", job);
         }
 
         public ActionResult Applied(int id)

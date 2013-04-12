@@ -117,7 +117,7 @@ a.light-blue, button.light-blue,  input.light-blue
 
 a.small, input.small, button.small
 {    
-    width: 80;
+    width: 80px;
     height: 40px;
 }
 
@@ -457,7 +457,7 @@ ul#config-list li
 }
 
 .small_text {
-    font-size: .4em;
+    font-size: .8em;
     font-family: 'Raleway', sans-serif;
     line-height: 1.2em;
 }
@@ -618,20 +618,6 @@ section.right-half, a.right-half, p.right-half
     position:relative;
     top:15%;
     margin-right: 6%;
-}
-
-.left-third {
-	float: left;
-    margin-left: 3%;
-    width: 33%;
-    text-align: left;
-}
-
-.right-two-thirds {
-	float: right;
-    margin-right: 3%;
-    width: 60%;
-    text-align: left;
 }
 
 h1.right-half
@@ -1335,6 +1321,7 @@ input.gsc-search-button {
 	border-bottom: 1px solid #ccc;
 	padding: 6px 8px;
 	min-width: 50px;
+	height: 80px;
 }
 
 .minimalist tbody tr:hover td

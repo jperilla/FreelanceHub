@@ -23,7 +23,7 @@
         <section id="main">
             <h2>You are now leaving Freelance Hub </h2> 
             <div id="gofer" class="gofer"></div>
-            <img width="200px" src="../../Content/images/medium-red-arrow.png" /><h1>@Html.Raw(Model.DisplaySite)</h1>
+            <img alt="arrow" width="200px" src="../../Content/images/medium-red-arrow.png" /><h1>@Html.Raw(Model.DisplaySite)</h1>
             </section>
         @Html.HiddenFor(m => m.Url, new { id = "redirect-site" } )
         </div>

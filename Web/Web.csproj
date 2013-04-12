@@ -250,6 +250,8 @@
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery.simplemodal.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -310,6 +312,7 @@
     <Content Include="Views\CustomSearch\Edit.cshtml" />
     <Content Include="Views\CustomSearch\UserView.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimer.cshtml" />
+    <Content Include="Views\Shared\JobSaved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
