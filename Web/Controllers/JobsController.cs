@@ -63,7 +63,7 @@ namespace Web.Controllers
         }
 
         [ValidateInput(false)]
-        public string SaveBingJob(WebResult jobClicked)
+        public string SaveBingJob(SearchResult jobClicked)
         {
             // Create the job
             var job = new Job

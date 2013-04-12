@@ -10,6 +10,16 @@ body#body-signed-in
     background: url('../images/ricepaper2.png') repeat;
 }
 
+a.search-result-title {    
+    font-family: 'Arvo', serif;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+a.search-result-title, a.search-result-title:link, a.search-result-title:hover, a.search-result-title:visited
+{
+    color: #113D49;
+}
 
 a {
     font-family: 'Arvo', serif;
@@ -33,17 +43,18 @@ p.green
 
 button.red, a.red, input.red
 {
-    font-family: 'Arvo', serif;
-    font-size: 1.2em;    
-    background-image: linear-gradient(to bottom, #D7291E, #B93831);
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border: 1px solid #ccc;
     border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    overflow: hidden;
+    font-family: 'Arvo', serif;
+    font-size: 1.2em;    
+    background-image: linear-gradient(to bottom, #D7291E, #B93831);
     background-color: #b93831;
-    border-width: 1px;
     color: #FFFFFF;
     text-align: center;
 }
@@ -86,30 +97,28 @@ a.red
     margin-top: 15px;
 }
 
-button.light-blue,  input.light-blue
+a.light-blue, button.light-blue,  input.light-blue
 {
     font-family: 'Arvo', serif;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
+    border: 1px solid #ccc;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     position:relative;
     z-index:0;
     behavior: url(/Scripts/css-fixes/PIE.htc);
-    background-color: #cdd6d8;
-    border-width: 0px;
-    color: #FFFFFF;
+    background-image: linear-gradient(to bottom, #9CDBF6, #50C6ED);
+    background-color: #9CDBF6;
+    color: #fff;
     text-align: center;
-    margin-left: 5px;
+    width: 80;
+    height: 25px;
 }
 
-input.small, button.small
+a.small, input.small, button.small
 {    
-    width: 80px;
-    height: 25px;
+    width: 80;
+    height: 40px;
 }
 
 button.medium, input.medium
@@ -1311,6 +1320,7 @@ input.gsc-search-button {
 {
 	border-bottom: 1px solid #ccc;
 	padding: 6px 8px;
+	min-width: 50px;
 }
 
 .minimalist tbody tr:hover td

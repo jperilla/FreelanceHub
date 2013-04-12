@@ -1,0 +1,38 @@
+﻿@model Web.Models.SearchResult
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Freelance Hub - Redirecting</title>
+     <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Reset.css")" />  
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Style.css")" />     
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/osx.css")" />         
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:600|Arvo' />
+
+        <!-- JQuery libraries -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        You are now leaving Freelance Hub 
+        We are redirecting you to -------> @Html.Raw(Model.DisplaySite)
+        @Html.HiddenFor(m => m.Url, new { id = "redirect-site" } )
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(
+          function () {
+              window.location.href = $('#redirect-site').val();
+          }, 1500);
+        
+    });
+</script>
+</html>

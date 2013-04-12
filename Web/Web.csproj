@@ -308,6 +308,7 @@
     <Content Include="Views\CustomSearch\Delete.cshtml" />
     <Content Include="Views\CustomSearch\Edit.cshtml" />
     <Content Include="Views\CustomSearch\UserView.cshtml" />
+    <Content Include="Views\Search\RedirectDisclaimer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

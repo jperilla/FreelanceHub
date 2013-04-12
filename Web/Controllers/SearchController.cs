@@ -29,6 +29,12 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult RedirectDisclaimer(SearchResult result)
+        {
+            return View("RedirectDisclaimer", result);
+        }
+
+
         public ActionResult BingSearch(Search search)
         {
             if (User.Identity.IsAuthenticated)
@@ -46,7 +52,10 @@ namespace Web.Controllers
 
                 // Search bing
                 BingSearchWeb bingSearch = new BingSearchWeb(sites);
-                search.Results = bingSearch.Search(search.Query).Cast<SearchResult>().ToList();
+                search.Query = "intitle:" + search.Query + " inbody:" + search.Query;
+                List<Bing.WebResult> webResults = bingSearch.Search(search.Query).ToList();
+                search.Results = webResults.ConvertAll(SearchResult.BingResultToSearchResult);
+                search.FirstVisit = false;
                 return View("Index", search);
             }
 

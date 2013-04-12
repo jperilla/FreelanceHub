@@ -3,30 +3,11 @@
 <section id="search_results">
 @if (Model.Count() > 0)
 {
-    using (@Ajax.BeginForm("BingSearchNext", "Search", new AjaxOptions { HttpMethod = "Post", UpdateTargetId="message" }))
-    {
-        <input type="submit" class="right" value="Next" /> 
+    using (@Ajax.BeginForm("BingSearchNext", "Search", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "message" }))
+    { 
         <p id="message"></p>
-    <table class="minimalist" cellpadding="0" cellspacing="0">
-        <thead>
-		    <tr>
-			    <td>
-				    <h3>Title</h3>
-			    </td>
-			    <td>
-                    <h3>Site</h3>
-			    </td>
-			    <td>
-			    </td>
-			    <td>
-				    <h3>Description</h3>
-			    </td>
-			    <td>
-			    </td>
-                <td>
-			    </td>
-		    </tr>
-	    </thead>
+        <table class="minimalist" cellpadding="0" cellspacing="0">
+        
         <tbody>
    
 
@@ -34,21 +15,14 @@
         {        
             <tr>
                 <td>
-                    <b><a href="@item.Url" target="_blank">@Html.Raw(@item.Title)</a></b>
-                </td>
-                <td>
+                    <a class="search-result-title" href="@item.Url" target="_blank">@Html.Raw(@item.Title)</a><br />              
                     <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
-
                 </td>
                 <td>
-                    @Html.ActionLink("Apply", "Redirect", "Search", new { url = @item.Url }, new { @class="red" })
-                </td>
-            
-                <td>
-                    @Html.Raw(@item.Description)
+                    @Ajax.ActionLink("Apply", "RedirectDisclaimer", "Search", @item, new AjaxOptions { HttpMethod = "Post" }, new { @class = "red", target = "_blank" })
                 </td>
                 <td>
-                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", Model, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "message", InsertionMode = InsertionMode.Replace })
+                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", @item, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "message", InsertionMode = InsertionMode.Replace }, new { @class = "red", target = "_blank" })
                 </td>
             </tr>
         }
@@ -58,6 +32,10 @@
     </table>
     
     }
+}
+else
+{
+    <h2>No results were found try a different search.</h2>
 }
 </section>
 
