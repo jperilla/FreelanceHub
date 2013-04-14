@@ -20,7 +20,6 @@
     <EnterpriseAccount />
     <autocomplete_settings />
   </CustomSearchEngine>
-  <?xml version="1.0" encoding="UTF-8" ?>
   <Annotations start="0" num="6" total="6">
     <Annotation about="*.99designs.com/*/contests/*" score="1" timestamp="0x0004da59025d12d3" href="ChwqLjk5ZGVzaWducy5jb20vKi9jb250ZXN0cy8qENOl9JKQy7YC">
       <Label name="_cse_dl-lwlywdoi" />
