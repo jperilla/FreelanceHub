@@ -244,8 +244,12 @@
     <Content Include="Content\images\star-orange32.png" />
     <Content Include="Content\images\star-white32.png" />
     <Content Include="Content\images\twitter.png" />
-    <Content Include="Content\xml\annotations.xml" />
-    <Content Include="Content\xml\cse.xml" />
+    <Content Include="Content\xml\annotations.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\xml\cse.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\css-fixes\PIE.htc" />
     <Content Include="Scripts\css-fixes\PIE.js" />
