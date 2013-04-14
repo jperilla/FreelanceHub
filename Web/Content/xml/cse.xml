@@ -47,6 +47,4 @@
       <AdditionalData attribute="original_url" value="http://www.freelancer.com/projects/*" />
     </Annotation>
   </Annotations>
-
-  <!--<Include type="Annotations" href="http://freelancehub.apphb.com/Content/xml/annotations.xml"/>-->
 </GoogleCustomizations>
