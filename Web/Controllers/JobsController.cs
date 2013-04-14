@@ -32,68 +32,74 @@ namespace Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public JsonResult SaveFavorite(Job jobClicked)
+        public PartialViewResult UnsaveBingJob(SearchResult jobClicked)
         {
-            // Create the job
-            var job = new Job
-                {
-                    JobStatus = new JobStatus(),
-                    ShortDescription = jobClicked.ShortDescription,
-                    Title = jobClicked.Title,
-                    URL = jobClicked.URL,
-                    Budget = "$100"
-                };
-            job.JobStatus.Status = "Lead";
-
             // Load the current account
             Account account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
-                if (account.Jobs == null)
-                    account.Jobs = new List<Job>();
+                // Load the job
+                var jobs = from j in account.Jobs
+                           where j.URL == jobClicked.Url
+                           select j;
 
-                account.Jobs.Add(job);
-                RavenSession.Store(account);
+                // Delete the job
+                if (jobs != null && jobs.Count() > 0)
+                {
+                    Job job = jobs.First();
+                    account.Jobs.Remove(job);
+                    RavenSession.Store(account);
+                }
             }
 
-            return Json("success", JsonRequestBehavior.AllowGet);
-            
+            return PartialView("JobNotSaved", jobClicked);
         }
 
         public PartialViewResult SaveBingJob(SearchResult jobClicked)
         {
-            // Create the job
-            var job = new Job
-            {
-                JobStatus = new JobStatus(),
-                ShortDescription = jobClicked.Description,
-                Title = jobClicked.Title,
-                URL = jobClicked.Url
-            };
-            job.JobStatus.Status = "Lead";
-
+            // Check if job was already saved
             // Load the current account
             Account account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
-                if (account.Jobs == null)
-                    account.Jobs = new List<Job>();
+                var jobs = from j in account.Jobs
+                           where j.URL == jobClicked.Url
+                           select j;
 
-                account.Jobs.Add(job);
+                if (jobs != null && jobs.Count() > 0)
+                {
+                    return PartialView("JobSaved", jobClicked);
+                }
+
+                // Create the job
+                var job = new Job
+                {
+                    JobStatus = new JobStatus(),
+                    ShortDescription = jobClicked.Description,
+                    Title = jobClicked.Title,
+                    URL = jobClicked.Url
+                };
+                job.JobStatus.Status = "Lead";
+
+                if (account != null)
+                {
+                    if (account.Jobs == null)
+                        account.Jobs = new List<Job>();
+
+                    account.Jobs.Add(job);
+                }
             }
 
-            return PartialView("JobSaved", job);
+            return PartialView("JobSaved", jobClicked);
         }
 
-        public ActionResult Applied(int id)
+        public ActionResult Applied(string url)
         {
             var account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
                 var jobs = from j in account.Jobs
-                          where j.Id == id
+                          where j.URL == url
                           select j;
 
                 if (jobs != null)
@@ -107,13 +113,13 @@ namespace Web.Controllers
             return View("Index", account.Jobs);
         }
 
-        public ActionResult Current(int id)
+        public ActionResult Current(string url)
         {
             var account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
                 var jobs = from j in account.Jobs
-                           where j.Id == id
+                           where j.URL == url
                            select j;
 
                 if (jobs != null)
@@ -127,19 +133,19 @@ namespace Web.Controllers
             return View("Index", account.Jobs);
         }    
 
-        public ViewResult Details(int id)
+        public ViewResult Details(string url)
         {
-            return View(RavenSession.Load<Job>(id));
+            return View(RavenSession.Load<Job>(url));
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string url)
         {
             var account = Account.GetAccount(User.Identity.Name, RavenSession);
             Job jobToDelete = null;
             if (account != null)
             {
                 var jobs = from j in account.Jobs
-                           where j.Id == id
+                           where j.URL == url
                            select j;
 
                 if (jobs != null && jobs.Count() > 0)
@@ -153,13 +159,13 @@ namespace Web.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string url)
         {
             var account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
                 var jobs = from j in account.Jobs
-                           where j.Id == id
+                           where j.URL == url
                            select j;
 
                 if (jobs != null && jobs.Count() > 0)

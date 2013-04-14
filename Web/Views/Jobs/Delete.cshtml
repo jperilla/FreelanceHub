@@ -1,44 +1,21 @@
 ﻿@model Web.Models.Job
 
 @{
-    ViewBag.Title = "freelancehub.io - Job Delete";
+    ViewBag.Title = "freelancehub.io - Delete";
     Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Job</legend>
-
-    <div class="display-label">Title</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-
-    <div class="display-label">URL</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.URL)
-    </div>
-
-    <div class="display-label">Budget</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Budget)
-    </div>
-
-    <div class="display-label">ShortDescription</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ShortDescription)
-    </div>
-
-    <div class="display-label">JobStatus</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.JobStatus.Status)
-    </div>
-</fieldset>
+<section id="jobs_main">
+<h1>Are you sure you want to delete this job?</h1>
+   <fieldset>
+       <a class="search-result-title" href="Model.URL" target="_blank">@Html.Raw(Model.Title)</a><br /> 
+       <span class="search-result-desc">@Html.Raw(Model.ShortDescription)</span><br />            
+       <a href="Model.DisplaySite" target="_blank">@Html.Raw(Model.DisplaySite)</a>
+   </fieldset>
 @using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
+    <p class="right" style="text-align: center;">
+        <input type="submit" value="Delete" class="red small" />
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+</section>

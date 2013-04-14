@@ -1,0 +1,3 @@
+﻿@model Web.Models.SearchResult
+
+@Ajax.ActionLink(" ", "SaveBingJob", "Jobs", Model, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = Model.ID.ToString(), InsertionMode = InsertionMode.Replace }, new { @class = "tiny", @style = "background:url(/Content/images/star-white32.png) no-repeat right top;" })

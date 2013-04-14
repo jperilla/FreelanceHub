@@ -6,33 +6,15 @@
 }
 
 <section id="jobs_main">
-    <h2>My Jobs</h2>
 
-        <fieldset>
-        <legend>Leads</legend>
+        <h1>My Leads</h1>
         @if (Model.Where(model => model.JobStatus.Status == "Lead").Count() == 0) {
              <h4>You have no leads saved. Want to try @Html.ActionLink("searching", "Index", "Search", null, null)?</h4>
         }
         else
         {
             <table class="minimalist" cellpadding="0" cellspacing="0">
-                <thead>
-				    <tr>
-					    <td>
-						    <h4>Title</h4>
-					    </td>
-					    <td>
-					    </td>
-					    <td>
-						    <h4>Budget</h4>
-					    </td>
-					    <td>
-						    <h4>Description</h4>
-					    </td>
-                        <td class="last">
-					    </td>
-				    </tr>
-			    </thead>
+                
                 <tbody>
 
                 @foreach (var item in Model)
@@ -41,20 +23,14 @@
                     {
                         <tr>
                             <td>
-                                @Html.Raw(@item.Title)
+                                <a class="search-result-title" href="@item.URL" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                                <span class="search-result-desc">@Html.Raw(@item.ShortDescription)</span><br />            
+                                <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
                             </td>
-                            <td>
-                                <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>Apply</span></a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Budget)
-                            </td>
-                            <td>
-                                @Html.Raw(@item.ShortDescription)
-                            </td>
-                            <td class="last">
-                                @Html.ActionLink("Applied", "Applied", new { id = item.Id })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            <td class="last" style="text-align: center;">
+                                 @Html.ActionLink(" ", "RedirectDisclaimerJob", "Search", @item, new { @class = "red small", @target = "_blank", @style = "background:url(/Content/images/apply.png) no-repeat left center;" })
+                                @Html.ActionLink("I Applied!", "Applied", new { url = item.URL })
+                                @Html.ActionLink("Delete", "Delete", new { url = item.URL })
                             </td>
                         </tr>
                     }
@@ -65,9 +41,8 @@
             </table>
       
         }
-        </fieldset>
-        <fieldset>
-        <legend>Active Proposals</legend>
+        <br /><br />
+        <h1>Active Proposals</h1>
         @if (Model.Where(model => model.JobStatus.Status == "Applied").Count() == 0)
         {
 			<h4>You have no proposals saved.<br/>
@@ -77,23 +52,7 @@
         {   
             <div class="jobs_table">
                 <table class="minimalist" cellpadding="0" cellspacing="0">
-                     <thead>
-			            <tr>
-				            <td>
-					            <h4>Title</h4>
-				            </td>
-				            <td>
-				            </td>
-				            <td>
-					            <h4>Budget</h4>
-				            </td>
-				            <td>
-					            <h4>Description</h4>
-				            </td>
-                            <td class="last">
-				            </td>
-			            </tr>
-		            </thead>
+                     
                     <tbody>
 
                     @foreach (var item in Model)
@@ -101,21 +60,14 @@
                         if ((item.JobStatus != null) && (item.JobStatus.Status == "Applied"))
                         {
                             <tr>
-                                <td>
-                                    @Html.Raw(@item.Title)
+                               <td>
+                                    <a class="search-result-title" href="@item.URL" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                                    <span class="search-result-desc">@Html.Raw(@item.ShortDescription)</span><br />            
+                                    <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
                                 </td>
                                 <td>
-                                    <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Budget)
-                                </td>
-                                <td>
-                                    @Html.Raw(@item.ShortDescription)
-                                </td>
-                                <td class="last">
-                                    @Html.ActionLink("Current Project", "Current", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    @Html.ActionLink("I Got it!", "Current", new { url = item.URL })<br />
+                                    @Html.ActionLink("Delete", "Delete", new { url = item.URL })
                                 </td>
                             </tr>
                         }
@@ -124,9 +76,9 @@
                 </table>
             </div>
         }
-        </fieldset>
-        <fieldset>
-        <legend>Current Projects</legend>
+        
+        <br /><br />
+        <h1>Current Projects</h1>
         @if (Model.Where(model => model.JobStatus.Status == "Current").Count() == 0)
         {
 			<h4>You have no current projects at this time.<br/>
@@ -138,23 +90,6 @@
             <div class="jobs_table">
                 <table class="minimalist" cellpadding="0" cellspacing="0">
         
-                    <thead>
-			            <tr>
-				            <td>
-					            <h4>Title</h4>
-				            </td>
-				            <td>
-				            </td>
-				            <td>
-					            <h4>Budget</h4>
-				            </td>
-				            <td>
-					            <h4>Description</h4>
-				            </td>
-                            <td class="last">
-				            </td>
-			            </tr>
-		            </thead>
                     <tbody>
 
                     @foreach (var item in Model)
@@ -163,19 +98,12 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.Raw(@item.Title)
+                                    <a class="search-result-title" href="@item.URL" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                                    <span class="search-result-desc">@Html.Raw(@item.ShortDescription)</span><br />            
+                                    <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
                                 </td>
                                 <td>
-                                    <a href="@item.URL" target="_blank"><img src="Content/images/go_icon.png" alt="" /><span>View</span></a>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Budget)
-                                </td>
-                                <td>
-                                    @Html.Raw(@item.ShortDescription)
-                                </td>
-                                <td class="last">
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    @Html.ActionLink("Delete", "Delete", new { url = item.URL })
                                 </td>
                             </tr>
                         }

@@ -18,20 +18,25 @@
         @foreach (var item in Model)
         {        
             <tr>
+                <td>               
+                    <span id="@item.ID">
+                    @if (@item.IsSaved)
+                    {
+                         @Html.Partial("JobSaved", @item)
+                    }
+                    else
+                    {
+                        @Html.Partial("JobNotSaved", @item)
+                    }
+                    </span>
+                </td>
                 <td>
-                    <a class="search-result-title" href="@item.Url" target="_blank">@Html.Raw(@item.Title)</a><br />              
+                    <a class="search-result-title" href="@item.Url" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                    <span class="search-result-desc">@Html.Raw(@item.Description)</span><br />            
                     <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
                 </td>
                 <td>
-                    @Ajax.ActionLink("Apply", "RedirectDisclaimer", "Search", @item, new AjaxOptions { HttpMethod = "Post" }, new { @class = "red", target = "_blank" })
-                </td>
-                <td>
-                    @Ajax.ActionLink("Save Job", "SaveBingJob", "Jobs", @item, new AjaxOptions { HttpMethod = "Post", UpdateTargetId =@item.ID.ToString(), InsertionMode = InsertionMode.Replace }, new { @class = "red", @onclick = "javascript: saving(@item.ID.ToString());" })
-                    
-
-                </td>
-                <td>                
-                    <span id="@item.ID" class="small_text" />
+                    @Html.ActionLink(" ", "RedirectDisclaimer", "Search", @item, new { @class = "red small", @target = "_blank", @style = "background:url(/Content/images/apply.png) no-repeat left center;" })
                 </td>
             </tr>
         }

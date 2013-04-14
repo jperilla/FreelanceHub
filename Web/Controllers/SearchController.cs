@@ -30,8 +30,13 @@ namespace Web.Controllers
         }
 
         public ActionResult RedirectDisclaimer(SearchResult result)
-        {
+        {            
             return View("RedirectDisclaimer", result);
+        }
+
+        public ActionResult RedirectDisclaimerJob(Job job)
+        {
+            return View("RedirectDisclaimerJob", job);
         }
 
 
@@ -55,6 +60,20 @@ namespace Web.Controllers
                 search.Query = "intitle:" + search.Query + " inbody:" + search.Query;
                 List<Bing.WebResult> webResults = bingSearch.Search(search.Query).ToList();
                 search.Results = webResults.ConvertAll(SearchResult.BingResultToSearchResult);
+
+                // Set isSaved on each result
+                foreach(var result in search.Results)
+                {
+                    var jobs = from j in account.Jobs
+                           where j.URL == result.Url
+                           select j;
+
+                    if ((jobs != null) && (jobs.Count() > 0))
+                    {
+                        result.IsSaved = true;
+                    }
+                }
+
                 search.FirstVisit = false;
                 return View("Index", search);
             }

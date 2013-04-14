@@ -19,6 +19,14 @@ a.search-result-title {
 a.search-result-title, a.search-result-title:link, a.search-result-title:hover, a.search-result-title:visited
 {
     color: #113D49;
+    font-weight: bold;
+}
+
+.search-result-desc
+{    
+    font-size: .8em;
+    line-height: 1.2em;
+    color: #95a6b2;
 }
 
 a {
@@ -117,8 +125,16 @@ a.light-blue, button.light-blue,  input.light-blue
 
 a.small, input.small, button.small
 {    
-    width: 80px;
-    height: 40px;
+    display: block;
+    width: 100px;
+    height: 48px;
+}
+
+a.tiny, input.tiny, button.tiny
+{    
+    display: block;
+    width: 50px;
+    height: 30px;
 }
 
 button.medium, input.medium
@@ -260,7 +276,8 @@ header a:active
 header#signed-in
 {
     background: url('../images/ricepaper2.png') repeat;
-    height: 72px;
+    height: 72px;    
+    max-width: 1200px;
 }
 header#signed-in a:link, header#signed-in a:visited
 {    
@@ -330,6 +347,7 @@ nav ul li a
     -moz-box-shadow: 0px 0px 5px #ccc;
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
+    max-width: 1200px;
 }
 
 section#main
@@ -456,6 +474,12 @@ ul#config-list li
     display: inline-block;    
 }
 
+.tiny_text {
+    font-size: .4em;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.2em;
+}
+
 .small_text {
     font-size: .8em;
     font-family: 'Raleway', sans-serif;
@@ -491,6 +515,7 @@ footer#footer-signed-in
     background: url('../images/ricepaper2.png') repeat; 
     position: relative;
     top: -10px;   
+    max-width: 1200px;
 }
 
 ul#social-media
@@ -728,8 +753,14 @@ section#home_main h2, h3
 /* My Jobs Page */
 section#jobs_main
 {
-    min-height: 1200px;
+    min-height: 1200px;    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 1.0416667%;
+    margin-left: 1.0416667%;
 }
+
+
 
 section#jobs_main fieldset
 {
@@ -738,9 +769,10 @@ section#jobs_main fieldset
     margin-left: 1.0416667%;
 }
 
-section#jobs_main fieldset legend
+section#jobs_main h1
 {
     font-family: 'Raleway', sans-serif;
+    color: #b93831;
 }
 
 section#jobs_main h2
@@ -1320,7 +1352,6 @@ input.gsc-search-button {
 {
 	border-bottom: 1px solid #ccc;
 	padding: 6px 8px;
-	min-width: 50px;
 	height: 80px;
 }
 
@@ -1328,3 +1359,6 @@ input.gsc-search-button {
 {
 	background-color: #FDFBF8;
 }
+
+
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Raven.Client;
 
 namespace Web.Models
 {
@@ -44,5 +45,7 @@ namespace Web.Models
                 return shortUrl;
             }
         }
+
+        public bool IsSaved { get; set; }
     }
 }

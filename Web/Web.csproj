@@ -221,6 +221,7 @@
     <Content Include="Content\CSS\osx.css" />
     <Content Include="Content\CSS\Reset.css" />
     <Content Include="Content\CSS\Style.css" />
+    <Content Include="Content\images\apply.png" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
     <Content Include="Content\images\logo.png" />
@@ -237,6 +238,10 @@
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\search_screenshot.png" />
     <Content Include="Content\images\search_screenshot_large.png" />
+    <Content Include="Content\images\star-gold32.png" />
+    <Content Include="Content\images\star-green32.png" />
+    <Content Include="Content\images\star-orange32.png" />
+    <Content Include="Content\images\star-white32.png" />
     <Content Include="Content\images\twitter.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\css-fixes\PIE.htc" />
@@ -313,6 +318,8 @@
     <Content Include="Views\CustomSearch\UserView.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimer.cshtml" />
     <Content Include="Views\Shared\JobSaved.cshtml" />
+    <Content Include="Views\Shared\JobNotSaved.cshtml" />
+    <Content Include="Views\Search\RedirectDisclaimerJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
