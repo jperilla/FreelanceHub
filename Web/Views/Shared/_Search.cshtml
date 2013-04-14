@@ -1,4 +1,21 @@
 ﻿
+<h2>What type of work are you looking for?</h2>
+
+<!-- Google CSE Search Box Begins  -->
+<!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+<!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
+<form id="cref_iframe" action="http://localhost:61413/Content/html/results.html">
+  <input type="hidden" name="cref" value="http://localhost:61413/Content/xml/cse.xml" />
+  <input type="hidden" name="cof" value="FORID:9" />
+  <input type="text" name="q" size="40" />
+  <input type="submit" name="sa" value="Search" />
+</form>
+<script type="text/javascript" src="'/cse'/brand'?form='cref_iframe" ></script>
+<!-- Google CSE Search Box Ends -->
+
+
+
+<!--
 <div style="display:none">
 
     <div id="fria_webResult">
@@ -44,7 +61,6 @@
     </div>
   </div>
 </div>
-<div id="cse" style="width: 100%;"></div>
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
@@ -60,7 +76,7 @@
       '017060715910446842244:syxqx4wot3o', customSearchOptions);
         google.search.Csedr.addOverride("fria_");
         customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-        customSearchControl.setOnKeepCallback(this, onFavorite, "Save Job");
+        customSearchControl.setOnKeepCallback(this, onFavorite, " ");
         customSearchControl.draw('cse');
     }, true);
 
@@ -80,85 +96,9 @@
             });
 
         }
-        /*$("#osx-modal-content").modal({
-        overlayId: 'osx-overlay',
-        containerId: 'osx-container',
-        closeHTML: null,
-        minHeight: 80,
-        opacity: 65,
-        position: ['0', ],
-        overlayClose: true,
-        onOpen: OSX.open,
-        onClose: OSX.close
-        });*/
     };
 
     function stripHtml(str) {
         return jQuery('<div />', { html: str }).text();
-    }
-
-    var OSX = {
-        container: null,
-        init: function () {
-
-            $("input#signup-modal").click(function (e) {
-                e.preventDefault();
-
-                $.post("/Account/SignUp", $('form').serialize(), function (data) {
-                    if (data == "success") {
-                        window.location = "/LandingPage/Index";
-                    } else {
-                        $('#signupMessage').html(data);
-                    }
-
-                });
-
-            });
-        },
-        open: function (d) {
-            var self = this;
-            self.container = d.container[0];
-            d.overlay.fadeIn('slow', function () {
-                $("#osx-modal-content", self.container).show();
-                var title = $("#osx-modal-title", self.container);
-                title.show();
-                d.container.slideDown('slow', function () {
-                    setTimeout(function () {
-                        var h = $("#osx-modal-data", self.container).height()
-							+ title.height()
-							+ 20; // padding
-                        d.container.animate(
-							{ height: h },
-							200,
-							function () {
-							    $("div.close", self.container).show();
-							    $("#osx-modal-data", self.container).show();
-							}
-						);
-                    }, 300);
-                });
-            })
-        },
-        close: function (d) {
-            var self = this; // this = SimpleModal object
-            d.container.animate(
-				{ top: "-" + (d.container.height() + 20) },
-				500,
-				function () {
-				    self.close(); // or $.modal.close();
-				}
-			);
-        }
-    };
-
-    OSX.init();
-
-    $(document).ready(function () {
-        $("li#home").removeClass('active');
-        $("li#search").addClass('active');
-        $("li#jobs").removeClass('active');
-        $("li#about").removeClass('active');
-        $("li#contact").removeClass('active');
-        $("li#blog").removeClass('active');
-    }); 
-</script>
+    } 
+</script>-->

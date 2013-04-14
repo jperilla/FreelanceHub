@@ -20,5 +20,5 @@
     <EnterpriseAccount />
     <autocomplete_settings />
   </CustomSearchEngine>
-  <Include type="Annotations" href="http://localhost:61413/Content/xml/annotations.xml"/>
+  <Include type="Annotations" href="http://freelancehub.apphb.com/Content/xml/annotations.xml"/>
 </GoogleCustomizations>

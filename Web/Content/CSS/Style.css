@@ -278,6 +278,8 @@ header#signed-in
     background: url('../images/ricepaper2.png') repeat;
     height: 72px;    
     max-width: 1200px;
+    margin: auto;
+    width: 97.9166667%;
 }
 header#signed-in a:link, header#signed-in a:visited
 {    
@@ -338,8 +340,6 @@ nav ul li a
 #content-signed-in
 {    
     background-color: #fff;
-    margin-right: 1.0416667%;
-    margin-left: 1.0416667%;
     margin-bottom: 0%;
     padding-bottom: 0%;
     width: 97.9166667%;
@@ -348,6 +348,7 @@ nav ul li a
     -webkit-box-shadow: 0px 0px 5px #ccc;
     box-shadow: 0px 0px 5px #ccc;
     max-width: 1200px;
+    margin: auto;
 }
 
 section#main
@@ -511,11 +512,14 @@ footer p
 
 footer#footer-signed-in
 {
+    
     color: #113D49;
     background: url('../images/ricepaper2.png') repeat; 
     position: relative;
     top: -10px;   
     max-width: 1200px;
+    margin: auto;
+    width: 97.9166667%;
 }
 
 ul#social-media
@@ -1105,55 +1109,32 @@ section#account_main h2
         float: none;
         text-align: center;
         margin-right: 0%;
-    }
-    
+    } 
     
    
 }
 
 
 /* Google Search Results */
-   
-div.gsc-keeper:hover {
-    border-top-color: #113d49;
-   background: #113d49;
-   color: #ccc;
-   }
-   
-div.gsc-keeper:active {
-   border-top-color: #113d49;
-   background: #113d49;
-   }
-   
-div.gsc-keeper
-{
-    float: right;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    border-top: 1px solid #cdd6d8;
-    background: #cdd6d8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f5f1ef), to(#f5f1ef));
-    background: -webkit-linear-gradient(top, #f5f1ef, #f5f1ef);
-    background: -moz-linear-gradient(top, #f5f1ef, #f5f1ef);
-    background: -ms-linear-gradient(top, #f5f1ef, #f5f1ef);
-    background: -o-linear-gradient(top, #f5f1ef, #f5f1ef);
-    padding: 14px 28px;
-    webkit-border-radius: 6px;
-   -moz-border-radius: 6px;
-    border-radius: 6px;
-    position:relative;
-    z-index:0;
-    behavior: url(/Scripts/css-fixes/PIE.htc);
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    color: #113d49;
-    text-decoration: none;
-    vertical-align: middle;
-    margin-top: 10px;
-    margin-right: 6%;
-    height: 20px;
+
+table.gsc-search-box {
+    border-spacing: 0;
+    border-style: none;
+    border-width: 0;
+    margin-bottom: 2px;
 }
 
+
+div.gsc-keeper
+{
+    background:url(/Content/images/star-white32.png) no-repeat left center;
+    z-index:0;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-left: 3%;
+    height: 50px;
+    width: 50px;
+}
 div.gs-result a.gs-visibleUrl, div.gs-result .gs-visibleUrl {
     color: #cdd6d8;
     padding-bottom: 2px;
@@ -1165,7 +1146,7 @@ div.gs-result
     float: left;
     text-align: left;
     width: 80%;
-    margin-left: 2%;
+    margin-left: 10%;
 }
 
 div.gsc-result, div.gsc-webResult

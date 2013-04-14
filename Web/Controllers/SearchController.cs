@@ -24,6 +24,17 @@ namespace Web.Controllers
             return View(search);
         }
 
+        public ActionResult GoogleSearch()
+        {
+            Search search = new Search();
+            return View(search);
+        }
+
+        public ActionResult GoogleSearchResults()
+        {
+            return View("_GoogleSearchResults");
+        }
+
         public ActionResult Customize()
         {
             return View();

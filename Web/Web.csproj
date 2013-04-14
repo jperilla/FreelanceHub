@@ -221,6 +221,7 @@
     <Content Include="Content\CSS\osx.css" />
     <Content Include="Content\CSS\Reset.css" />
     <Content Include="Content\CSS\Style.css" />
+    <Content Include="Content\html\results.html" />
     <Content Include="Content\images\apply.png" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
@@ -243,6 +244,8 @@
     <Content Include="Content\images\star-orange32.png" />
     <Content Include="Content\images\star-white32.png" />
     <Content Include="Content\images\twitter.png" />
+    <Content Include="Content\xml\annotations.xml" />
+    <Content Include="Content\xml\cse.xml" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\css-fixes\PIE.htc" />
     <Content Include="Scripts\css-fixes\PIE.js" />
@@ -320,6 +323,8 @@
     <Content Include="Views\Shared\JobSaved.cshtml" />
     <Content Include="Views\Shared\JobNotSaved.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimerJob.cshtml" />
+    <Content Include="Views\Search\GoogleSearch.cshtml" />
+    <Content Include="Views\Shared\_GoogleSearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

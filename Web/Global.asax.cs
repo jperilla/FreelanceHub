@@ -23,6 +23,8 @@ namespace Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("Content/xml/*");
+            routes.IgnoreRoute("Content/html/*");
 
             routes.MapRoute(
                 "Default", // Route name
