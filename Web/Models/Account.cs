@@ -12,6 +12,8 @@ using System;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using System.Xml;
+using System.Web;
 
 namespace Web.Models
 {
@@ -316,7 +318,125 @@ namespace Web.Models
             return isCurrent;
         }
 
-       
+        public void GenerateCseFile(IDocumentSession session)
+        {
+            // Generate user's file path
+            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/" + this.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
+
+            var googleCse = new GoogleCustomizations();
+            googleCse.CustomSearchEngine = new GoogleCustomizationsCustomSearchEngine();
+            googleCse.CustomSearchEngine.language = "en";
+            googleCse.CustomSearchEngine.id = "dl-lwlywdoi";
+            googleCse.CustomSearchEngine.creator = 013914245334065375847;
+            googleCse.CustomSearchEngine.encoding = "UTF-8";
+            googleCse.CustomSearchEngine.enable_suggest = true;
+            googleCse.CustomSearchEngine.Title = "Freelancer";
+            googleCse.CustomSearchEngine.Context = new GoogleCustomizationsCustomSearchEngineContext();
+            googleCse.CustomSearchEngine.Context.BackgroundLabels = new GoogleCustomizationsCustomSearchEngineContextLabel[2];
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[0] = new GoogleCustomizationsCustomSearchEngineContextLabel();
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[0].mode = "FILTER";
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[0].name = "_cse_dl-lwlywdoi";
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[1] = new GoogleCustomizationsCustomSearchEngineContextLabel();
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[1].mode = "ELIMINATE";
+            googleCse.CustomSearchEngine.Context.BackgroundLabels[1].name = "_cse_exclude_dl-lwlywdoi";
+            googleCse.CustomSearchEngine.LookAndFeel = new GoogleCustomizationsCustomSearchEngineLookAndFeel();
+            googleCse.CustomSearchEngine.LookAndFeel.ads_layout = 1;
+            googleCse.CustomSearchEngine.LookAndFeel.promotion_url_length = "full";
+            googleCse.CustomSearchEngine.LookAndFeel.enable_cse_thumbnail = true;
+            googleCse.CustomSearchEngine.LookAndFeel.element_branding = "show";
+            googleCse.CustomSearchEngine.LookAndFeel.url_length = "full";
+            googleCse.CustomSearchEngine.LookAndFeel.text_font = "Arvo, serif";
+            googleCse.CustomSearchEngine.LookAndFeel.custom_theme = true;
+            googleCse.CustomSearchEngine.LookAndFeel.theme = 7;
+            googleCse.CustomSearchEngine.LookAndFeel.element_layout = 8;
+            googleCse.CustomSearchEngine.LookAndFeel.nonprofit = false;
+            googleCse.CustomSearchEngine.LookAndFeel.Logo = new object();
+            googleCse.CustomSearchEngine.LookAndFeel.Colors = new GoogleCustomizationsCustomSearchEngineLookAndFeelColors();
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.title = "#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.title_active="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.title_hover="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.visited="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.text="#000000";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.border="#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.background="#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Colors.url = "#008000";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions = new GoogleCustomizationsCustomSearchEngineLookAndFeelPromotions();
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.title_active_color="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.title_hover_color="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.snippet_color="#000000";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.border_color="#336699";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.background_color="#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.url_color="#008000";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.title_visited_color="#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.Promotions.title_color = "#0000CC";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls = new GoogleCustomizationsCustomSearchEngineLookAndFeelSearchControls();
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.tab_selected_background_color="#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.tab_selected_border_color="#FF9900";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.tab_background_color="#E9E9E9";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.tab_border_color="#E9E9E9";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.button_background_color="#CECECE";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.button_border_color="#666666";
+            googleCse.CustomSearchEngine.LookAndFeel.SearchControls.input_border_color = "#D9D9D9";
+            googleCse.CustomSearchEngine.LookAndFeel.Results = new GoogleCustomizationsCustomSearchEngineLookAndFeelResults();
+            googleCse.CustomSearchEngine.LookAndFeel.Results.border_color = "#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Results.background_color = "#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Results.ads_border_color = "#FDF6E5";
+            googleCse.CustomSearchEngine.LookAndFeel.Results.ads_background_color = "#FDF6E5";
+            googleCse.CustomSearchEngine.LookAndFeel.Results.background_hover_color = "#FFFFFF";
+            googleCse.CustomSearchEngine.LookAndFeel.Results.border_hover_color = "#FFFFFF";
+            googleCse.CustomSearchEngine.AdSense = new object();
+            googleCse.CustomSearchEngine.EnterpriseAccount = new GoogleCustomizationsCustomSearchEngineEnterpriseAccount();
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin = new GoogleCustomizationsCustomSearchEngineEnterpriseAccountAccountAdmin();
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.job_title = "Owner";
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.country="US";
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.phone=9077482554;
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.email="julie@geekgirlsoftware.com";
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.last_name="Garcia";
+            googleCse.CustomSearchEngine.EnterpriseAccount.AccountAdmin.first_name = "Julie";
+            googleCse.CustomSearchEngine.EnterpriseAccount.Organization = new GoogleCustomizationsCustomSearchEngineEnterpriseAccountOrganization();
+            googleCse.CustomSearchEngine.EnterpriseAccount.Organization.name="Geek Girl Software";
+            googleCse.CustomSearchEngine.EnterpriseAccount.Organization.size=20;
+            googleCse.CustomSearchEngine.EnterpriseAccount.Organization.type = "business";
+            googleCse.CustomSearchEngine.ImageSearchSettings = new GoogleCustomizationsCustomSearchEngineImageSearchSettings();
+            googleCse.CustomSearchEngine.ImageSearchSettings.enable = false;
+            googleCse.CustomSearchEngine.autocomplete_settings = new object();
+            googleCse.CustomSearchEngine.sort_by_keys = new GoogleCustomizationsCustomSearchEngineSort_by_keys[1];
+            googleCse.CustomSearchEngine.sort_by_keys[0] = new GoogleCustomizationsCustomSearchEngineSort_by_keys();
+            googleCse.CustomSearchEngine.sort_by_keys[0].key = "date";
+            googleCse.CustomSearchEngine.sort_by_keys[0].label = "Date";
+            googleCse.CustomSearchEngine.Annotations = new GoogleCustomizationsCustomSearchEngineAnnotations();
+            googleCse.CustomSearchEngine.Annotations.Annotation = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotation[this.SitesToSearch.Count()];
+            googleCse.CustomSearchEngine.Annotations.total = Convert.ToByte(this.SitesToSearch.Count());
+            googleCse.CustomSearchEngine.Annotations.num = Convert.ToByte(this.SitesToSearch.Count());
+            googleCse.CustomSearchEngine.Annotations.start = 0;
+
+            int i = 0;
+            foreach (var siteString in this.SitesToSearch)
+            {
+                // Load the CustomSearchSite element from database
+                CustomSearchSite site = session.Load<CustomSearchSite>(siteString);
+
+                // Add an annotation for each site
+                var annotation = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotation();
+                annotation.about = site.Url.Replace("https://", "").Replace("http://", "");
+                annotation.Label = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationLabel[1];
+                annotation.Label[0] = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationLabel();
+                annotation.Label[0].name = googleCse.CustomSearchEngine.Context.BackgroundLabels[0].name; //include
+                annotation.AdditionalData = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationAdditionalData();
+                annotation.AdditionalData.attribute = "original_url";
+                annotation.AdditionalData.value = site.Url;
+                googleCse.CustomSearchEngine.Annotations.Annotation[i++] = annotation;
+            }
+            System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(googleCse.GetType());
+            using (FileStream stream = new FileStream(HttpContext.Current.Server.MapPath("~/Content/xml/" + this.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml"),
+                                                FileMode.Create, FileAccess.ReadWrite))
+            {
+                x.Serialize(stream, googleCse);
+            }
+            
+            // TODO: create google cse file for this user or overwrite existing, if it exists load object with current annotations, then change
+            //  create inline annotations to avoid overwriting
+        }
 
         public static bool IsAccountAtLimit(string email)
         {

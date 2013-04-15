@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\GoogleCustomizations.cs" />
     <Compile Include="Models\CustomSearchSite.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobStatus.cs" />

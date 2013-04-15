@@ -186,11 +186,9 @@ namespace Web.Controllers
                             account.SitesToSearch.Remove(s.Id);
                     }
 
-                    // Save file name to database
-                    account.PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/" + account.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
-
-                    // TODO: create google cse file for this user or overwrite existing, if it exists load object with current annotations, then change
-                    //  create inline annotations to avoid overwriting
+                    // Generate the Google Custom Search cse file for this user, must do this after the Sites to search are set
+                    account.GenerateCseFile(RavenSession);
+                    
 
                     ViewBag.Comment = "Saved";
                     if (Request.IsAjaxRequest())
