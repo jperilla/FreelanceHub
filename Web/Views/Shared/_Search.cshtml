@@ -5,16 +5,26 @@
     <!-- Google CSE Search Box Begins  -->
     <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
     <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
-    <form id="cref_iframe" action="~/Content/html/results.html">
+    <form id="cref_iframe" action="@Url.Action("GoogleSearchResults", "Search")" >
       <input type="hidden" name="cref" value="http://freelancehub.apphb.com/Content/xml/cse.xml" />
       <input type="hidden" name="cof" value="FORID:9" />
       <input type="text" name="q" size="40" />
-      <input type="submit" name="sa" value="Search" />
-    </form>
+      <input type="submit" name="sa" value="Search" />    
+   </form>
     <script type="text/javascript" src="'/cse'/brand'?form='cref_iframe" ></script>
     <!-- Google CSE Search Box Ends -->
 </div>
 
+
+<div id="cse-search-results"></div>
+<script type="text/javascript">
+    var googleSearchIframeName = "cse-search-results";
+    var googleSearchFormName = "cse-search-box";
+    var googleSearchFrameWidth = 600;
+    var googleSearchDomain = "www.google.com";
+    var googleSearchPath = "/cse";
+</script>
+<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
 
 <!--
 <div style="display:none">

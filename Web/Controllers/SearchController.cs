@@ -32,7 +32,7 @@ namespace Web.Controllers
 
         public ActionResult GoogleSearchResults()
         {
-            return View("_GoogleSearchResults");
+            return View("GoogleSearch");
         }
 
         public ActionResult Customize()
