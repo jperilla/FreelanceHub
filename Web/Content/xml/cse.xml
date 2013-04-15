@@ -23,31 +23,10 @@
   <autocomplete_settings />
   <sort_by_keys label="Relevance" key="" />
   <sort_by_keys label="Date" key="date" />
-  <Annotations start="0" num="6" total="6">
-    <Annotation about="*.99designs.com/*/contests/*" score="1" timestamp="0x0004da59025d12d3" href="ChwqLjk5ZGVzaWducy5jb20vKi9jb250ZXN0cy8qENOl9JKQy7YC">
+  <Annotations start="0" num="1" total="1">
+    <Annotation about="www.freelancer.com/*" score="1" timestamp="0x0004da5b3c9f6cb2" href="ChR3d3cuZnJlZWxhbmNlci5jb20vKhCy2f3ks8u2Ag">
       <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="http://99designs.com/*/contests/*" />
-    </Annotation>
-    <Annotation about="www.getacoder.com/projects/*" score="1" timestamp="0x0004da59025d12c9" href="Chx3d3cuZ2V0YWNvZGVyLmNvbS9wcm9qZWN0cy8qEMml9JKQy7YC">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="http://www.getacoder.com/projects/*" />
-    </Annotation>
-    <Annotation about="www.journalismjobs.com/Job_Listing.*" score="1" timestamp="0x0004da59025d12bd" href="CiR3d3cuam91cm5hbGlzbWpvYnMuY29tL0pvYl9MaXN0aW5nLioQvaX0kpDLtgI">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="http://www.journalismjobs.com/Job_Listing.*" />
-    </Annotation>
-    <Annotation about="www.elance.com/j/*/*" score="1" timestamp="0x0004da59025d12b2" href="ChR3d3cuZWxhbmNlLmNvbS9qLyovKhCypfSSkMu2Ag">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="https://www.elance.com/j/*/*" />
-    </Annotation>
-    <Annotation about="jobs.freelanceswitch.com/jobs/*" score="1" timestamp="0x0004da59025d12a4" href="Ch9qb2JzLmZyZWVsYW5jZXN3aXRjaC5jb20vam9icy8qEKSl9JKQy7YC">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="http://jobs.freelanceswitch.com/jobs/*" />
-    </Annotation>
-    <Annotation about="www.freelancer.com/projects/*" score="1" timestamp="0x0004da59025d126a" href="Ch13d3cuZnJlZWxhbmNlci5jb20vcHJvamVjdHMvKhDqpPSSkMu2Ag">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="http://www.freelancer.com/projects/*" />
+      <AdditionalData attribute="original_url" value="www.freelancer.com" />
     </Annotation>
   </Annotations>
-
 </CustomSearchEngine>
