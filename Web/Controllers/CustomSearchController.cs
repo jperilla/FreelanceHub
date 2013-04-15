@@ -189,7 +189,8 @@ namespace Web.Controllers
                     // Save file name to database
                     account.PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/" + account.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
 
-                    // TODO: create google cse file for this user or overwrite existing
+                    // TODO: create google cse file for this user or overwrite existing, if it exists load object with current annotations, then change
+                    //  create inline annotations to avoid overwriting
 
                     ViewBag.Comment = "Saved";
                     if (Request.IsAjaxRequest())

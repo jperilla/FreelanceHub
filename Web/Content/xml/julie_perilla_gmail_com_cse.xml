@@ -3,8 +3,7 @@
   -<CustomSearchEngine language="en" enable_suggest="true" encoding="UTF-8" creator="013914245334065375847" id="dl-lwlywdoi">
     <Title>Freelancer</Title>-<Context>
       -<BackgroundLabels>
-        <Label mode="FILTER" name="_cse_dl-lwlywdoi"/>
-        <Label mode="FILTER" name="freelancer"/>
+        <Label mode="FILTER" name="_cse_julie_perilla_gmail_com"/>
         <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi"/>
       </BackgroundLabels>
     </Context>-<LookAndFeel ads_layout="1" promotion_url_length="full" enable_cse_thumbnail="true" element_branding="show" url_length="full" text_font="Arial, sans-serif" custom_theme="true" theme="7" element_layout="8" nonprofit="false">

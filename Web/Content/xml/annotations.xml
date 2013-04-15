@@ -29,6 +29,7 @@
     <Label name="_cse_dl-lwlywdoi"/>
     <AdditionalData value="http://www.logomyway.com/contestView.php?contestId=*" attribute="original_url"/>
   </Annotation>-<Annotation href="Ch93d3cuY3Jvd2RzcHJpbmcuY29tLyovcHJvamVjdC8qEJf_7f6nzbYC" timestamp="0x0004da6a7fdb7f97" about="www.crowdspring.com/*/project/*">
+    <Label name="_cse_julie_perilla_gmail_com"/>
     <Label name="_cse_dl-lwlywdoi"/>
     <AdditionalData value="http://www.crowdspring.com/*/project/*" attribute="original_url"/>
   </Annotation>-<Annotation href="CjJ3d3cuaWZyZWVsYW5jZS5jb20vcHJvamVjdC9kZXRhaWwuYXNweD9wcm9qZWN0aWQ9KhCnr7eipc22Ag" timestamp="0x0004da6a544dd7a7" about="www.ifreelance.com/project/detail.aspx?projectid=*">
@@ -46,8 +47,10 @@
   </Annotation>-<Annotation href="Chx3d3cuZ2V0YWNvZGVyLmNvbS9wcm9qZWN0cy8qELjjy_6jzbYC" timestamp="0x0004da6a3fd2f1b8" about="www.getacoder.com/projects/*">
     <Label name="_cse_dl-lwlywdoi"/>
     <AdditionalData value="http://www.getacoder.com/projects/*" attribute="original_url"/>
-  </Annotation>-<Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
+  </Annotation>-
+  <Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
     <Label name="_cse_dl-lwlywdoi"/>
+    <Label name="_cse_julie_perilla_gmail_com"/>
     <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
   </Annotation>-<Annotation href="CiR3d3cuam91cm5hbGlzbWpvYnMuY29tL0pvYl9MaXN0aW5nLioQiLzxvqLNtgI" timestamp="0x0004da6a27dc5e08" about="www.journalismjobs.com/Job_Listing.*">
     <Label name="_cse_dl-lwlywdoi"/>
@@ -59,7 +62,7 @@
     <Label name="_cse_dl-lwlywdoi"/>
     <AdditionalData value="http://jobs.freelanceswitch.com/jobs/ *" attribute="original_url"/>
   </Annotation>-<Annotation href="Ch13d3cuZnJlZWxhbmNlci5jb20vcHJvamVjdHMvKhDm3rWfos22Ag" timestamp="0x0004da6a23ed6f66" about="www.freelancer.com/projects/*" score="1">
-    <Label name="freelancer"/>
+    <Label name="_cse_dl-lwlywdoi"/>
     <AdditionalData value="http://www.freelancer.com/projects/*" attribute="original_url"/>
   </Annotation>
 </Annotations>
