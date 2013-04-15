@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<GoogleCustomizations>
-  <CustomSearchEngine id="qpg2f31vakw" creator="017060715910446842244" language="en" enable_suggest="true" visible="false">
-    <Title>Freelance Search</Title>
-    <Description>Searching Freelance Sites for Keywords</Description>
-    <Context>
-      <BackgroundLabels>
-        <Label name="_cse_qpg2f31vakw" mode="FILTER" />
-        <Label name="_cse_exclude_qpg2f31vakw" mode="ELIMINATE" />
-      </BackgroundLabels>
-    </Context>
-    <LookAndFeel code="4" nonprofit="false" googlebranding="watermark" element_layout="1" theme="6" custom_theme="false" text_font="Verdana, sans-serif" url_length="full" enable_cse_thumbnail="true" promotion_url_length="full" ads_layout="1">
-      <Logo />
-      <Colors url="#5F6A73" background="#DAE0E5" border="#DAE0E5" title="#0568CD" text="#5F6A73" visited="#0568CD" title_hover="#0568CD" title_active="#0568CD" />
-      <Promotions title_color="#0066CC" title_visited_color="#0066CC" url_color="#5F6A73" background_color="#D0D1D4" border_color="#D2D6DC" snippet_color="#333333" title_hover_color="#0066CC" title_active_color="#0066CC" />
-      <SearchControls input_border_color="#B6BEC5" button_border_color="#B6BEC5" button_background_color="#D0D1D4" tab_border_color="#999999" tab_background_color="#EEEEEE" tab_selected_border_color="#999999" tab_selected_background_color="#999999" />
-      <Results border_color="#FFFFFF" border_hover_color="#D2D6DC" background_color="#FFFFFF" background_hover_color="#EDEDED" />
-    </LookAndFeel>
-    <AdSense />
-    <EnterpriseAccount />
-    <autocomplete_settings />
-  </CustomSearchEngine>
-  <Annotations start="0" num="1" total="1">
-    <Annotation about="www.freelancer.com/*" score="1" timestamp="0x0004da5b3c9f6cb2" href="ChR3d3cuZnJlZWxhbmNlci5jb20vKhCy2f3ks8u2Ag">
+<CustomSearchEngine id="dl-lwlywdoi" creator="013914245334065375847" language="en" encoding="UTF-8" enable_suggest="true">
+  <Title>Freelancer</Title>
+  <Context>
+    <BackgroundLabels>
+      <Label name="_cse_dl-lwlywdoi" mode="FILTER" />
+      <Label name="_cse_exclude_dl-lwlywdoi" mode="ELIMINATE" />
+    </BackgroundLabels>
+  </Context>
+  <LookAndFeel nonprofit="false" element_layout="8" theme="7" custom_theme="true" text_font="Arial, sans-serif" url_length="full" element_branding="show" enable_cse_thumbnail="true" promotion_url_length="full" ads_layout="1">
+    <Logo />
+    <Colors url="#008000" background="#FFFFFF" border="#FFFFFF" title="#0000CC" text="#000000" visited="#0000CC" title_hover="#0000CC" title_active="#0000CC" />
+    <Promotions title_color="#0000CC" title_visited_color="#0000CC" url_color="#008000" background_color="#FFFFFF" border_color="#336699" snippet_color="#000000" title_hover_color="#0000CC" title_active_color="#0000CC" />
+    <SearchControls input_border_color="#D9D9D9" button_border_color="#666666" button_background_color="#CECECE" tab_border_color="#E9E9E9" tab_background_color="#E9E9E9" tab_selected_border_color="#FF9900" tab_selected_background_color="#FFFFFF" />
+    <Results border_color="#FFFFFF" border_hover_color="#FFFFFF" background_color="#FFFFFF" background_hover_color="#FFFFFF" ads_background_color="#FDF6E5" ads_border_color="#FDF6E5" />
+  </LookAndFeel>
+  <AdSense />
+  <EnterpriseAccount>
+    <AccountAdmin first_name="Julie" last_name="Garcia" email="julie@geekgirlsoftware.com" phone="9077482554" country="US" job_title="Owner" />
+    <Organization name="Geek Girl Software" type="business" size="20" />
+  </EnterpriseAccount>
+  <ImageSearchSettings enable="false" />
+  <autocomplete_settings />
+  <sort_by_keys label="Relevance" key="" />
+  <sort_by_keys label="Date" key="date" />
+  <Annotations start="0" num="6" total="6">
+    <Annotation about="*.99designs.com/*/contests/*" score="1" timestamp="0x0004da59025d12d3" href="ChwqLjk5ZGVzaWducy5jb20vKi9jb250ZXN0cy8qENOl9JKQy7YC">
       <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="www.freelancer.com" />
+      <AdditionalData attribute="original_url" value="http://99designs.com/*/contests/*" />
+    </Annotation>
+    <Annotation about="www.getacoder.com/projects/*" score="1" timestamp="0x0004da59025d12c9" href="Chx3d3cuZ2V0YWNvZGVyLmNvbS9wcm9qZWN0cy8qEMml9JKQy7YC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="http://www.getacoder.com/projects/*" />
+    </Annotation>
+    <Annotation about="www.journalismjobs.com/Job_Listing.*" score="1" timestamp="0x0004da59025d12bd" href="CiR3d3cuam91cm5hbGlzbWpvYnMuY29tL0pvYl9MaXN0aW5nLioQvaX0kpDLtgI">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="http://www.journalismjobs.com/Job_Listing.*" />
+    </Annotation>
+    <Annotation about="www.elance.com/j/*/*" score="1" timestamp="0x0004da59025d12b2" href="ChR3d3cuZWxhbmNlLmNvbS9qLyovKhCypfSSkMu2Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="https://www.elance.com/j/*/*" />
+    </Annotation>
+    <Annotation about="jobs.freelanceswitch.com/jobs/*" score="1" timestamp="0x0004da59025d12a4" href="Ch9qb2JzLmZyZWVsYW5jZXN3aXRjaC5jb20vam9icy8qEKSl9JKQy7YC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="http://jobs.freelanceswitch.com/jobs/*" />
+    </Annotation>
+    <Annotation about="www.freelancer.com/projects/*" score="1" timestamp="0x0004da59025d126a" href="Ch13d3cuZnJlZWxhbmNlci5jb20vcHJvamVjdHMvKhDqpPSSkMu2Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="http://www.freelancer.com/projects/*" />
     </Annotation>
   </Annotations>
-</GoogleCustomizations>
+
+</CustomSearchEngine>
