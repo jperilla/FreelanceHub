@@ -23,14 +23,10 @@
     <ImageSearchSettings enable="false" />
     <autocomplete_settings />
     <sort_by_keys key="date" label="Date" />
-    <Annotations total="2" num="2" start="0">
-      <Annotation about="www.krop.com/#!/jobs/">
+    <Annotations total="1" num="1" start="0">
+      <Annotation about="99designs.com/*/contests/*">
         <Label name="_cse_dl-lwlywdoi" />
-        <AdditionalData value="http://www.krop.com/#!/jobs/" attribute="original_url" />
-      </Annotation>
-      <Annotation about="99designs.com/logo-design/contests/">
-        <Label name="_cse_dl-lwlywdoi" />
-        <AdditionalData value="http://99designs.com/logo-design/contests/" attribute="original_url" />
+        <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url" />
       </Annotation>
     </Annotations>
   </CustomSearchEngine>
