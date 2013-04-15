@@ -3,7 +3,7 @@
   -<CustomSearchEngine language="en" enable_suggest="true" encoding="UTF-8" creator="013914245334065375847" id="dl-lwlywdoi">
     <Title>Freelancer</Title>-<Context>
       -<BackgroundLabels>
-        <Label mode="FILTER" name="_cse_julie_perilla_gmail_com"/>
+        <Label mode="FILTER" name="_cse_dl-lwlywdoi"/>
         <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi"/>
       </BackgroundLabels>
     </Context>-<LookAndFeel ads_layout="1" promotion_url_length="full" enable_cse_thumbnail="true" element_branding="show" url_length="full" text_font="Arial, sans-serif" custom_theme="true" theme="7" element_layout="8" nonprofit="false">
@@ -16,7 +16,16 @@
       <AccountAdmin job_title="Owner" country="US" phone="9077482554" email="julie@geekgirlsoftware.com" last_name="Garcia" first_name="Julie"/>
       <Organization name="Geek Girl Software" size="20" type="business"/>
     </EnterpriseAccount><ImageSearchSettings enable="false"/><autocomplete_settings/><sort_by_keys key="date" label="Date"/><sort_by_keys key="" label="Relevance"/>
+    <Annotations>
+      <Annotation href="CjF3d3cub25saW5lLXdyaXRpbmctam9icy5jb20vam9iYmFuay9kZXRhaWwvbGluay0qEJj2wpSyzbYC" timestamp="0x0004da6b2290bb18" about="www.online-writing-jobs.com/jobbank/detail/link-*">
+        <Label name="_cse_dl-lwlywdoi"/>
+        <AdditionalData value="http://www.online-writing-jobs.com/jobbank/detail/link-*" attribute="original_url"/>
+      </Annotation>-
+      <Annotation href="CiZncmFwaGljLWRlc2lnbi50aGVjcmVhdGl2ZWxvZnQuY29tLyovKhD0zN38sc22Ag" timestamp="0x0004da6b1f976674" about="graphic-design.thecreativeloft.com/*/*">
+        <Label name="_cse_dl-lwlywdoi"/>
+        <AdditionalData value="http://graphic-design.thecreativeloft.com/*/*" attribute="original_url"/>
+      </Annotation>
+    </Annotations>
   </CustomSearchEngine>
-
-  <Include type="Annotations" href="http://freelancehub.apphb.com/context/xml/annotations.xml"/>
+  
 </GoogleCustomizations>
