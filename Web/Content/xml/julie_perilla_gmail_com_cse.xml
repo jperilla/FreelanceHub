@@ -24,9 +24,9 @@
     <autocomplete_settings />
     <sort_by_keys key="date" label="Date" />
     <Annotations total="1" num="1" start="0">
-      <Annotation about="99designs.com/*/contests/*">
-        <Label name="_cse_dl-lwlywdoi" />
-        <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url" />
+      <Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
+        <Label name="_cse_dl-lwlywdoi"/>
+        <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
       </Annotation>
     </Annotations>
   </CustomSearchEngine>
