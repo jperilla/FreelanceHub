@@ -32,7 +32,8 @@ namespace Web.Controllers
 
         public ActionResult GoogleSearchResults()
         {
-            return View("GoogleSearch");
+            var account = Account.GetAccount(User.Identity.Name, RavenSession);
+            return View("GoogleSearch", account);
         }
 
         public ActionResult Customize()

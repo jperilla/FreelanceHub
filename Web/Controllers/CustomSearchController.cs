@@ -186,6 +186,11 @@ namespace Web.Controllers
                             account.SitesToSearch.Remove(s.Id);
                     }
 
+                    // Save file name to database
+                    account.PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/" + account.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
+
+                    // TODO: create google cse file for this user or overwrite existing
+
                     ViewBag.Comment = "Saved";
                     if (Request.IsAjaxRequest())
                         return Json("success");

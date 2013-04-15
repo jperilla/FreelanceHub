@@ -8,7 +8,7 @@
     <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
     <form id="cref_iframe" action="@Url.Action("GoogleSearchResults", "Search")" >
       <div class="editor-field left xlong">
-        <input type="hidden" name="cref" value="http://freelancehub.apphb.com/Content/xml/cse.xml" /><!-- TODO: current user's file -->
+        <input type="hidden" name="cref" value="@Model.PathToGoogleCseFile" /><!-- TODO: current user's file -->
         <input type="hidden" name="cof" value="FORID:9" />
         <input type="text"  class="whole tall left" name="q" size="40" />   
       </div>

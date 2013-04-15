@@ -1,32 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<CustomSearchEngine id="dl-lwlywdoi" creator="013914245334065375847" language="en" encoding="UTF-8" enable_suggest="true">
-  <Title>Freelancer</Title>
-  <Context>
-    <BackgroundLabels>
-      <Label name="_cse_dl-lwlywdoi" mode="FILTER" />
-      <Label name="_cse_exclude_dl-lwlywdoi" mode="ELIMINATE" />
-    </BackgroundLabels>
-  </Context>
-  <LookAndFeel nonprofit="false" element_layout="8" theme="7" custom_theme="true" text_font="Arial, sans-serif" url_length="full" element_branding="show" enable_cse_thumbnail="true" promotion_url_length="full" ads_layout="1">
-    <Logo />
-    <Colors url="#008000" background="#FFFFFF" border="#FFFFFF" title="#0000CC" text="#000000" visited="#0000CC" title_hover="#0000CC" title_active="#0000CC" />
-    <Promotions title_color="#0000CC" title_visited_color="#0000CC" url_color="#008000" background_color="#FFFFFF" border_color="#336699" snippet_color="#000000" title_hover_color="#0000CC" title_active_color="#0000CC" />
-    <SearchControls input_border_color="#D9D9D9" button_border_color="#666666" button_background_color="#CECECE" tab_border_color="#E9E9E9" tab_background_color="#E9E9E9" tab_selected_border_color="#FF9900" tab_selected_background_color="#FFFFFF" />
-    <Results border_color="#FFFFFF" border_hover_color="#FFFFFF" background_color="#FFFFFF" background_hover_color="#FFFFFF" ads_background_color="#FDF6E5" ads_border_color="#FDF6E5" />
-  </LookAndFeel>
-  <AdSense />
-  <EnterpriseAccount>
-    <AccountAdmin first_name="Julie" last_name="Garcia" email="julie@geekgirlsoftware.com" phone="9077482554" country="US" job_title="Owner" />
-    <Organization name="Geek Girl Software" type="business" size="20" />
-  </EnterpriseAccount>
-  <ImageSearchSettings enable="false" />
-  <autocomplete_settings />
-  <sort_by_keys label="Relevance" key="" />
-  <sort_by_keys label="Date" key="date" />
-  <Annotations start="0" num="1" total="1">
-    <Annotation about="www.freelancer.com/*" score="1" timestamp="0x0004da5b3c9f6cb2" href="ChR3d3cuZnJlZWxhbmNlci5jb20vKhCy2f3ks8u2Ag">
-      <Label name="_cse_dl-lwlywdoi" />
-      <AdditionalData attribute="original_url" value="www.freelancer.com" />
-    </Annotation>
-  </Annotations>
-</CustomSearchEngine>
+<?xml version="1.0" encoding="UTF-8"?>
+<GoogleCustomizations>
+  -<CustomSearchEngine language="en" enable_suggest="true" encoding="UTF-8" creator="013914245334065375847" id="dl-lwlywdoi">
+    <Title>Freelancer</Title>-<Context>
+      -<BackgroundLabels>
+        <Label mode="FILTER" name="_cse_dl-lwlywdoi"/>
+        <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi"/>
+      </BackgroundLabels>
+    </Context>-<LookAndFeel ads_layout="1" promotion_url_length="full" enable_cse_thumbnail="true" element_branding="show" url_length="full" text_font="Arial, sans-serif" custom_theme="true" theme="7" element_layout="8" nonprofit="false">
+      <Logo/>
+      <Colors title="#0000CC" title_active="#0000CC" title_hover="#0000CC" visited="#0000CC" text="#000000" border="#FFFFFF" background="#FFFFFF" url="#008000"/>
+      <Promotions title_active_color="#0000CC" title_hover_color="#0000CC" snippet_color="#000000" border_color="#336699" background_color="#FFFFFF" url_color="#008000" title_visited_color="#0000CC" title_color="#0000CC"/>
+      <SearchControls tab_selected_background_color="#FFFFFF" tab_selected_border_color="#FF9900" tab_background_color="#E9E9E9" tab_border_color="#E9E9E9" button_background_color="#CECECE" button_border_color="#666666" input_border_color="#D9D9D9"/>
+      <Results border_color="#FFFFFF" background_color="#FFFFFF" ads_border_color="#FDF6E5" ads_background_color="#FDF6E5" background_hover_color="#FFFFFF" border_hover_color="#FFFFFF"/>
+    </LookAndFeel><AdSense/>-<EnterpriseAccount>
+      <AccountAdmin job_title="Owner" country="US" phone="9077482554" email="julie@geekgirlsoftware.com" last_name="Garcia" first_name="Julie"/>
+      <Organization name="Geek Girl Software" size="20" type="business"/>
+    </EnterpriseAccount><ImageSearchSettings enable="false"/><autocomplete_settings/><sort_by_keys key="date" label="Date"/><sort_by_keys key="" label="Relevance"/>
+  </CustomSearchEngine>
+
+  <Include type="Annotations" href="http://freelancehub.apphb.com/context/xml/annotations.xml"/>
+</GoogleCustomizations>

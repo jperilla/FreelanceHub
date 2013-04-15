@@ -30,6 +30,7 @@ namespace Web.Models
         public static readonly string BUDGET_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyBudgetMonthlyPlanHandle"];
         public static readonly string FREELANCER_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlyPlanHandle"];
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
+        public static readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"];
 
         #endregion
 
@@ -37,7 +38,7 @@ namespace Web.Models
 
         public int Id { get; set; }
         public string Email { get; set; }
-       
+        public string PathToGoogleCseFile { get; set; }
         public IList<Job> Jobs { get; set; }
         public IList<string> Searches { get; set; }
         public IList<string> SitesToSearch { get; set; }
@@ -255,6 +256,9 @@ namespace Web.Models
             Searches = new List<string>();
             SitesToSearch = new List<string>();
 
+            // Initially all customers use the same cse until they customize
+            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/cse.xml";
+
             // Create Chargify object
             Chargify = new ChargifyConnect();
             Chargify.apiKey = ConfigurationManager.AppSettings["ChargifyApiKey"];
@@ -269,6 +273,9 @@ namespace Web.Models
             Jobs = new List<Job>();
             Searches = new List<string>();
             SitesToSearch = new List<string>();
+
+            // Initially all customers use the same cse until they customize
+            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/cse.xml";
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
