@@ -6,10 +6,12 @@
     <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
     <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
     <form id="cref_iframe" action="@Url.Action("GoogleSearchResults", "Search")" >
-      <input type="hidden" name="cref" value="http://freelancehub.apphb.com/Content/xml/cse.xml" />
-      <input type="hidden" name="cof" value="FORID:9" />
-      <input type="text" name="q" size="40" />
-      <input type="submit" name="sa" value="Search" />    
+      <div class="editor-field left xlong">
+        <input type="hidden" name="cref" value="http://freelancehub.apphb.com/Content/xml/cse.xml" />
+        <input type="hidden" name="cof" value="FORID:9" />
+        <input type="text"  class="whole tall left" name="q" size="40" />   
+      </div>
+      <input type="submit" name="sa" value="Search" class="right red small" /><div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
    </form>
     <script type="text/javascript" src="'/cse'/brand'?form='cref_iframe" ></script>
     <!-- Google CSE Search Box Ends -->
