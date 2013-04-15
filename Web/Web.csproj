@@ -247,6 +247,9 @@
     <Content Include="Content\xml\annotations.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\xml\julie_perilla_gmail_com_cse.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\xml\cse.xml">
       <SubType>Designer</SubType>
     </Content>
