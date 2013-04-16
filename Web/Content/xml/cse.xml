@@ -1,87 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <GoogleCustomizations>
-  -<CustomSearchEngine language="en" enable_suggest="true" encoding="UTF-8" creator="013914245334065375847" id="dl-lwlywdoi">
-    <Title>Freelancer</Title>-<Context>
-      -<BackgroundLabels>
-        <Label mode="FILTER" name="_cse_dl-lwlywdoi"/>
-        <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi"/>
-      </BackgroundLabels>
-    </Context>-<LookAndFeel ads_layout="1" promotion_url_length="full" enable_cse_thumbnail="true" element_branding="show" url_length="full" text_font="Arial, sans-serif" custom_theme="true" theme="7" element_layout="8" nonprofit="false">
-      <Logo/>
-      <Colors title="#0000CC" title_active="#0000CC" title_hover="#0000CC" visited="#0000CC" text="#000000" border="#FFFFFF" background="#FFFFFF" url="#008000"/>
-      <Promotions title_active_color="#0000CC" title_hover_color="#0000CC" snippet_color="#000000" border_color="#336699" background_color="#FFFFFF" url_color="#008000" title_visited_color="#0000CC" title_color="#0000CC"/>
-      <SearchControls tab_selected_background_color="#FFFFFF" tab_selected_border_color="#FF9900" tab_background_color="#E9E9E9" tab_border_color="#E9E9E9" button_background_color="#CECECE" button_border_color="#666666" input_border_color="#D9D9D9"/>
-      <Results border_color="#FFFFFF" background_color="#FFFFFF" ads_border_color="#FDF6E5" ads_background_color="#FDF6E5" background_hover_color="#FFFFFF" border_hover_color="#FFFFFF"/>
-    </LookAndFeel><AdSense/>-<EnterpriseAccount>
-      <AccountAdmin job_title="Owner" country="US" phone="9077482554" email="julie@geekgirlsoftware.com" last_name="Garcia" first_name="Julie"/>
-      <Organization name="Geek Girl Software" size="20" type="business"/>
-    </EnterpriseAccount><ImageSearchSettings enable="false"/><autocomplete_settings/><sort_by_keys key="date" label="Date"/><sort_by_keys key="" label="Relevance"/>
-    <Annotations total="19" num="19" start="0">
-      -<Annotation href="ChQqLmNyYWlnc2xpc3Qub3JnLyovKhDcwoW_s822Ag" timestamp="0x0004da6b37e1615c" about="*.craigslist.org/*/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://*.craigslist.org/*/*" attribute="original_url"/>
-      </Annotation>-
-      <Annotation href="Cj13d3cucGhvdG9ncmFwaHlqb2JzZmluZGVyLmNvbS9qb2JzZWVrZXJzL0pvYkluZm8ucGhwP2pvYl9pZD0qELf00ZSzzbYC" timestamp="0x0004da6b32947a37" about="www.photographyjobsfinder.com/jobseekers/JobInfo.php?job_id=*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.photographyjobsfinder.com/jobseekers/JobInfo.php?job_id=*" attribute="original_url"/>
-      </Annotation>-
-      <Annotation href="Chpqb2JzLnByb2Jsb2dnZXIubmV0L3ZpZXcvKhDXiY34ss22Ag" timestamp="0x0004da6b2f0344d7" about="jobs.problogger.net/view/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://jobs.problogger.net/view/*" attribute="original_url"/>
-      </Annotation>-
-      <Annotation href="CjF3d3cub25saW5lLXdyaXRpbmctam9icy5jb20vam9iYmFuay9kZXRhaWwvbGluay0qEJj2wpSyzbYC" timestamp="0x0004da6b2290bb18" about="www.online-writing-jobs.com/jobbank/detail/link-*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.online-writing-jobs.com/jobbank/detail/link-*" attribute="original_url"/>
-      </Annotation>-
-      <Annotation href="CiZncmFwaGljLWRlc2lnbi50aGVjcmVhdGl2ZWxvZnQuY29tLyovKhD0zN38sc22Ag" timestamp="0x0004da6b1f976674" about="graphic-design.thecreativeloft.com/*/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://graphic-design.thecreativeloft.com/*/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="CjJwaG90b2dyYXBoeS50aGVjcmVhdGl2ZWxvZnQuY29tL3Bob3RvZ3JhcGh5L2pvYnMvKhCz5qD0sc22Ag" timestamp="0x0004da6b1e883333" about="photography.thecreativeloft.com/photography/jobs/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://photography.thecreativeloft.com/photography/jobs/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Chl3d3cuY29yb2Zsb3QuY29tL2pvYnMvKi8qEIb-wdWxzbYC" timestamp="0x0004da6b1ab07f06" about="www.coroflot.com/jobs/*/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.coroflot.com/jobs/*/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Ci13d3cubG9nb215d2F5LmNvbS9jb250ZXN0Vmlldy5waHA_Y29udGVzdElkPSoQkoynqKzNtgI" timestamp="0x0004da6ac509c612" about="www.logomyway.com/contestView.php?contestId=*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.logomyway.com/contestView.php?contestId=*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Ch93d3cuY3Jvd2RzcHJpbmcuY29tLyovcHJvamVjdC8qEJf_7f6nzbYC" timestamp="0x0004da6a7fdb7f97" about="www.crowdspring.com/*/project/*">
-        <Label name="_cse_julie_perilla_gmail_com"/>
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.crowdspring.com/*/project/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="CjJ3d3cuaWZyZWVsYW5jZS5jb20vcHJvamVjdC9kZXRhaWwuYXNweD9wcm9qZWN0aWQ9KhCnr7eipc22Ag" timestamp="0x0004da6a544dd7a7" about="www.ifreelance.com/project/detail.aspx?projectid=*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.ifreelance.com/project/detail.aspx?projectid=*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Cht3d3cucGVvcGxlcGVyaG91ci5jb20vam9iLyoQg-WU_aTNtgI" timestamp="0x0004da6a4fa53283" about="www.peopleperhour.com/job/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.peopleperhour.com/job/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="ChN3d3cuZ3VydS5jb20vam9icy8qEPysyqOkzbYC" timestamp="0x0004da6a4472967c" about="www.guru.com/jobs/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="https://www.guru.com/jobs/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Ch53d3cuYXV0aGVudGljam9icy5jb20vam9icy8qLyoQj_KKkKTNtgI" timestamp="0x0004da6a4202b90f" about="www.authenticjobs.com/jobs/*/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.authenticjobs.com/jobs/*/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Chx3d3cuZ2V0YWNvZGVyLmNvbS9wcm9qZWN0cy8qELjjy_6jzbYC" timestamp="0x0004da6a3fd2f1b8" about="www.getacoder.com/projects/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.getacoder.com/projects/*" attribute="original_url"/>
-      </Annotation>-
-      <Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <Label name="_cse_julie_perilla_gmail_com"/>
-        <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="CiR3d3cuam91cm5hbGlzbWpvYnMuY29tL0pvYl9MaXN0aW5nLioQiLzxvqLNtgI" timestamp="0x0004da6a27dc5e08" about="www.journalismjobs.com/Job_Listing.*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.journalismjobs.com/Job_Listing.*" attribute="original_url"/>
-      </Annotation>-<Annotation href="ChV3d3cuZWxhbmNlLmNvbS9qLyUyMCoQp8bUrKLNtgI" timestamp="0x0004da6a25952327" about="www.elance.com/j/%20*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="https://www.elance.com/j/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="CiJqb2JzLmZyZWVsYW5jZXN3aXRjaC5jb20vam9icy8lMjAqEJmp_6WizbYC" timestamp="0x0004da6a24bfd499" about="jobs.freelanceswitch.com/jobs/%20*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://jobs.freelanceswitch.com/jobs/*" attribute="original_url"/>
-      </Annotation>-<Annotation href="Ch13d3cuZnJlZWxhbmNlci5jb20vcHJvamVjdHMvKhDm3rWfos22Ag" timestamp="0x0004da6a23ed6f66" about="www.freelancer.com/projects/*" score="1">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.freelancer.com/projects/*" attribute="original_url"/>
-      </Annotation>
-    </Annotations>
-  </CustomSearchEngine>
+<CustomSearchEngine id="dl-lwlywdoi" creator="013914245334065375847" language="en" encoding="UTF-8" enable_suggest="true">
+  <Title>Freelancer</Title>
+  <Context>
+    <BackgroundLabels>
+      <Label name="_cse_dl-lwlywdoi" mode="FILTER" />
+      <Label name="_cse_exclude_dl-lwlywdoi" mode="ELIMINATE" />
+    </BackgroundLabels>
+  </Context>
+  <LookAndFeel nonprofit="false" element_layout="8" theme="7" custom_theme="true" text_font="Arial, sans-serif" url_length="full" element_branding="show" enable_cse_thumbnail="true" promotion_url_length="full" ads_layout="1">
+    <Logo />
+    <Colors url="#008000" background="#FFFFFF" border="#FFFFFF" title="#0000CC" text="#000000" visited="#0000CC" title_hover="#0000CC" title_active="#0000CC" />
+    <Promotions title_color="#0000CC" title_visited_color="#0000CC" url_color="#008000" background_color="#FFFFFF" border_color="#336699" snippet_color="#000000" title_hover_color="#0000CC" title_active_color="#0000CC" />
+    <SearchControls input_border_color="#D9D9D9" button_border_color="#666666" button_background_color="#CECECE" tab_border_color="#E9E9E9" tab_background_color="#E9E9E9" tab_selected_border_color="#FF9900" tab_selected_background_color="#FFFFFF" />
+    <Results border_color="#FFFFFF" border_hover_color="#FFFFFF" background_color="#FFFFFF" background_hover_color="#FFFFFF" ads_background_color="#FDF6E5" ads_border_color="#FDF6E5" />
+  </LookAndFeel>
+  <AdSense />
+  <EnterpriseAccount>
+    <AccountAdmin first_name="Julie" last_name="Garcia" email="julie@geekgirlsoftware.com" phone="9077482554" country="US" job_title="Owner" />
+    <Organization name="Geek Girl Software" type="business" size="20" />
+  </EnterpriseAccount>
+  <ImageSearchSettings enable="false" />
+  <autocomplete_settings />
+  <sort_by_keys label="Date" key="date" />
+  <sort_by_keys label="Relevance" key="" />
+  <Annotations start="0" num="19" total="19">
+    <Annotation about="*.photographyjobsfinder.com/jobseekers/JobInfo.php?job_id=*" timestamp="0x0004da707f63481c" href="CjsqLnBob3RvZ3JhcGh5am9ic2ZpbmRlci5jb20vam9ic2Vla2Vycy9Kb2JJbmZvLnBocD9qb2JfaWQ9KhCckI37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.photographyjobsfinder.com/jobseekers/JobInfo.php?job_id=*" />
+    </Annotation>
+    <Annotation about="jobs.problogger.net/view/*" timestamp="0x0004da707f63480d" href="Chpqb2JzLnByb2Jsb2dnZXIubmV0L3ZpZXcvKhCNkI37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="jobs.problogger.net/view/*" />
+    </Annotation>
+    <Annotation about="*.online-writing-jobs.com/jobbank/detail/link-*" timestamp="0x0004da707f6347ff" href="Ci8qLm9ubGluZS13cml0aW5nLWpvYnMuY29tL2pvYmJhbmsvZGV0YWlsL2xpbmstKhD_j437h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.online-writing-jobs.com/jobbank/detail/link-*" />
+    </Annotation>
+    <Annotation about="graphic-design.thecreativeloft.com/graphic-design/jobs/*" timestamp="0x0004da707f6347f1" href="CjhncmFwaGljLWRlc2lnbi50aGVjcmVhdGl2ZWxvZnQuY29tL2dyYXBoaWMtZGVzaWduL2pvYnMvKhDxj437h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="graphic-design.thecreativeloft.com/graphic-design/jobs/*" />
+    </Annotation>
+    <Annotation about="photography.thecreativeloft.com/photography/jobs/*" timestamp="0x0004da707f6347e1" href="CjJwaG90b2dyYXBoeS50aGVjcmVhdGl2ZWxvZnQuY29tL3Bob3RvZ3JhcGh5L2pvYnMvKhDhj437h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="photography.thecreativeloft.com/photography/jobs/*" />
+    </Annotation>
+    <Annotation about="*.logomyway.com/contestView.php?contestId=*" timestamp="0x0004da707f6347c6" href="CisqLmxvZ29teXdheS5jb20vY29udGVzdFZpZXcucGhwP2NvbnRlc3RJZD0qEMaPjfuHzrYC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.logomyway.com/contestView.php?contestId=*" />
+    </Annotation>
+    <Annotation about="*.coroflot.com/jobs/*" timestamp="0x0004da707f6347b8" href="ChUqLmNvcm9mbG90LmNvbS9qb2JzLyoQuI-N-4fOtgI">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.coroflot.com/jobs/*" />
+    </Annotation>
+    <Annotation about="*.crowdspring.com/*/project/*" timestamp="0x0004da707f6347ab" href="Ch0qLmNyb3dkc3ByaW5nLmNvbS8qL3Byb2plY3QvKhCrj437h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.crowdspring.com/*/project/*" />
+    </Annotation>
+    <Annotation about="*.ifreelance.com/project/detail.aspx?projectid=*" timestamp="0x0004da707f63479e" href="CjAqLmlmcmVlbGFuY2UuY29tL3Byb2plY3QvZGV0YWlsLmFzcHg_cHJvamVjdGlkPSoQno-N-4fOtgI">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.ifreelance.com/project/detail.aspx?projectid=*" />
+    </Annotation>
+    <Annotation about="*.peopleperhour.com/job/*" timestamp="0x0004da707f634790" href="ChkqLnBlb3BsZXBlcmhvdXIuY29tL2pvYi8qEJCPjfuHzrYC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.peopleperhour.com/job/*" />
+    </Annotation>
+    <Annotation about="*.guru.com/jobs/*" timestamp="0x0004da707f634784" href="ChEqLmd1cnUuY29tL2pvYnMvKhCEj437h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.guru.com/jobs/*" />
+    </Annotation>
+    <Annotation about="*.authenticjobs.com/jobs/*" timestamp="0x0004da707f634778" href="ChoqLmF1dGhlbnRpY2pvYnMuY29tL2pvYnMvKhD4jo37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.authenticjobs.com/jobs/*" />
+    </Annotation>
+    <Annotation about="*.getacoder.com/projects/*" timestamp="0x0004da707f63476b" href="ChoqLmdldGFjb2Rlci5jb20vcHJvamVjdHMvKhDrjo37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.getacoder.com/projects/*" />
+    </Annotation>
+    <Annotation about="*.journalismjobs.com/*" timestamp="0x0004da707f63475f" href="ChYqLmpvdXJuYWxpc21qb2JzLmNvbS8qEN-OjfuHzrYC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.journalismjobs.com/*" />
+    </Annotation>
+    <Annotation about="*.elance.com/j/*" timestamp="0x0004da707f634752" href="ChAqLmVsYW5jZS5jb20vai8qENKOjfuHzrYC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.elance.com/j/*" />
+    </Annotation>
+    <Annotation about="jobs.freelanceswitch.com/jobs/*" timestamp="0x0004da707f634745" href="Ch9qb2JzLmZyZWVsYW5jZXN3aXRjaC5jb20vam9icy8qEMWOjfuHzrYC">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="jobs.freelanceswitch.com/jobs/*" />
+    </Annotation>
+    <Annotation about="www.freelancer.com/projects/*" timestamp="0x0004da707f634737" href="Ch13d3cuZnJlZWxhbmNlci5jb20vcHJvamVjdHMvKhC3jo37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="www.freelancer.com/projects/*" />
+    </Annotation>
+    <Annotation about="99designs.com/*/contests/*" timestamp="0x0004da707f634717" href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCXjo37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="99designs.com/*/contests/*" />
+    </Annotation>
+    <Annotation about="*.krop.com/" timestamp="0x0004da707f634703" href="CgsqLmtyb3AuY29tLxCDjo37h862Ag">
+      <Label name="_cse_dl-lwlywdoi" />
+      <AdditionalData attribute="original_url" value="*.krop.com/#!/jobs/*" />
+    </Annotation>
+  </Annotations>
+</CustomSearchEngine>
 </GoogleCustomizations>

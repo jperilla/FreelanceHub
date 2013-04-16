@@ -188,7 +188,8 @@ namespace Web.Controllers
 
                     // Generate the Google Custom Search cse file for this user, must do this after the Sites to search are set
                     account.GenerateCseFile(RavenSession);
-                    
+
+                    // TODO: FORCE A REFRESH!!!!!!!
 
                     ViewBag.Comment = "Saved";
                     if (Request.IsAjaxRequest())

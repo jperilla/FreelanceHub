@@ -433,9 +433,6 @@ namespace Web.Models
             {
                 x.Serialize(stream, googleCse);
             }
-            
-            // TODO: create google cse file for this user or overwrite existing, if it exists load object with current annotations, then change
-            //  create inline annotations to avoid overwriting
         }
 
         public static bool IsAccountAtLimit(string email)
