@@ -4,7 +4,7 @@
     <Title>Freelancer</Title>
     <Context>
       <BackgroundLabels>
-        <Label mode="FILTER" name="include_this" />
+        <Label mode="FILTER" name="_cse_dl-lwlywdoi" />
         <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi" />
       </BackgroundLabels>
     </Context>
@@ -23,12 +23,63 @@
     <ImageSearchSettings enable="false" />
     <autocomplete_settings />
     <sort_by_keys key="date" label="Date" />
-    <Annotations total="1" num="1" start="0">
-      <Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
-        <Label name="include_this"/>
+    <Annotations total="19" num="19" start="0">
+      <Annotation about="*.krop.com/#!/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
-      <Annotation about="*.freelanceswitch.com/jobs/*">
-        <Label name="include_this"/>
+      <Annotation about="99designs.com/*/contests/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="www.freelancer.com/projects/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="jobs.freelanceswitch.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.elance.com/j/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.journalismjobs.com/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.getacoder.com/projects/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.authenticjobs.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.guru.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.peopleperhour.com/job/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.ifreelance.com/project/detail.aspx?projectid=*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.crowdspring.com/*/project/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.coroflot.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.logomyway.com/contestView.php?contestId=*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="photography.thecreativeloft.com/photography/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="graphic-design.thecreativeloft.com/graphic-design/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.online-writing-jobs.com/jobbank/detail/link-*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="jobs.problogger.net/view/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.photographyjobsfinder.com/jobseekers/JobInfo.php?job_id=*">
+        <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
     </Annotations>
   </CustomSearchEngine>

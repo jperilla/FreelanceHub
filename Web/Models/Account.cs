@@ -422,9 +422,9 @@ namespace Web.Models
                 annotation.Label = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationLabel[1];
                 annotation.Label[0] = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationLabel();
                 annotation.Label[0].name = googleCse.CustomSearchEngine.Context.BackgroundLabels[0].name; //include
-                annotation.AdditionalData = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationAdditionalData();
-                annotation.AdditionalData.attribute = "original_url";
-                annotation.AdditionalData.value = site.Url;
+                //annotation.AdditionalData = new GoogleCustomizationsCustomSearchEngineAnnotationsAnnotationAdditionalData();
+                //annotation.AdditionalData.attribute = "original_url";
+                //annotation.AdditionalData.value = site.Url;
                 googleCse.CustomSearchEngine.Annotations.Annotation[i++] = annotation;
             }
             System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(googleCse.GetType());
