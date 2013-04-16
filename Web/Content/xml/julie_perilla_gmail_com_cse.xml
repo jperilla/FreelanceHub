@@ -32,6 +32,10 @@
         <Label name="_cse_dl-lwlywdoi"/>
         <AdditionalData value="http://www.freelancer.com/projects/*" attribute="original_url"/>
       </Annotation>
+      <Annotation about="jobs.freelanceswitch.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi"/>
+        <AdditionalData value="http://jobs.freelanceswitch.com/jobs/*" attribute="original_url"/>
+      </Annotation>
     </Annotations>
   </CustomSearchEngine>
 </GoogleCustomizations>
