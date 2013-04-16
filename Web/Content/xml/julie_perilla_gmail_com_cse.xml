@@ -4,7 +4,7 @@
     <Title>Freelancer</Title>
     <Context>
       <BackgroundLabels>
-        <Label mode="FILTER" name="_cse_dl-lwlywdoi" />
+        <Label mode="FILTER" name="include_this" />
         <Label mode="ELIMINATE" name="_cse_exclude_dl-lwlywdoi" />
       </BackgroundLabels>
     </Context>
@@ -25,12 +25,10 @@
     <sort_by_keys key="date" label="Date" />
     <Annotations total="1" num="1" start="0">
       <Annotation href="Cho5OWRlc2lnbnMuY29tLyovY29udGVzdHMvKhCZyebWos22Ag" timestamp="0x0004da6a2ad9a499" about="99designs.com/*/contests/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
+        <Label name="include_this"/>
       </Annotation>
-      <Annotation about="jobs.freelanceswitch.com/jobs/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://jobs.freelanceswitch.com/jobs/*" attribute="original_url"/>
+      <Annotation about="*.freelanceswitch.com/jobs/*">
+        <Label name="include_this"/>
       </Annotation>
     </Annotations>
   </CustomSearchEngine>
