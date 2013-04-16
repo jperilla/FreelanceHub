@@ -28,7 +28,7 @@
         <Label name="_cse_dl-lwlywdoi"/>
         <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
       </Annotation>
-      <Annotation about="www.freelancer.com/projects/*" score="1">
+      <Annotation about="www.freelancer.com/projects/*">
         <Label name="_cse_dl-lwlywdoi"/>
         <AdditionalData value="http://www.freelancer.com/projects/*" attribute="original_url"/>
       </Annotation>
