@@ -28,10 +28,6 @@
         <Label name="_cse_dl-lwlywdoi"/>
         <AdditionalData value="http://99designs.com/*/contests/*" attribute="original_url"/>
       </Annotation>
-      <Annotation about="www.freelancer.com/projects/*">
-        <Label name="_cse_dl-lwlywdoi"/>
-        <AdditionalData value="http://www.freelancer.com/projects/*" attribute="original_url"/>
-      </Annotation>
       <Annotation about="jobs.freelanceswitch.com/jobs/*">
         <Label name="_cse_dl-lwlywdoi"/>
         <AdditionalData value="http://jobs.freelanceswitch.com/jobs/*" attribute="original_url"/>
