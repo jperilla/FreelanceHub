@@ -2,20 +2,19 @@
 
 <h2>What type of work are you looking for?</h2>
 
+<!--
 <div>
-    <!-- Google CSE Search Box Begins  -->
-    <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
-    <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
     <form id="cref_iframe" action="@Url.Action("GoogleSearchResults", "Search")" >
       <div class="editor-field left xlong">
-        <input type="hidden" name="cref" value="@Model.PathToGoogleCseFile" /><!-- TODO: current user's file -->
+        <input type="hidden" name="cref" value="@Model.PathToGoogleCseFile" />
         <input type="hidden" name="cof" value="FORID:9" />
-        <input type="text"  class="whole tall left" name="q" size="40" />   
+        <input type="text"  class="whole tall left" name="q" size="40" /> 
+        <div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>  
       </div>
-      <input type="submit" name="sa" value="Search" class="right red small" /><div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
+      <input type="submit" name="sa" value="Search" class="right red small" />
    </form>
     <script type="text/javascript" src="'/cse'/brand'?form='cref_iframe" ></script>
-    <!-- Google CSE Search Box Ends -->
+    
 </div>
 
 
@@ -23,13 +22,11 @@
 <script type="text/javascript">
     var googleSearchIframeName = "cse-search-results";
     var googleSearchFormName = "cse-search-box";
-    var googleSearchFrameWidth = 600;
     var googleSearchDomain = "www.google.com";
     var googleSearchPath = "/cse";
 </script>
-<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
-
-<!--
+<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>-->
+<div id="cse" style="width:100%;"></div>
 <div style="display:none">
 
     <div id="fria_webResult">
@@ -78,7 +75,8 @@
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-    google.load('search', '1', { language: 'en', style: google.loader.themes.V2_DEFAULT });
+
+    google.load('search', '1', { language: 'en', style: google.loader.themes.MINIMALIST });
     google.setOnLoadCallback(function () {
         var customSearchOptions = {};
         var orderByOptions = {};
@@ -86,11 +84,17 @@
         customSearchOptions['enableOrderBy'] = true;
         customSearchOptions['orderByOptions'] = orderByOptions;
         customSearchOptions['adoptions'] = { 'layout': 'noTop' };
-        var customSearchControl = new google.search.CustomSearchControl(
-      '017060715910446842244:syxqx4wot3o', customSearchOptions);
+        //customSearchOptions[google.search.Search.RESTRICT_EXTENDED_ARGS] = { 'as_sitesearch': 'jobs.problogger.net/view/' };
+
+        //customSearchOptions['crefUrl'] = $('#user-search').val();
+        var customSearchControl = new google.search.CustomSearchControl('013914245334065375847:nsu0ifu-puu', customSearchOptions);
         google.search.Csedr.addOverride("fria_");
+        customSearchControl.setRefinementStyle(google.search.SearchControl.REFINEMENT_AS_LINK);
         customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-        customSearchControl.setOnKeepCallback(this, onFavorite, " ");
+        customSearchControl.setOnKeepCallback(this, onFavorite, google.search.SearchControl.KEEP_LABEL_BLANK);
+        customSearchControl.setSearchStartingCallback(this, function (control, searcher, query) {
+            searcher.setQueryAddition("site:jobs.problogger.net/view/ OR site:ifreelance.com/project/");
+        });
         customSearchControl.draw('cse');
     }, true);
 
@@ -115,4 +119,4 @@
     function stripHtml(str) {
         return jQuery('<div />', { html: str }).text();
     } 
-</script>-->
+</script>

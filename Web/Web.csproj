@@ -306,7 +306,7 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Pricing\Index.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\BingSearch.cshtml" />
     <Content Include="Views\Shared\_AlreadySignedUp.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
