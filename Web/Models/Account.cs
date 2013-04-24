@@ -46,6 +46,9 @@ namespace Web.Models
         public IList<string> SitesToSearch { get; set; }
 
         [JsonIgnore]
+        public string SitesToSearchString { get; set; }
+
+        [JsonIgnore]
         public ICustomer ChargifyCustomer { get; private set; }
 
         private IDictionary<int, ISubscription> _customerSubscriptions;
@@ -267,6 +270,7 @@ namespace Web.Models
             Chargify.Password = ConfigurationManager.AppSettings["ChargifyApiPassword"];
             Chargify.URL = ConfigurationManager.AppSettings["ChargifyUrl"];
             Chargify.SharedKey = ConfigurationManager.AppSettings["ChargifySharedKey"];
+
         }
 
         public Account(string email)
@@ -452,14 +456,49 @@ namespace Web.Models
             // Check that the account is current in Chargify
             if (accounts != null &&
                 accounts.Count() > 0)
-                return accounts.FirstOrDefault();
+            {
+                var account = accounts.FirstOrDefault();
+                account.LoadSitesToSearchString(session);
+                return account;
+            }
 
             return null;
         }
  
         #endregion
 
-        
+        #region Private Methods
+
+        private void LoadSitesToSearchString(IDocumentSession session)
+        {
+            StringBuilder sitesToSearch = new StringBuilder();
+            foreach (var site in this.SitesToSearch)
+            {
+                CustomSearchSite customSite = session.Load<CustomSearchSite>(site);
+                string shortUrl;
+                if (customSite != null && !string.IsNullOrEmpty(customSite.Url) && customSite.Url.IndexOf('/') != -1)
+                {
+                    shortUrl = customSite.Url.Substring(0, customSite.Url.IndexOf('/'));
+                }
+                else
+                {
+                    shortUrl = customSite.Url;
+                }
+
+                if (!string.IsNullOrEmpty(shortUrl) && shortUrl.Contains("*."))
+                {
+                    shortUrl = shortUrl.Remove(shortUrl.IndexOf("*"), 2);
+                }
+
+                sitesToSearch.Append("site:" + shortUrl + " OR ");
+            }
+
+            sitesToSearch.Remove(sitesToSearch.Length - 3, 3);
+            SitesToSearchString = sitesToSearch.ToString();
+        }
+
+
+        #endregion
 
     }
 }

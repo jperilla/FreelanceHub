@@ -333,6 +333,7 @@
     <Content Include="Views\Search\RedirectDisclaimerJob.cshtml" />
     <Content Include="Views\Search\GoogleSearch.cshtml" />
     <Content Include="Views\Shared\_GoogleSearchResults.cshtml" />
+    <Content Include="Views\Search\RedirectDisclaimerUrl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

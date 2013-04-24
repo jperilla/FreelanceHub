@@ -32,6 +32,36 @@ namespace Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult SaveFavorite(Job jobClicked)
+        {
+            // Create the job
+            var job = new Job
+            {
+                JobStatus = new JobStatus(),
+                ShortDescription = jobClicked.ShortDescription,
+                Title = jobClicked.Title,
+                URL = jobClicked.URL,
+                Budget = "$100"
+            };
+            job.JobStatus.Status = "Lead";
+
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                if (account.Jobs == null)
+                    account.Jobs = new List<Job>();
+
+                account.Jobs.Add(job);
+                RavenSession.Store(account);
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
+
+        }
+
         public PartialViewResult UnsaveBingJob(SearchResult jobClicked)
         {
             // Load the current account

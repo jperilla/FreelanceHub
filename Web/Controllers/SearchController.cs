@@ -41,6 +41,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult RedirectDisclaimerUrl(string url)
+        {
+            return View("RedirectDisclaimerUrl", null, url);
+        }
+
         public ActionResult RedirectDisclaimer(SearchResult result)
         {            
             return View("RedirectDisclaimer", result);
