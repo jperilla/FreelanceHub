@@ -341,8 +341,6 @@
     <Content Include="Views\CustomSearch\Edit.cshtml" />
     <Content Include="Views\CustomSearch\UserView.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimer.cshtml" />
-    <Content Include="Views\Shared\JobSaved.cshtml" />
-    <Content Include="Views\Shared\JobNotSaved.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimerJob.cshtml" />
     <Content Include="Views\Search\GoogleSearch.cshtml" />
     <Content Include="Views\Shared\_GoogleSearchResults.cshtml" />
