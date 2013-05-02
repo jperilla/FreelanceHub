@@ -22,13 +22,16 @@ namespace Web.Models
         #region Constants
 
         public static readonly string BASE_URL = ConfigurationManager.AppSettings["ChargifyUrl"];
+
+        public static readonly string FREE_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreeSubscriptionUrl"];
         public static readonly string BUDGET_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyBudgetMonthlySubscriptionUrl"];
-        public static readonly string BUDGET_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyBudgetYearlySubscriptionUrl"]; 
+        public static readonly string BUDGET_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyBudgetYearlySubscriptionUrl"];
         public static readonly string FREELANCER_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlySubscriptionUrl"];
         public static readonly string FREELANCER_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyFreelancerYearlySubscriptionUrl"]; 
         public static readonly string AGENCY_MONTHLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyAgencyMonthlySubscriptionUrl"];
         public static readonly string AGENCY_YEARLY_PLAN_URL = ConfigurationManager.AppSettings["ChargifyAgencyYearlySubscriptionUrl"];
         public static readonly string UPDATE_PAYMENT_SHORTNAME = "update_payment";
+        public static readonly string FREE_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyFreePlanHandle"];
         public static readonly string BUDGET_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyBudgetMonthlyPlanHandle"];
         public static readonly string FREELANCER_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlyPlanHandle"];
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
@@ -192,10 +195,12 @@ namespace Web.Models
                 if (_customerSubscriptions == null)
                     LoadChargifyInfo();
 
-                if ((_customerSubscriptions != null) && (_customerSubscriptions.Count > 0))
+                if ((_customerSubscriptions != null) 
+                    && (_customerSubscriptions.Count > 0)
+                    && _customerSubscriptions.Values.First().CreditCard != null)
                     creditCard = _customerSubscriptions.Values.First().CreditCard.FullNumber;
                 else
-                    creditCard = "None Saved.";
+                    creditCard = "None Saved";
 
                 return creditCard;
             }
@@ -207,6 +212,7 @@ namespace Web.Models
         {
             get
             {
+                string returnString = string.Empty;
                 decimal balance = 0.0M;
                 decimal nextCharge = 0.0M;
                 DateTime nextChargeDate = DateTime.Now;
@@ -215,17 +221,29 @@ namespace Web.Models
 
                 if ((_customerSubscriptions != null) && (_customerSubscriptions.Count > 0))
                 {
-                    balance = _customerSubscriptions.Values.First().Balance;
-                    nextCharge = _customerSubscriptions.Values.First().Product.Price;
-                    nextChargeDate = _customerSubscriptions.Values.First().CurrentPeriodEndsAt;
+                    ISubscription subscription = _customerSubscriptions.Values.First();
+
+                    if (subscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                    {
+                        returnString = "You're on the FREE plan. You're balance is $0.";
+                    }
+                    else
+                    {
+                        balance = subscription.Balance;
+                        nextCharge = subscription.Product.Price;
+                        nextChargeDate = subscription.CurrentPeriodEndsAt;
+
+
+                        returnString = ("You're balance is $" + balance + "." + ((_customerSubscriptions == null ||
+                                                                _customerSubscriptions.Count == 0 ||
+                                                                _customerSubscriptions.Values.First().CurrentPeriodEndsAt == null
+                                                                || PendingCancellationOn != null) ? "" :
+                        ". You're next charge for $" + nextCharge +
+                        " will be made on " + nextChargeDate.ToShortDateString() + "."));
+                    }
                 }
 
-                return ("You're balance is $" + balance + "." + ((_customerSubscriptions == null ||
-                                                            _customerSubscriptions.Count == 0 ||
-                                                            _customerSubscriptions.Values.First().CurrentPeriodEndsAt == null
-                                                            || PendingCancellationOn != null) ? "" :
-                    ". You're next charge for $" + nextCharge + 
-                    " will be made on " + nextChargeDate.ToShortDateString() + "."));
+                return returnString;
             }
         }
         
@@ -296,6 +314,19 @@ namespace Web.Models
             ChargifyCustomer = Chargify.LoadCustomer(Email);
             if(ChargifyCustomer != null)
                 _customerSubscriptions = Chargify.GetSubscriptionListForCustomer(ChargifyCustomer.ChargifyID);
+        }
+
+        public bool HasJob(string url)
+        {
+            bool hasJob = false;
+
+            var jobs = from j in Jobs 
+                       where j.URL == url 
+                       select j;
+            if (jobs != null && jobs.Count() > 0)
+                hasJob = true;
+
+            return hasJob;
         }
 
         public bool IsAccountCurrent()
@@ -493,8 +524,15 @@ namespace Web.Models
                 sitesToSearch.Append("site:" + shortUrl + " OR ");
             }
 
-            sitesToSearch.Remove(sitesToSearch.Length - 3, 3);
-            SitesToSearchString = sitesToSearch.ToString();
+            if (sitesToSearch.Length > 0)
+            {
+                sitesToSearch.Remove(sitesToSearch.Length - 3, 3);
+                SitesToSearchString = sitesToSearch.ToString();
+            }
+            else
+            {
+                SitesToSearchString = string.Empty;
+            }
         }
 
 

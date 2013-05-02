@@ -32,34 +32,66 @@ namespace Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
         public JsonResult SaveFavorite(Job jobClicked)
         {
-            // Create the job
-            var job = new Job
-            {
-                JobStatus = new JobStatus(),
-                ShortDescription = jobClicked.ShortDescription,
-                Title = jobClicked.Title,
-                URL = jobClicked.URL,
-                Budget = "$100"
-            };
-            job.JobStatus.Status = "Lead";
-
+            // Check if job was already saved
             // Load the current account
             Account account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
             {
-                if (account.Jobs == null)
-                    account.Jobs = new List<Job>();
+                var jobs = from j in account.Jobs
+                           where j.URL == jobClicked.URL
+                           select j;
 
-                account.Jobs.Add(job);
-                RavenSession.Store(account);
+                if (jobs != null && jobs.Count() > 0)
+                {
+                    return Json("success", JsonRequestBehavior.AllowGet);
+                }
+
+                // Create the job
+                var job = new Job
+                {
+                    JobStatus = new JobStatus(),
+                    ShortDescription = jobClicked.ShortDescription,
+                    Title = jobClicked.Title,
+                    URL = jobClicked.URL
+                };
+                job.JobStatus.Status = "Lead";
+
+                if (account != null)
+                {
+                    if (account.Jobs == null)
+                        account.Jobs = new List<Job>();
+
+                    account.Jobs.Add(job);
+                    RavenSession.Store(account);
+                }
             }
 
             return Json("success", JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult UnsaveFavorite(string url)
+        {
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                // Load the job
+                var jobs = from j in account.Jobs
+                           where j.URL == url
+                           select j;
+
+                // Delete the job
+                if (jobs != null && jobs.Count() > 0)
+                {
+                    Job job = jobs.First();
+                    account.Jobs.Remove(job);
+                    RavenSession.Store(account);
+                }
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult UnsaveBingJob(SearchResult jobClicked)

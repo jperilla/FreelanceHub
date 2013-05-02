@@ -23,8 +23,29 @@
     <ImageSearchSettings enable="false" />
     <autocomplete_settings />
     <sort_by_keys key="date" label="Date" />
-    <Annotations total="1" num="1" start="0">
+    <Annotations total="8" num="8" start="0">
       <Annotation about="jobs.freelanceswitch.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.authenticjobs.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.crowdspring.com/*/project/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.getacoder.com/projects/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.guru.com/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.peopleperhour.com/job/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.ifreelance.com/project/detail.aspx?projectid=*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="www.freelancer.com/projects/*">
         <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
     </Annotations>

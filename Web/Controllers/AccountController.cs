@@ -110,6 +110,15 @@ namespace Web.Controllers
 
                 switch (signup.Plan)
                 {
+                    case "free":
+                        {
+                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREE_PLAN_URL,
+                                                    CustomerUtilities.GetFirstName(signup.Name),
+                                                    CustomerUtilities.GetLastName(signup.Name),
+                                                    signup.Email,
+                                                    signup.Email));
+                        }
+                        break;
                     case "full-time":
                         {
                             return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
@@ -158,7 +167,7 @@ namespace Web.Controllers
             return View(account);
         }
 
-        public ActionResult ChangePlanToSmall(string email)
+        public ActionResult ChangePlanToFree(string email)
         {
             Account account = new Account(email);
 
@@ -166,9 +175,9 @@ namespace Web.Controllers
             if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
             {
                 ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
-                if (!customerSubscription.Product.Name.Contains("Budget"))
+                if (customerSubscription.Product.Handle != Account.FREE_PLAN_HANDLE)
                 {
-                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.BUDGET_MONTHLY_PLAN_HANDLE);                          
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREE_PLAN_HANDLE);
                 }
             }
 
@@ -176,7 +185,31 @@ namespace Web.Controllers
             return RedirectToAction("Index", account);
         }
 
-        public ActionResult ChangePlanToMedium(string email)
+        public ActionResult ChangePlanToBudget(string email)
+        {
+            Account account = new Account(email);
+
+            // If plan changed, update customer subscription
+            if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
+            {
+                ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
+                if (customerSubscription.Product.Handle != Account.BUDGET_MONTHLY_PLAN_HANDLE)
+                {
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.BUDGET_MONTHLY_PLAN_HANDLE);
+                }
+
+                // If they are currently on the free plan, force them to enter a credit card
+                if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                {
+                    return new RedirectResult (account.UpdatePaymentLink);
+                }                
+            }
+
+            // Go back to account view
+            return RedirectToAction("Index", account);
+        }
+
+        public ActionResult ChangePlanToFreelancer(string email)
         {
             Account account = new Account(email);
 
@@ -184,17 +217,23 @@ namespace Web.Controllers
             if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
             {
                 ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
-                if (!customerSubscription.Product.Name.Contains("Freelancer"))
+                if (customerSubscription.Product.Handle != Account.FREELANCER_MONTHLY_PLAN_HANDLE)
                 {
                     Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREELANCER_MONTHLY_PLAN_HANDLE); 
                 }
+
+                // If they are currently on the free plan, force them to enter a credit card
+                if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                {
+                    return new RedirectResult(account.UpdatePaymentLink);
+                }
             }
 
             // Go back to account view
             return RedirectToAction("Index", account);
         }
 
-        public ActionResult ChangePlanToLarge(string email)
+        public ActionResult ChangePlanToAgency(string email)
         {
             Account account = new Account(email);
 
@@ -202,9 +241,15 @@ namespace Web.Controllers
             if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
             {
                 ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
-                if (!customerSubscription.Product.Name.Contains("Agency"))
+                if (customerSubscription.Product.Handle != Account.AGENCY_MONTHLY_PLAN_HANDLE)
                 {
                     Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.AGENCY_MONTHLY_PLAN_HANDLE); 
+                }
+
+                // If they are currently on the free plan, force them to enter a credit card
+                if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                {
+                    return new RedirectResult(account.UpdatePaymentLink);
                 }
             }
 

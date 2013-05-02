@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -237,12 +245,17 @@
     <Content Include="Content\images\plaid_dark.png" />
     <Content Include="Content\images\relax.png" />
     <Content Include="Content\images\ricepaper2.png" />
+    <Content Include="Content\images\save.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\search_screenshot.png" />
     <Content Include="Content\images\search_screenshot_large.png" />
     <Content Include="Content\images\star-gold32.png" />
     <Content Include="Content\images\star-green32.png" />
     <Content Include="Content\images\star-orange32.png" />
+    <Content Include="Content\images\star-red16.png" />
+    <Content Include="Content\images\star-red24.png" />
+    <Content Include="Content\images\star-white16.png" />
+    <Content Include="Content\images\star-white24.png" />
     <Content Include="Content\images\star-white32.png" />
     <Content Include="Content\images\twitter.png" />
     <Content Include="Content\xml\annotations.xml">
@@ -334,6 +347,7 @@
     <Content Include="Views\Search\GoogleSearch.cshtml" />
     <Content Include="Views\Shared\_GoogleSearchResults.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimerUrl.cshtml" />
+    <Content Include="Views\Shared\_Saved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

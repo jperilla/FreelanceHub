@@ -1,35 +1,11 @@
 ﻿@model Web.Models.Account
 
-<div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
 
 <h2>What type of work are you looking for, @Model.CustomerFirstName?</h2>
-
-
-<!--
-<div>
-    <form id="cref_iframe" action="@Url.Action("GoogleSearchResults", "Search")" >
-      <div class="editor-field left xlong">
-        <input type="hidden" name="cref" value="@Model.PathToGoogleCseFile" />
-        <input type="hidden" name="cof" value="FORID:9" />
-        <input type="text"  class="whole tall left" name="q" size="40" /> 
-        <div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>  
-      </div>
-      <input type="submit" name="sa" value="Search" class="right red small" />
-   </form>
-    <script type="text/javascript" src="'/cse'/brand'?form='cref_iframe" ></script>
-    
-</div>
-
-
-<div id="cse-search-results"></div>
-<script type="text/javascript">
-    var googleSearchIframeName = "cse-search-results";
-    var googleSearchFormName = "cse-search-box";
-    var googleSearchDomain = "www.google.com";
-    var googleSearchPath = "/cse";
-</script>
-<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>-->
 <input type="hidden" id="custom-sites" name="sites" value="@Model.SitesToSearchString" />
+
+<div class="right-large-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
+
 <div id="cse" style="width:100%;"></div>
 <div style="display:none">
 
@@ -41,6 +17,8 @@
         return i < 1 ? visibleUrl : unescapedUrl.substring(i);}}">
             <div data-if="Vars.richSnippet" data-attr="0"
                  data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
+            
+            <!--<a class="gsc-keeper" data-attr="{href:'@Url.Action("SaveFavorite", "Jobs")?url=' + unescapedUrl + '&title=' + titleNoFormatting + '&desc=' + stripHtml(content),target:target}" style="background:url(/Content/images/star-white16.png) no-repeat left center; width: 80px;" ></a>-->
             <div class="gs-title">
                 <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
                    data-body="html(title)"></a>
@@ -51,10 +29,11 @@
             <div class="gs-visibleUrl gs-visibleUrl-long" data-body="longUrl()"></div>
             <div data-if="Vars.richSnippet && Vars.richSnippet.action" class="gs-actions"
                  data-body="render('action',richSnippet,{url:unescapedUrl,target:target})"></div>
-            <a class="red small right" data-attr="{href:'@Url.Action("RedirectDisclaimerUrl", "Search")?url=' + unescapedUrl,target:target}" style="background:url(/Content/images/apply.png) no-repeat left center;"></a>
-        </div>
+            <a class="red small right" data-attr="{href:'@Url.Action("RedirectDisclaimerUrl", "Search")?url=' + unescapedUrl,target:target}" style="background:url(/Content/images/apply.png) no-repeat left center;"></a>       
+        </div>        
+        <div data-attr="{id:makeId(unescapedUrl)}" class="saved"></div>
     </div>
-
+         
   <div id="fria_thumbnail">
     <div data-attr="0" data-vars="{tn:Vars.thumbnail && thumbnail.src
         ? thumbnail : {src:Vars.document && document.thumbnailUrl}}">
@@ -105,25 +84,32 @@
     }, true);
 
     var onFavorite = function (result) {
-        if (result) {
-            var newJob = {
-                ShortDescription: stripHtml(result.content),
-                Title: stripHtml(result.title),
-                URL: stripHtml(result.url),
-                Budget: "$100"
-            };
+        var newJob = {
+            ShortDescription: stripHtml(result.content),
+            Title: stripHtml(result.title),
+            URL: result.url
+        };
 
-            $.post('@Url.Action("SaveFavorite", "Jobs")', newJob, function (data) {
-                // TODO: find the result url in the dom and then go parent, parent, find keeper
-                keeper.css("background", "url(/Content/images/star-gold32.png) no-repeat right top;");
-            }).error(function (data) {
+        var id = "#" + makeId(result.url);
+        $(id).html("Saving...");
 
-            });
-
-        }
+        $.post('@Url.Action("SaveFavorite", "Jobs")', newJob, function (jsonReturnArgs) {
+            $(id).html("Saved!");
+        }).error(function (data) {
+            alert("Error Saving");
+        });
     };
+
+  
 
     function stripHtml(str) {
         return jQuery('<div />', { html: str }).text();
+    }
+
+    function makeId(str) {
+        var newstring = str.replace(/\//g, "");
+        newstring = newstring.replace(/\./g, "_");
+        newstring = newstring.replace(/\:/g, "_");
+        return newstring;
     } 
 </script>

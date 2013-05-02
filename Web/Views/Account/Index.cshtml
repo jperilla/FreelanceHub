@@ -62,21 +62,10 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(m => m.Statistics)<br />
-                            @Html.DisplayFor(m => m.BalanceSummary)
+                            @Html.DisplayFor(m => m.BalanceSummary)&nbsp;&nbsp;@Html.ActionLink("Change Plan", "Upgrade", Model)
                         </td>
                     </tr>
                 </tbody>
-            </table
+            </table>
     </section>
-    <section class="page_section">
-        <h3>Email Preferences</h3>
-        <table cellpadding="0" cellspacing="0">                
-            <tbody>                       
-                <tr>
-                    <td>
-                        You are not signed up to recieve emails.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
+

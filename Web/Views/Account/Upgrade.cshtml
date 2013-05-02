@@ -9,10 +9,29 @@
 <section id="pricing_main">
    <h2>Choose a New Plan</h2>
   <div class="tsc_pricingtable04">
+   <ul class="price-box">
+      <li class="pricing-header">
+        <ul>
+          <li class="title">Basic</li>
+          <li class="price"><span class="big">Free</span></li>
+          <li class="month-label">Boom!</li>
+        </ul>
+      </li>
+      <li class="pricing-content">
+        <ul>
+          <li class="big-description"><strong>Try out the tool now for free!</strong></li>
+          <li><strong>20</strong> Searches per Month</li>
+          <li><strong>2</strong> Saved Searches</li>
+          <li><strong>10</strong> Saved Leads</li>
+          <li><strong>General Searching</strong> (Predefined List of Sites)</li>
+        </ul>
+      </li>
+      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToFree", "Account", new { email = Model.Email }, null)</li>
+    </ul>
     <ul class="price-box">
       <li class="pricing-header">
         <ul>
-          <li class="title">Small</li>
+          <li class="title">Part Time</li>
           <li class="price"><span class="currency">$</span><span class="big">9</span></li>
           <li class="month-label">Per Month</li>
         </ul>
@@ -26,7 +45,7 @@
           <li><strong>General Searching</strong> (Predefined List of Sites)</li>
         </ul>
       </li>
-      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToSmall", "Account", new { email = Model.Email }, null)</li>
+      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToBudget", "Account", new { email = Model.Email }, null)</li>
     </ul>
     <ul class="price-box">
       <li class="pricing-header">
@@ -46,7 +65,7 @@
           <li><strong>Custom Searching</strong> (Choose Your Sites)</li>
         </ul>
       </li>
-      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToMedium", "Account", new { email = Model.Email }, null) </li>
+      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToFreelancer", "Account", new { email = Model.Email }, null) </li>
     </ul>
     <ul class="price-box">
       <li class="pricing-header">
@@ -65,7 +84,7 @@
           <li><strong>Custom Searching</strong> (Choose Your Sites)</li>
         </ul>
       </li>
-      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToLarge", "Account", new { email = Model.Email }, null)</li>
+      <li class="pricing-footer"> @Html.ActionLink("Choose this Plan", "ChangePlanToAgency", "Account", new { email = Model.Email }, null)</li>
     </ul>
   </div>
 <div class="tsc_clear"></div>

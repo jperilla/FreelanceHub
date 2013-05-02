@@ -9,7 +9,7 @@
 
         <h1>My Leads</h1>
         @if (Model.Where(model => model.JobStatus.Status == "Lead").Count() == 0) {
-             <h4>You have no leads saved. Want to try @Html.ActionLink("searching", "Index", "Search", null, null)?</h4>
+             <h4>You have no leads saved. Want to try @Html.ActionLink("searching", "GoogleSearch", "Search", null, null)?</h4>
         }
         else
         {

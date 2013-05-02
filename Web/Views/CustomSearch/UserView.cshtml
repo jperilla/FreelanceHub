@@ -112,7 +112,8 @@
     </ul>
     <div class="right">
         <p><span id="message">@ViewBag.Comment</span></p>
-        <p class="right"><input type="submit" id="saveSearches" class="red medium" value="Save" /></p>
+        <p class="right"><input type="submit" id="saveSearches" class="red medium" value="Save" /></p>        
+        <p>@Html.ActionLink("Back to Search", "GoogleSearch", "Search", null, null)</p>
     </div>
 }
 
