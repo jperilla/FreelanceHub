@@ -5,7 +5,14 @@
     Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
 }
 <section id="account_main">
-    <h2>Your Account</h2>
+    @if (Model.IsAccountCurrent())
+    {
+        <h2>Your Account is Active</h2>
+    }
+    else
+    {
+        <h2>Your Account is Suspended</h2>
+    }
     <section class="page_section">
             <h3>Profile</h3>
             <table cellpadding="0" cellspacing="0">                

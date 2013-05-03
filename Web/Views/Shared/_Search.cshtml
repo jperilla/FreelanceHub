@@ -79,6 +79,15 @@
         customSearchControl.setOnKeepCallback(this, onFavorite, google.search.SearchControl.KEEP_LABEL_BLANK);
         customSearchControl.setSearchStartingCallback(this, function (control, searcher, query) {
             searcher.setQueryAddition(siteString);
+            var search = {
+                queryString: query
+            }
+
+            $.post('@Url.Action("SaveSearchQuery", "Search")', search, function (jsonReturnArgs) {
+
+            }).error(function (data) {
+
+            });
         });
         customSearchControl.draw('cse');
     }, true);
@@ -96,7 +105,7 @@
         $.post('@Url.Action("SaveFavorite", "Jobs")', newJob, function (jsonReturnArgs) {
             $(id).html("Saved!");
         }).error(function (data) {
-            alert("Error Saving");
+            $(id).html("Oops! Try again.");
         });
     };
 

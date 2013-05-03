@@ -7,22 +7,30 @@ using Raven.Imports.Newtonsoft.Json;
 
 namespace Web.Models
 {
-    public class Signup
+    public class Signup : IValidatableObject
     {
-        [Required(ErrorMessage = "* Email Required")]
+        [Required(ErrorMessage = "Please enter your email.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "* Name Required")]
+        [Required(ErrorMessage = "Please enter your name.")]
         public string Name { get; set; }
 
         [JsonIgnore]
-        [Required(ErrorMessage = "* Password Required")]
+        [Required(ErrorMessage = "Please enter your password.")]
         public string Password { get; set; }
 
         [JsonIgnore]
-        [Required(ErrorMessage = "* Confirm Password")]
+        [Required(ErrorMessage = "Please confirm your password.")]
         public string ConfirmPassword { get; set; }
 
         public string Plan { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Password != ConfirmPassword)
+            {
+                yield return new ValidationResult("Passwords must match.", new[] { "ConfirmPassword" });
+            }
+        }
     }
 }

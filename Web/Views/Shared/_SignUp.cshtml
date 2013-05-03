@@ -9,8 +9,9 @@
         <div class="login-with-us">
         @using (@Html.BeginForm("SignUp", "Account", FormMethod.Post, new { id = "signupform" }))
         {            
+            <div><span id="message"></span></div>
             <div class="editor-label">
-                @Html.LabelFor(model => model.Name)
+                @Html.Label("Full Name")
             </div>
         
             <div class="editor-field">
@@ -43,13 +44,39 @@
             </div>
     
             <div class="editor-field">
-                @Html.HiddenFor(model => model.Plan, new { @id = "plan"})
+                @Html.HiddenFor(model => model.Plan, new { @id = "plan" })
             </div>
             
             <input id="signup-modal" type="submit" class="red medium" value="Sign Up!" />
-            
-            <div id="signupMessage" class="message"></div>
         }
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#signup-modal").click(function (e) {
+            e.preventDefault();
+
+            var dataString = $("#signupform").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SignUp", "Account")',
+                data: dataString,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success == "1") {
+                        window.location.href = data.Redirect;
+                    }
+                    else {
+                        $('span#message').html(data.Message).css('color', 'red');
+                    }
+                }
+            });
+
+        });
+    });
+</script>

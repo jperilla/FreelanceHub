@@ -28,7 +28,6 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.simplemodal.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/osx.js")"></script>
 
        <!--[if lt IE 9]>
@@ -40,7 +39,7 @@
     <body>
         <div id="wrapper">
             <header>
-                <section id="sub-content">       
+                <section class="sub-content">       
                     <nav>
                         <ul id="nav-list">
                             <li id="home">@Html.ActionLink("home", "Index", "LandingPage")</li>
@@ -50,11 +49,11 @@
                             <li id="signin"><a href='#' class='osx-login'>login</a></li>
                         </ul>
                     </nav>
-                </div>
+                </section>
             </header>
             
             <div id="content">
-                <div id="sub-content">
+                <div class="sub-content">
                     @RenderBody()
                 </div>
             </div>

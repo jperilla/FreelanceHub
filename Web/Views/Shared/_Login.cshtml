@@ -8,6 +8,7 @@
         <div class="login-with-us">   
         @using (@Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginform" }))
         {   
+            <div><span id="message"></span></div>
             <h3>Login now!</h3>
             <div class="editor-label">
                 @Html.Label("Email")
@@ -29,4 +30,31 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#login-modal").click(function (e) {
+            e.preventDefault();
+
+            var dataString = $("#loginform").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Login", "Account")',
+                data: dataString,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success == "1") {
+                        window.location.href = data.Redirect;
+                    }
+                    else {
+                        $('span#message').html(data.Message).css('color', 'red');
+                    }
+                }
+            });
+
+        });
+    });
+</script>
 

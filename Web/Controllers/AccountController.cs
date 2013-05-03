@@ -10,6 +10,7 @@ using SimpleSocialAuth.MVC3;
 using System.Web;
 using Raven.Client;
 using ChargifyNET;
+using System.Text;
 
 namespace Web.Controllers
 {
@@ -45,15 +46,46 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(Login login)
         {
+            StringBuilder totalError = new StringBuilder();
             if (ModelState.IsValid)
             {
-                if(Membership.ValidateUser(login.Email, login.Password))
+                if (Membership.ValidateUser(login.Email, login.Password))
                 {
-                    return LogUserIn(login.Email);
+                    Account account = Account.GetAccount(login.Email, RavenSession);
+                    string redirect = null;
+                    if (account != null && account.IsAccountCurrent())
+                    {
+                        // Set user authentication cookie
+                        FormsAuthentication.SetAuthCookie(login.Email, false);
+                        redirect = "/Home/Index";
+                    }
+                    else
+                    {
+                        redirect = "/Account/Index";
+                    }
+
+                    return Json(new { Success = 1, Redirect = redirect });
+                }
+                else
+                {
+                    totalError.Append("Invalid Email or Password.");
+                }
+            }
+            else
+            {
+                foreach (var obj in ModelState.Values)
+                {
+                    foreach (var error in obj.Errors)
+                    {
+                        if (!string.IsNullOrEmpty(error.ErrorMessage))
+                        {
+                            totalError.Append(error.ErrorMessage + "<br />");
+                        }
+                    }
                 }
             }
 
-            return Json("Invalid email or password");
+            return Json(new { Success = 0, Message = totalError.ToString()});
         }
 
         // Coming Back from Chargify
@@ -96,62 +128,80 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult SignUp(Signup signup)
         {
-            
+            StringBuilder totalError = new StringBuilder();
             if (ModelState.IsValid)
             {
                 // Check for existing account
                 var existingAccount = Account.GetAccount(signup.Email, RavenSession);
                 if (existingAccount != null)
-                    return Json("User already exists");
+                {
+                    return Json(new { Success = 0, Message = "User with email " + signup.Email + " already exists."});
+                }
 
+                // Redirect to Chargify Payment Page
                 MembershipUser newMember = Membership.CreateUser(signup.Email, signup.Password);
                 var newAccount = new Account(signup.Email);
                 RavenSession.Store(newAccount);
 
+                string redirect = null;
                 switch (signup.Plan)
                 {
                     case "free":
                         {
-                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREE_PLAN_URL,
+                            redirect = String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREE_PLAN_URL,
                                                     CustomerUtilities.GetFirstName(signup.Name),
                                                     CustomerUtilities.GetLastName(signup.Name),
                                                     signup.Email,
-                                                    signup.Email));
+                                                    signup.Email);
                         }
                         break;
                     case "full-time":
                         {
-                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
+                            redirect = String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.FREELANCER_MONTHLY_PLAN_URL,
                                                     CustomerUtilities.GetFirstName(signup.Name),
                                                     CustomerUtilities.GetLastName(signup.Name),
                                                     signup.Email,
-                                                    signup.Email));
+                                                    signup.Email);
                         }
                         break;
                     case "part-time":
                         {
-                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BUDGET_MONTHLY_PLAN_URL,
+                            redirect = String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.BUDGET_MONTHLY_PLAN_URL,
                                                     CustomerUtilities.GetFirstName(signup.Name),
                                                     CustomerUtilities.GetLastName(signup.Name),
                                                     signup.Email,
-                                                    signup.Email));
+                                                    signup.Email);
                         }
                         break;
                     case "agency":
                         {
-                            return Redirect(String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.AGENCY_MONTHLY_PLAN_URL,
+                            redirect = String.Format("{0}?first_name={1}&last_name={2}&email={3}&reference={4}", Account.AGENCY_MONTHLY_PLAN_URL,
                                                     CustomerUtilities.GetFirstName(signup.Name),
                                                     CustomerUtilities.GetLastName(signup.Name),
                                                     signup.Email,
-                                                    signup.Email));
+                                                    signup.Email);
                         }
                         break;
                 }
 
-            }
-           
+                return Json(new { Success = 1, Redirect = redirect });
 
-            return View();
+            }
+            else
+            {
+                foreach (var obj in ModelState.Values)
+                {
+                    foreach (var error in obj.Errors)
+                    {
+                        if (!string.IsNullOrEmpty(error.ErrorMessage))
+                        {
+                            totalError.Append(error.ErrorMessage + "<br />");
+                        }
+                    }
+                }
+            }
+
+            return Json(new { Success = 0, Message = totalError.ToString() });
         }
 
         // GET: /Logout/
@@ -288,7 +338,11 @@ namespace Web.Controllers
             if (account != null && account.CustomerSubscriptions != null && account.CustomerSubscriptions.Count > 0)
             {
                 ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
-                if (customerSubscription.DelayedCancelAt.Year != 0001)
+                if (customerSubscription.State == SubscriptionState.Canceled || 
+                    customerSubscription.State == SubscriptionState.Expired ||
+                    customerSubscription.State == SubscriptionState.Trial_Ended ||
+                    customerSubscription.State == SubscriptionState.Unknown ||
+                    customerSubscription.DelayedCancelAt.Year != 0001)
                 {
                     Account.Chargify.ReactivateSubscription(customerSubscription.SubscriptionID, false);
                 }

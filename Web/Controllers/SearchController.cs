@@ -41,6 +41,31 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult SaveSearchQuery(String queryString)
+        {
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            if (account != null)
+            {
+                var searches = from s in account.Searches
+                               where s == queryString
+                           select s;
+
+                if (searches != null && searches.Count() > 0)
+                {
+                    return Json("success", JsonRequestBehavior.AllowGet);
+                }
+
+                // Save the search query              
+                if (account.Searches == null)
+                    account.Searches = new List<String>();
+
+                account.Searches.Add(queryString);
+                RavenSession.Store(account);
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult RedirectDisclaimerUrl(string url)
         {
             return View("RedirectDisclaimerUrl", null, url);
