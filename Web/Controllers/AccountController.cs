@@ -61,6 +61,7 @@ namespace Web.Controllers
                     }
                     else
                     {
+                        FormsAuthentication.SetAuthCookie(login.Email, false); // TODO: Role will be suspended, so that they can't get anywhere else
                         redirect = Url.Action("Index", "Account");
                     }
 
