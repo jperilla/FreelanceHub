@@ -46,10 +46,7 @@
                 dataType: "json",
                 success: function (data) {
                     if (data.Success == "1") {
-                        if(data.Redirect = "Home")
-                            window.location.href = '@Url.Action("Index", "Home")';
-                        else
-                            window.location.href = '@Url.Action("Index", "Account")';
+                        window.location.href = data.Redirect;
                     }
                     else {
                         $('span#message').html(data.Message).css('color', 'red');

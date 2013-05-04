@@ -57,11 +57,11 @@ namespace Web.Controllers
                     {
                         // Set user authentication cookie
                         FormsAuthentication.SetAuthCookie(login.Email, false);
-                        redirect = "Home";
+                        redirect = Url.Action("Index", "Home");
                     }
                     else
                     {
-                        redirect = "Account";
+                        redirect = Url.Action("Index", "Account");
                     }
 
                     return Json(new { Success = 1, Redirect = redirect });
