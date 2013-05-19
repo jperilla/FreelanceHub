@@ -71,6 +71,49 @@ namespace Web.Controllers
             return Json("success", JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SaveExternalJob(string url, string title, string description)
+        {
+            if (url == null || title == null)
+                return Json("We were not able to locate a job on this page.");
+
+            // Check if job was already saved
+            // Load the current account
+            Account account = Account.GetAccount(User.Identity.Name, RavenSession);
+            Job job = null;
+            if (account != null)
+            {
+                var jobs = from j in account.Jobs
+                           where j.URL == url
+                           select j;
+
+                if (jobs != null && jobs.Count() > 0)
+                {
+                    return Json("You have already saved this job.", JsonRequestBehavior.AllowGet);
+                }
+
+                // Create the job
+                job = new Job
+                {
+                    JobStatus = new JobStatus(),
+                    ShortDescription = description,
+                    Title = title,
+                    URL = url
+                };
+                job.JobStatus.Status = "Lead";
+
+                if (account != null)
+                {
+                    if (account.Jobs == null)
+                        account.Jobs = new List<Job>();
+
+                    account.Jobs.Add(job);
+                    RavenSession.Store(account);
+                }
+            }
+
+            return View("Details", job);
+        }
+
         public JsonResult UnsaveFavorite(string url)
         {
             // Load the current account

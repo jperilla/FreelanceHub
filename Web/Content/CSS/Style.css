@@ -756,7 +756,7 @@ section#search_main h2
 }
 
 /* Home Page */
-section#home_main h2, h3
+section#home_main
 {
     margin-top: 0;
     padding-top: 50px;

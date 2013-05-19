@@ -272,6 +272,7 @@
     <Content Include="Scripts\css-fixes\PIE.js" />
     <Content Include="Scripts\css-fixes\PIE_uncompressed.htc" />
     <Content Include="Scripts\css-fixes\PIE_uncompressed.js" />
+    <Content Include="Scripts\freelance-hub-bookmarklet.js" />
     <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
