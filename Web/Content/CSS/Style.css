@@ -384,6 +384,13 @@ section#logo
     left: -20px;
 }
 
+#gofer-center
+{    
+    height: 90px;
+    width: 40%;
+    background: url('../images/logomedium.png') no-repeat left;
+}
+
 .gofer span
 {
     color: #113D49;
@@ -513,8 +520,7 @@ footer p
 }
 
 footer#footer-signed-in
-{
-    
+{    
     color: #113D49;
     background: url('../images/ricepaper2.png') repeat; 
     position: relative;
