@@ -201,6 +201,18 @@ input.blue, button.blue {
     margin-right: 1.041667%;
 }
 
+.display-label 
+{
+    padding-top: 10px;
+    font-family: 'Arvo', serif;
+    font-weight: bold;
+}
+
+.display-field 
+{
+    font-family: 'Arvo', serif;
+}
+
 button.large, input.large 
 {    
     width: 260px;
@@ -238,7 +250,7 @@ input.tall, div.tall
     width: 100%;
 }
 
-#wrapper-signed-in
+#wrapper-bookmarklet
 {
     width: 100%;
 }
@@ -350,6 +362,20 @@ nav ul li a
     margin: auto;
 }
 
+#content-bookmarklet
+{    
+    background-color: #fff;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 0px 0px 5px #ccc;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #ccc;
+    text-align:center;
+}
+
 section#main
 {
     height: 300px;
@@ -387,8 +413,8 @@ section#logo
 #gofer-center
 {    
     height: 90px;
-    width: 40%;
-    background: url('../images/logomedium.png') no-repeat left;
+    width: 100%;
+    background: url('../images/logomedium.png') no-repeat center;
 }
 
 .gofer span
@@ -528,6 +554,16 @@ footer#footer-signed-in
     max-width: 1200px;
     margin: auto;
     width: 97.9166667%;
+}
+
+footer#footer-bookmarklet
+{    
+    color: #113D49;
+    background: url('../images/ricepaper2.png') repeat;
+    margin: auto;
+    width: 97.9166667%;
+    height: 50px;
+    min-height: 50px;
 }
 
 ul#social-media
