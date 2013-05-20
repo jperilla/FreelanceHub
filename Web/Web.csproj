@@ -347,6 +347,7 @@
     <Content Include="Views\Shared\_GoogleSearchResults.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimerUrl.cshtml" />
     <Content Include="Views\Shared\_Saved.cshtml" />
+    <Content Include="Views\Shared\_LayoutBookmarklet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
