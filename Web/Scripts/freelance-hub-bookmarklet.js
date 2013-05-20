@@ -28,6 +28,7 @@
 
                 // Try to get description
                 var description = $('meta[name="description"]').attr('content');
+                description = encodeURIComponent(description);
 
                 if ((title != "") && (title != null)) {
                     $("body").append("\
@@ -35,7 +36,7 @@
 						<div id='fh_frame_veil' style=''>\
 							<p>Loading...</p>\
 						</div>\
-						<iframe src='http://localhost:61413/Jobs/SaveExternalJob?&title=" + title + "&url=" + url + "' onload=\"$('#fh_frame iframe').slideDown(500);\">Enable iFrames.</iframe>\
+						<iframe src='http://localhost:61413/Jobs/SaveExternalJob?&title=" + title + "&url=" + url + "&description=" + description + "' onload=\"$('#fh_frame iframe').slideDown(500);\">Enable iFrames.</iframe>\
 						<style type='text/css'>\
 							#fh_frame_veil { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(255,255,255,.25); cursor: pointer; z-index: 900; }\
 							#fh_frame_veil p { color: black; font: normal normal bold 20px/20px Helvetica, sans-serif; position: absolute; top: 50%; left: 50%; width: 10em; margin: -10px auto 0 -5em; text-align: center; }\
