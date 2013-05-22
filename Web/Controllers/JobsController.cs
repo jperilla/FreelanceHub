@@ -74,7 +74,9 @@ namespace Web.Controllers
         public ActionResult SaveExternalJob(string url, string title, string description)
         {
             if (url == null || title == null)
-                return Json("We were not able to locate a job on this page.");
+            {
+                return View("JobBookmarkletError", null, "We were not able to locate a job on this page.");
+            }
 
             // Check if job was already saved
             // Load the current account
@@ -88,7 +90,7 @@ namespace Web.Controllers
 
                 if (jobs != null && jobs.Count() > 0)
                 {
-                    return Json("You have already saved this job.", JsonRequestBehavior.AllowGet);
+                    return View("JobBookmarkletError", null, "You have already saved this job.");
                 }
 
                 // Create the job

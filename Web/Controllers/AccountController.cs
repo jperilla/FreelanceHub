@@ -99,7 +99,7 @@ namespace Web.Controllers
                 return LogUserIn(email);              
             }
 
-            return RedirectToAction("Index", "LandingPage");
+            return RedirectToAction("Login", "LandingPage");
         }
 
         private ActionResult LogUserIn(string email)

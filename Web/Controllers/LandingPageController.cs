@@ -25,5 +25,19 @@ namespace Web.Controllers
 
             return View();
         }
+
+        //
+        // GET: /Index/
+        public ActionResult Login()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                // Load Account
+                var account = new Account(User.Identity.Name);
+                return View("_Home", account);
+            }
+
+            return View();
+        }
     }
 }

@@ -35,7 +35,8 @@ namespace Web.Models
         public static readonly string BUDGET_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyBudgetMonthlyPlanHandle"];
         public static readonly string FREELANCER_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlyPlanHandle"];
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
-        public static readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"];
+        public readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
+        public static readonly string APP_BASE_URL_STATIC = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
 
         #endregion
 
@@ -280,7 +281,7 @@ namespace Web.Models
             SitesToSearch = new List<string>();
 
             // Initially all customers use the same cse until they customize
-            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/cse.xml";
+            PathToGoogleCseFile = Account.APP_BASE_URL_STATIC + "/Content/xml/cse.xml";
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
@@ -299,7 +300,7 @@ namespace Web.Models
             SitesToSearch = new List<string>();
 
             // Initially all customers use the same cse until they customize
-            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/cse.xml";
+            PathToGoogleCseFile = Account.APP_BASE_URL_STATIC + "/Content/xml/cse.xml";
 
             // Create Chargify object
             Chargify = new ChargifyConnect();
@@ -356,7 +357,7 @@ namespace Web.Models
         public void GenerateCseFile(IDocumentSession session)
         {
             // Generate user's file path
-            PathToGoogleCseFile = Account.APP_BASE_URL + "/Content/xml/" + this.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
+            PathToGoogleCseFile = Account.APP_BASE_URL_STATIC + "/Content/xml/" + this.Email.Replace('.', '_').Replace('@', '_') + "_cse.xml";
 
             var googleCse = new GoogleCustomizations();
             googleCse.CustomSearchEngine = new GoogleCustomizationsCustomSearchEngine();
