@@ -201,6 +201,18 @@ input.blue, button.blue {
     margin-right: 1.041667%;
 }
 
+.bookmarklet-login div.editor-label label 
+{
+    display: block;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.bookmarklet-login div.editor-field input 
+{
+    margin-left: 50px;
+}
+
 .display-label 
 {
     padding-top: 10px;

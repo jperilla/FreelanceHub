@@ -1,0 +1,69 @@
+﻿@model Web.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutBookmarklet.cshtml";
+}
+           
+
+<div class="bookmarklet-login">   
+@using (@Html.BeginForm("Login", "Bookmarklet", FormMethod.Post, new { id = "loginform" }))
+{   
+    <div><span id="message"></span></div>
+    <h3>Login now!</h3>
+    <div class="editor-label">
+        @Html.Label("Email")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+        
+    <div class="editor-label">
+        @Html.Label("Password")
+    </div>
+    <div class="editor-field">
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <input id="login-bookmarklet" type="submit" class="red medium" value="Login" />
+}
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#login-bookmarklet").click(function (e) {
+            e.preventDefault();
+
+            var dataString = $("#loginform").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Login", "Bookmarklet")',
+                data: dataString,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success == "1") {
+                        if ((data.Redirect !== undefined) && (data.Redirect !== null))
+                            window.location.href = data.Redirect;
+                        else { 
+                            // all is well, proceed to bookmarklet code
+                            var title = encodeURIComponent(window.parent.document.title);
+                            var url = encodeURIComponent(window.parent.document.location);
+
+                            // Try to get description
+                            var description = window.parent.getElementsByTagName('meta[name="description"]')[0].attr('content');
+                            description = encodeURIComponent(description);
+                            window.location.href = "http://localhost:61413/Bookmarklet/SaveExternalJob?&title=" + title + "&url=" + url + "&description=" + description;
+                        }
+                    }
+                    else {
+                        $('span#message').html(data.Message).css('color', 'red');
+                    }
+                }
+            });
+
+        });
+    });
+</script>

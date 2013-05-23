@@ -1,0 +1,10 @@
+﻿@model String
+
+@{
+    ViewBag.Title = "Save Job Message";
+    Layout = "~/Views/Shared/_LayoutBookmarklet.cshtml";
+}
+
+<h3>@Model</h3>
+
+<p>@Html.ActionLink("View My Jobs", "Index", "Jobs", new { @target = "_blank" })</p>

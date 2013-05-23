@@ -1,0 +1,20 @@
+﻿@model Web.Models.Job
+
+@{
+    ViewBag.Title = "freelancehub.io - Job Detail";
+    Layout = "~/Views/Shared/_LayoutBookmarklet.cshtml";
+}
+
+<h2>Job Saved!</h2>
+
+<div class="display-label">Title</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Title)
+</div>
+
+<div class="display-label">Site</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.DisplaySite)
+</div>
+
+<p>@Html.ActionLink("View My Jobs", "Index", "Jobs", new { @target = "_blank" })</p>

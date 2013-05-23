@@ -194,6 +194,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BookmarkletController.cs" />
     <Compile Include="Controllers\CustomSearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HowItWorksController.cs" />
@@ -350,6 +351,9 @@
     <Content Include="Views\Shared\_LayoutBookmarklet.cshtml" />
     <Content Include="Views\Jobs\JobBookmarkletError.cshtml" />
     <Content Include="Views\LandingPage\Login.cshtml" />
+    <Content Include="Views\Bookmarklet\Login.cshtml" />
+    <Content Include="Views\Bookmarklet\Details.cshtml" />
+    <Content Include="Views\Bookmarklet\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
