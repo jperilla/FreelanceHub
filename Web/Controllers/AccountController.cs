@@ -109,6 +109,26 @@ namespace Web.Controllers
             {
                 // Set user authentication cookie
                 FormsAuthentication.SetAuthCookie(email, false);
+
+                // Set the user's role
+                ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();                
+                if(customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                {
+                   Roles.AddUserToRole(email, Account.BASIC_ROLE);
+                }
+                else if (customerSubscription.Product.Handle == Account.BUDGET_MONTHLY_PLAN_HANDLE)
+                {
+                    Roles.AddUserToRole(email, Account.PARTTIME_ROLE);
+                }
+                else if (customerSubscription.Product.Handle == Account.FREELANCER_MONTHLY_PLAN_HANDLE)
+                {
+                    Roles.AddUserToRole(email, Account.FULLTIME_ROLE);
+                }
+                else if (customerSubscription.Product.Handle == Account.AGENCY_MONTHLY_PLAN_HANDLE)
+                {
+                    Roles.AddUserToRole(email, Account.AGENCY_ROLE);
+                }
+
                 return RedirectToAction("Index", "Home", account);
             }
             

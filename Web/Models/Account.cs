@@ -37,6 +37,11 @@ namespace Web.Models
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
         public readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
         public static readonly string APP_BASE_URL_STATIC = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
+        public const string ADMIN_ROLE = "Administrator";
+        public const string BASIC_ROLE = "Basic";
+        public const string PARTTIME_ROLE = "PartTime";
+        public const string FULLTIME_ROLE = "FullTime";
+        public const string AGENCY_ROLE = "Agency";
 
         #endregion
 
