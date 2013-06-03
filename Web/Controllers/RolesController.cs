@@ -10,7 +10,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles="Administrator")]
+    //[Authorize(Roles="Administrator")]
     public class RolesController : BaseController
     {
         public IRoleRepository RoleRepository { get; private set; }
