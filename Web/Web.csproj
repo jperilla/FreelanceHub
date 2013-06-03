@@ -58,7 +58,8 @@
     <Reference Include="Griffin.MvcContrib">
       <HintPath>..\packages\griffin.mvccontrib.0.0.9\lib\net40\Griffin.MvcContrib.dll</HintPath>
     </Reference>
-    <Reference Include="Griffin.MvcContrib.RavenDb">
+    <Reference Include="Griffin.MvcContrib.RavenDb, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Griffin.MvcContrib.RavenDb.1.0.4\lib\net40\Griffin.MvcContrib.RavenDb.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
@@ -201,6 +202,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\PricingController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Factories\DocumentStoryFactory.cs" />
     <Compile Include="Factories\PasswordPolicyFactory.cs" />
@@ -218,6 +220,7 @@
     <Compile Include="Models\Search.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\Signup.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CustomerUtilities.cs" />
   </ItemGroup>
@@ -268,6 +271,7 @@
     <Content Include="Content\xml\cse.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\freelance-hub-bookmarklet.js" />
     <Content Include="Scripts\css-fixes\PIE.htc" />
@@ -340,7 +344,6 @@
     <Content Include="Views\CustomSearch\Index.cshtml" />
     <Content Include="Views\CustomSearch\Create.cshtml" />
     <Content Include="Views\CustomSearch\Delete.cshtml" />
-    <Content Include="Views\CustomSearch\Edit.cshtml" />
     <Content Include="Views\CustomSearch\UserView.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimer.cshtml" />
     <Content Include="Views\Search\RedirectDisclaimerJob.cshtml" />
@@ -354,6 +357,10 @@
     <Content Include="Views\Bookmarklet\Login.cshtml" />
     <Content Include="Views\Bookmarklet\Details.cshtml" />
     <Content Include="Views\Bookmarklet\Error.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\AddUserToRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

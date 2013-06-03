@@ -49,8 +49,9 @@
                             window.location.href = data.Redirect;
                         else { 
                             // all is well, proceed to bookmarklet code
-                            var title = encodeURIComponent(window.parent.document.title);
-                            var url = encodeURIComponent(window.parent.document.location);
+                            var parentDoc = window.parent.getDocument();
+                            var title = encodeURIComponent(parentDoc.title);
+                            var url = encodeURIComponent(parentDoc.location);
 
                             // Try to get description
                             var description = window.parent.getElementsByTagName('meta[name="description"]')[0].attr('content');

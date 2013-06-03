@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Raven.Client;
+using Griffin.MvcContrib.Providers.Roles;
 
 namespace Web.Controllers
-{
+{   
+    [Authorize(Roles="Administrator")]
     public class AdminController : BaseController
     {
-        public AdminController(IDocumentSession documentSession)
+
+        public AdminController(IRoleRepository roleRepository, IDocumentSession documentSession)
             : base(documentSession)
         {
         }
@@ -18,7 +21,7 @@ namespace Web.Controllers
         // GET: /Admin/
 
         public ActionResult Index()
-        {
+        {            
             return View();
         }
 

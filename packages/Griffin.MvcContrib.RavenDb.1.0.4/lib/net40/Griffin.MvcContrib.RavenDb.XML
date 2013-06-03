@@ -4,121 +4,231 @@
         <name>Griffin.MvcContrib.RavenDb</name>
     </assembly>
     <members>
-        <member name="P:Griffin.MvcContrib.RavenDb.Providers.Role.Name">
+        <member name="T:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository">
             <summary>
-            Gets role name
+            RavenDB repository for view localizations
             </summary>
+            <remarks>Remember to set <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/></remarks>
         </member>
-        <member name="T:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository">
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.#ctor(Raven.Client.IDocumentSession)">
             <summary>
-            Used to translate different types (and their properties) 
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository"/> class.
             </summary>
-            <remarks>
-            <para>You might want to specify <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/>, en-us is used per default.</para>
-            <para>
-            Class is not thread safe and are expected to have a short lifetime (per scope)
-            </para>
-            <para>Remember to set <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/></para>
-            </remarks>
+            <param name="documentSession">The document session.</param>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.#ctor(Raven.Client.IDocumentSession)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetAllPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.SearchFilter)">
             <summary>
-            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository"/> class.
+            Get all prompts that have been created for an language
             </summary>
-            <param name="documentSession">The document session used to work with the database.</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            </summary>
-            <filterpriority>2</filterpriority>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.SearchFilter)">
-            <summary>
-            Get all prompts
-            </summary>
-            <param name="cultureInfo">Culture to get prompts for</param>
-            <param name="defaultCulture">Culture used as template to be able to include all non-translated prompts</param>
-            <param name="filter">The filter.</param>
+            <param name="culture">Culture to get translation for</param>
+            <param name="templateCulture">Culture to find not translated prompts in (or same culture to disable)</param>
+            <param name="filter">Used to limit the search result</param>
             <returns>
-            Collection of translations
+            A collection of prompts
             </returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.CreateLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreateLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
             <summary>
             Create translation for a new language
             </summary>
             <param name="culture">Language to create</param>
             <param name="templateCulture">Language to use as a template</param>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetPrompt(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Types.TypePromptKey)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetAvailableLanguages">
             <summary>
-            Get a specific prompt
+            Get all languages that have translations
+            </summary>
+            <returns>Collection of languages</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetPrompt(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
+            <summary>
+            Get a text using it's name.
             </summary>
             <param name="culture">Culture to get prompt for</param>
-            <param name="key">Key which is unique in the current language</param>
+            <param name="key"> </param>
+            <returns>Prompt if found; otherwise null.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Save(System.Globalization.CultureInfo,System.String,System.String,System.String)">
+            <summary>
+            Save/Update a text prompt
+            </summary>
+            <param name="culture">Language to save prompt in</param>
+            <param name="viewPath">Path to view. You can use <see cref="M:Griffin.MvcContrib.Localization.Views.ViewPromptKey.GetViewPath(System.String,System.Web.Routing.RouteData)"/></param>
+            <param name="textName">Text to translate</param>
+            <param name="translatedText">Translated text</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Exists(System.Globalization.CultureInfo)">
+            <summary>
+            checks if the specified language exists.
+            </summary>
+            <param name="cultureInfo">Language to find</param>
+            <returns>true if found; otherwise false.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreatePrompt(System.Globalization.CultureInfo,System.String,System.String,System.String)">
+            <summary>
+            Create a new prompt in the specified language
+            </summary>
+            <param name="culture">Language that the translation is for</param>
+            <param name="viewPath">Path to view. You can use <see cref="M:Griffin.MvcContrib.Localization.Views.ViewPromptKey.GetViewPath(System.String,System.Web.Routing.RouteData)"/></param>
+            <param name="textName">Text to translate</param>
+            <param name="translatedText">Translated text</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Delete(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
+            <summary>
+            Delete a prompt
+            </summary>
+            <param name="culture">Culture to delete the prompt for</param>
+            <param name="key">Prompt key</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetNotLocalizedPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+            <summary>
+            Get all prompts that have not been translated
+            </summary>
+            <param name="culture">Culture to get translation for</param>
+            <param name="defaultCulture">Default language</param>
+            <returns>A collection of prompts</returns>
+            <remarks>
+            Default language will typically have more translated prompts than any other language
+            and is therefore used to detect missing prompts.
+            </remarks>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreateForLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+            <summary>
+            Create a new language
+            </summary>
+            <param name="culture">Language to create</param>
+            <param name="defaultCulture">The default culture.</param>
+            <remarks>
+            Will add empty entries for all known entries. Entries are added automatically to the default language when views
+            are visited. This is NOT done for any other language.
+            </remarks>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository">
+            <summary>
+            Raven implementation of the account repository
+            </summary>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.#ctor(Raven.Client.IDocumentSession)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository"/> class.
+            </summary>
+            <param name="documentSession">The document session.</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Register(Griffin.MvcContrib.Providers.Membership.IMembershipAccount)">
+            <summary>
+            Register a new account.
+            </summary>
+            <param name="account">Acount to register</param>
+            <returns>Result indication</returns>
+            <remarks>
+            Implementations should set the <see cref="P:Griffin.MvcContrib.Providers.Membership.IMembershipAccount.ProviderUserKey"/> property before returning.
+            </remarks>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Get(System.String)">
+            <summary>
+            Fetch a user from the service.
+            </summary>
+            <param name="username">Unique user name</param>
+            <returns>User if found; otherwise null.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Update(Griffin.MvcContrib.Providers.Membership.IMembershipAccount)">
+            <summary>
+            Update an existing user.
+            </summary>
+            <param name="account">Account being updated.</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetByProviderKey(System.Object)">
+            <summary>
+            Get a user by using the implementation specific (your) Id.
+            </summary>
+            <param name="id">User identity specific for each account repository implementation</param>
+            <returns>User if found; otherwise null.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetUserNameByEmail(System.String)">
+            <summary>
+            Translate an email into a user name.
+            </summary>
+            <param name="email">Email to lookup</param>
+            <returns>User name if the specified email was found; otherwise null.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Delete(System.String,System.Boolean)">
+            <summary>
+            Delete a user from the database.
+            </summary>
+            <param name="username">Unique user name</param>
+            <param name="deleteAllRelatedData">Delete information from all other tables etc</param>
+            <returns>true if was removed successfully; otherwise false.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetNumberOfUsersOnline">
+            <summary>
+            Get number of users that are online
+            </summary>
+            <returns>Number of online users</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindAll(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Find all users
+            </summary>
+            <param name="pageIndex">One based index</param>
+            <param name="pageSize">Number of users per page</param>
+            <param name="totalRecords">Total number of users</param>
+            <returns>A collection of users or an empty collection if no users was found.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindNewAccounts(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Find new acounts that haven't been activated.
+            </summary>
+            <param name="pageIndex">zero based index</param>
+            <param name="pageSize">Number of users per page</param>
+            <param name="totalRecords">Total number of users</param>
+            <returns>A collection of users or an empty collection if no users was found.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindByUserName(System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Find by searching for user name
+            </summary>
+            <param name="usernameToMatch">User name (or partial user name)</param>
+            <param name="pageIndex">Zero based index</param>
+            <param name="pageSize">Number of items per page</param>
+            <param name="totalRecords">total number of records that partially matched the specified user name</param>
+            <returns>A collection of users or an empty collection if no users was found.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindByEmail(System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Find by searching for the specified email
+            </summary>
+            <param name="emailToMatch">Number of users that have the specified email (no partial matches)</param>
+            <param name="pageIndex">Zero based index</param>
+            <param name="pageSize">Number of items per page</param>
+            <param name="totalRecords">total number of records that matched the specified email</param>
+            <returns>A collection of users or an empty collection if no users was found.</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Create(System.Object,System.String,System.String,System.String)">
+            <summary>
+            Create a new membership account
+            </summary>
+            <param name="providerUserKey">Primary key in the data source</param>
+            <param name="applicationName">Name of the application that the account is created for</param>
+            <param name="username">User name</param>
+            <param name="email">Email address</param>
             <returns>
-            Prompt if found; otherwise <c>null</c>.
+            Created account
             </returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Save(System.Globalization.CultureInfo,System.Type,System.String,System.String)">
+        <member name="P:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.IsUniqueEmailRequired">
             <summary>
-            Create  or update a prompt
-            </summary>
-            <param name="culture">Culture that the prompt is for</param>
-            <param name="type">Type being localized</param>
-            <param name="name">Property name and any additonal names (such as metadata name, use underscore as delimiter)</param>
-            <param name="translatedText">Translated text string</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Save(System.Globalization.CultureInfo,System.String,System.String,System.String)">
-            <summary>
-            Create  or update a prompt
-            </summary>
-            <param name="culture">Culture that the prompt is for</param>
-            <param name="fullTypeName">Type.FullName for the type being localized</param>
-            <param name="name">Property name and any additonal names (such as metadata name, use underscore as delimiter)</param>
-            <param name="translatedText">Translated text string</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Update(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Types.TypePromptKey,System.String)">
-            <summary>
-            Updates the specified culture.
-            </summary>
-            <param name="culture">The culture.</param>
-            <param name="key">The key.</param>
-            <param name="translatedText">The translated text.</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetAvailableLanguages">
-            <summary>
-            Get all languages that got partial or full translations.
-            </summary>
-            <returns>Cultures corresponding to the translations</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.PromptEqualityComparer.Equals(Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument,Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument)">
-            <summary>
-            Determines whether the specified objects are equal.
-            </summary>
-            <returns>
-            true if the specified objects are equal; otherwise, false.
-            </returns>
-            <param name="x">The first object of type TypePrompt to compare.</param><param name="y">The second object of type TypePrompt to compare.</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.PromptEqualityComparer.GetHashCode(Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument)">
-            <summary>
-            Returns a hash code for the specified object.
-            </summary>
-            <returns>
-            A hash code for the specified object.
-            </returns>
-            <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param><exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
-        </member>
-        <member name="P:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationDocument.Id">
-            <summary>
-            Gets or sets language code.
+            Gets whether all users must have unique email addresses.
             </summary>
         </member>
-        <member name="P:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationDocument.Prompts">
+        <member name="E:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Deleted">
             <summary>
-            Gets or sets localized prompts
+            Invoked when a member has been deleted.
             </summary>
         </member>
         <member name="T:Griffin.MvcContrib.RavenDb.Providers.AccountDocument">
@@ -293,6 +403,160 @@
             Gets a list of all roles that the user is a member of.
             </summary>
         </member>
+        <member name="T:Griffin.MvcContrib.RavenDb.RegisterServiceAttribute">
+            <summary>
+            Can be used to find all services in the framework which should be registered.
+            </summary>
+            <remarks>Not used yet.</remarks>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.RegisterServiceAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.RegisterServiceAttribute"/> class.
+            </summary>
+            <param name="feature">The category.</param>
+        </member>
+        <member name="P:Griffin.MvcContrib.RavenDb.RegisterServiceAttribute.Feature">
+            <summary>
+            Gets feature that the service is for.
+            </summary>
+        </member>
+        <member name="T:Griffin.MvcContrib.RavenDb.Providers.DeletedEventArgs">
+            <summary>
+            An account have been deleted
+            </summary>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.DeletedEventArgs.#ctor(Griffin.MvcContrib.Providers.Membership.IMembershipAccount)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Providers.DeletedEventArgs"/> class.
+            </summary>
+            <param name="account">The account.</param>
+        </member>
+        <member name="P:Griffin.MvcContrib.RavenDb.Providers.DeletedEventArgs.Account">
+            <summary>
+            Gets deleted account
+            </summary>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationDocument.Delete(Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
+            <summary>
+            Delete prompt
+            </summary>
+            <param name="key">Prompt key</param>
+            <returns>true if a prompt was found; otherwise false.</returns>
+        </member>
+        <member name="P:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationDocument.Id">
+            <summary>
+            Gets or set language code (en-us)
+            </summary>
+        </member>
+        <member name="T:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository">
+            <summary>
+            Used to translate different types (and their properties) 
+            </summary>
+            <remarks>
+            <para>You might want to specify <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/>, en-us is used per default.</para>
+            <para>
+            Class is not thread safe and are expected to have a short lifetime (per scope)
+            </para>
+            <para>Remember to set <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/></para>
+            </remarks>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.#ctor(Raven.Client.IDocumentSession)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository"/> class.
+            </summary>
+            <param name="documentSession">The document session used to work with the database.</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.SearchFilter)">
+            <summary>
+            Get all prompts
+            </summary>
+            <param name="cultureInfo">Culture to get prompts for</param>
+            <param name="defaultCulture">Culture used as template to be able to include all non-translated prompts</param>
+            <param name="filter">The filter.</param>
+            <returns>
+            Collection of translations
+            </returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.CreateLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+            <summary>
+            Create translation for a new language
+            </summary>
+            <param name="culture">Language to create</param>
+            <param name="templateCulture">Language to use as a template</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetPrompt(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Types.TypePromptKey)">
+            <summary>
+            Get a specific prompt
+            </summary>
+            <param name="culture">Culture to get prompt for</param>
+            <param name="key">Key which is unique in the current language</param>
+            <returns>
+            Prompt if found; otherwise <c>null</c>.
+            </returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Save(System.Globalization.CultureInfo,System.Type,System.String,System.String)">
+            <summary>
+            Create  or update a prompt
+            </summary>
+            <param name="culture">Culture that the prompt is for</param>
+            <param name="type">Type being localized</param>
+            <param name="name">Property name and any additonal names (such as metadata name, use underscore as delimiter)</param>
+            <param name="translatedText">Translated text string</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Save(System.Globalization.CultureInfo,System.String,System.String,System.String)">
+            <summary>
+            Create  or update a prompt
+            </summary>
+            <param name="culture">Culture that the prompt is for</param>
+            <param name="fullTypeName">Type.FullName for the type being localized</param>
+            <param name="name">Property name and any additonal names (such as metadata name, use underscore as delimiter)</param>
+            <param name="translatedText">Translated text string</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Update(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Types.TypePromptKey,System.String)">
+            <summary>
+            Updates the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <param name="key">The key.</param>
+            <param name="translatedText">The translated text.</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.Delete(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Types.TypePromptKey)">
+            <summary>
+            Delete a prompt.
+            </summary>
+            <param name="culture">Culture to delete the prompt for</param>
+            <param name="key">Key</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.GetAvailableLanguages">
+            <summary>
+            Get all languages that got partial or full translations.
+            </summary>
+            <returns>Cultures corresponding to the translations</returns>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.PromptEqualityComparer.Equals(Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument,Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument)">
+            <summary>
+            Determines whether the specified objects are equal.
+            </summary>
+            <returns>
+            true if the specified objects are equal; otherwise, false.
+            </returns>
+            <param name="x">The first object of type TypePrompt to compare.</param><param name="y">The second object of type TypePrompt to compare.</param>
+        </member>
+        <member name="M:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationRepository.PromptEqualityComparer.GetHashCode(Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument)">
+            <summary>
+            Returns a hash code for the specified object.
+            </summary>
+            <returns>
+            A hash code for the specified object.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param><exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
+        </member>
         <member name="T:Griffin.MvcContrib.RavenDb.Localization.ViewPromptDocument">
             <summary>
             A phrase which can be stored in a data source.
@@ -356,110 +620,41 @@
             Gets or sets translated text
             </summary>
         </member>
-        <member name="T:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository">
+        <member name="T:Griffin.MvcContrib.RavenDb.Providers.Role">
             <summary>
-            RavenDB repository for view localizations
+            Role document
             </summary>
-            <remarks>Remember to set <see cref="T:Griffin.MvcContrib.Localization.DefaultUICulture"/></remarks>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.#ctor(Raven.Client.IDocumentSession)">
+        <member name="P:Griffin.MvcContrib.RavenDb.Providers.Role.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository"/> class.
+            Gets or sets role name
             </summary>
-            <param name="documentSession">The document session.</param>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetAllPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.SearchFilter)">
+        <member name="P:Griffin.MvcContrib.RavenDb.Providers.Role.ApplicationName">
             <summary>
-            Get all prompts that have been created for an language
+            Gets or sets application that the role exists in
             </summary>
-            <param name="culture">Culture to get translation for</param>
-            <param name="templateCulture">Culture to find not translated prompts in (or same culture to disable)</param>
-            <param name="filter">Used to limit the search result</param>
-            <returns>
-            A collection of prompts
-            </returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreateLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+        <member name="P:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationDocument.Id">
             <summary>
-            Create translation for a new language
+            Gets or sets language code.
             </summary>
-            <param name="culture">Language to create</param>
-            <param name="templateCulture">Language to use as a template</param>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetAvailableLanguages">
+        <member name="P:Griffin.MvcContrib.RavenDb.Localization.TypeLocalizationDocument.Prompts">
             <summary>
-            Get all languages that have translations
+            Gets or sets localized prompts
             </summary>
-            <returns>Collection of languages</returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetPrompt(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
+        <member name="T:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository">
             <summary>
-            Get a text using it's name.
+            Used to load roles from raven
             </summary>
-            <param name="culture">Culture to get prompt for</param>
-            <param name="key"> </param>
-            <returns>Prompt if found; otherwise null.</returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Save(System.Globalization.CultureInfo,System.String,System.String,System.String)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository.#ctor(Raven.Client.IDocumentSession)">
             <summary>
-            Save/Update a text prompt
+            Initializes a new instance of the <see cref="T:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository"/> class.
             </summary>
-            <param name="culture">Language to save prompt in</param>
-            <param name="viewPath">Path to view. You can use <see cref="M:Griffin.MvcContrib.Localization.Views.ViewPromptKey.GetViewPath(System.Web.Routing.RouteData)"/></param>
-            <param name="textName">Text to translate</param>
-            <param name="translatedText">Translated text</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Exists(System.Globalization.CultureInfo)">
-            <summary>
-            checks if the specified language exists.
-            </summary>
-            <param name="cultureInfo">Language to find</param>
-            <returns>true if found; otherwise false.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreatePrompt(System.Globalization.CultureInfo,System.String,System.String,System.String)">
-            <summary>
-            Create a new prompt in the specified language
-            </summary>
-            <param name="culture">Language that the translation is for</param>
-            <param name="viewPath">Path to view. You can use <see cref="M:Griffin.MvcContrib.Localization.Views.ViewPromptKey.GetViewPath(System.Web.Routing.RouteData)"/></param>
-            <param name="textName">Text to translate</param>
-            <param name="translatedText">Translated text</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Delete(System.Globalization.CultureInfo,Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
-            <summary>
-            Delete a prompt
-            </summary>
-            <param name="culture">Culture to delete the prompt for</param>
-            <param name="key">Prompt key</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.GetNotLocalizedPrompts(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
-            <summary>
-            Get all prompts that have not been translated
-            </summary>
-            <param name="culture">Culture to get translation for</param>
-            <param name="defaultCulture">Default language</param>
-            <returns>A collection of prompts</returns>
-            <remarks>
-            Default language will typically have more translated prompts than any other language
-            and is therefore used to detect missing prompts.
-            </remarks>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.CreateForLanguage(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
-            <summary>
-            Create a new language
-            </summary>
-            <param name="culture">Language to create</param>
-            <param name="defaultCulture">The default culture.</param>
-            <remarks>
-            Will add empty entries for all known entries. Entries are added automatically to the default language when views
-            are visited. This is NOT done for any other language.
-            </remarks>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationRepository.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            </summary>
-            <filterpriority>2</filterpriority>
+            <param name="session">The session.</param>
         </member>
         <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository.GetUser(System.String,System.String)">
             <summary>
@@ -514,116 +709,36 @@
             <param name="roleName">Name of the role.</param>
             <returns>true if found; otherwise false.</returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Register(Griffin.MvcContrib.Providers.Membership.IMembershipAccount)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository.GetNumberOfUsersInRole(System.String,System.String)">
             <summary>
-            Register a new account.
+            Get number of users in a role
             </summary>
-            <param name="account">Acount to register</param>
-            <returns>Result indication</returns>
-            <remarks>
-            Implementations should set the <see cref="P:Griffin.MvcContrib.Providers.Membership.IMembershipAccount.ProviderUserKey"/> property before returning.
-            </remarks>
+            <param name="applicationName">Application to check for</param>
+            <param name="roleName">Name of role</param>
+            <returns>
+            Number of users
+            </returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Get(System.String)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository.FindUsersInRole(System.String,System.String,System.String)">
             <summary>
-            Fetch a user from the service.
+            Finds the users in a role.
             </summary>
-            <param name="username">Unique user name</param>
-            <returns>User if found; otherwise null.</returns>
+            <param name="applicationName">Application to look in</param>
+            <param name="roleName">Name of the role.</param>
+            <param name="userNameToMatch">The user name to match.</param>
+            <returns>
+            A list of user names.
+            </returns>
         </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Update(Griffin.MvcContrib.Providers.Membership.IMembershipAccount)">
+        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbRoleRepository.GetUsersInRole(System.String,System.String)">
             <summary>
-            Update an existing user.
+            Finds the users in a role.
             </summary>
-            <param name="account">Account being updated.</param>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetByProviderKey(System.Object)">
-            <summary>
-            Get a user by using the implementation specific (your) Id.
-            </summary>
-            <param name="id">User identity specific for each account repository implementation</param>
-            <returns>User if found; otherwise null.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetUserNameByEmail(System.String)">
-            <summary>
-            Translate an email into a user name.
-            </summary>
-            <param name="email">Email to lookup</param>
-            <returns>User name if the specified email was found; otherwise null.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Delete(System.String,System.Boolean)">
-            <summary>
-            Delete a user from the database.
-            </summary>
-            <param name="username">Unique user name</param>
-            <param name="deleteAllRelatedData">Delete information from all other tables etc</param>
-            <returns>true if was removed successfully; otherwise false.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.GetNumberOfUsersOnline">
-            <summary>
-            Get number of users that are online
-            </summary>
-            <returns>Number of online users</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindAll(System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Find all users
-            </summary>
-            <param name="pageIndex">One based index</param>
-            <param name="pageSize">Number of users per page</param>
-            <param name="totalRecords">Total number of users</param>
-            <returns>A collection of users or an empty collection if no users was found.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindNewAccounts(System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Find new acounts that haven't been activated.
-            </summary>
-            <param name="pageIndex">zero based index</param>
-            <param name="pageSize">Number of users per page</param>
-            <param name="totalRecords">Total number of users</param>
-            <returns>A collection of users or an empty collection if no users was found.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindByUserName(System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Find by searching for user name
-            </summary>
-            <param name="usernameToMatch">User name (or partial user name)</param>
-            <param name="pageIndex">Zero based index</param>
-            <param name="pageSize">Number of items per page</param>
-            <param name="totalRecords">total number of records that partially matched the specified user name</param>
-            <returns>A collection of users or an empty collection if no users was found.</returns>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.FindByEmail(System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Find by searching for the specified email
-            </summary>
-            <param name="emailToMatch">Number of users that have the specified email (no partial matches)</param>
-            <param name="pageIndex">Zero based index</param>
-            <param name="pageSize">Number of items per page</param>
-            <param name="totalRecords">total number of records that matched the specified email</param>
-            <returns>A collection of users or an empty collection if no users was found.</returns>
-        </member>
-        <member name="P:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.IsUniqueEmailRequired">
-            <summary>
-            Gets whether all users must have unique email addresses.
-            </summary>
-        </member>
-        <member name="E:Griffin.MvcContrib.RavenDb.Providers.RavenDbAccountRepository.Deleted">
-            <summary>
-            Invoked when a member has been deleted.
-            </summary>
-        </member>
-        <member name="M:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationDocument.Delete(Griffin.MvcContrib.Localization.Views.ViewPromptKey)">
-            <summary>
-            Delete prompt
-            </summary>
-            <param name="key">Prompt key</param>
-            <returns>true if a prompt was found; otherwise false.</returns>
-        </member>
-        <member name="P:Griffin.MvcContrib.RavenDb.Localization.ViewLocalizationDocument.Id">
-            <summary>
-            Gets or set language code (en-us)
-            </summary>
+            <param name="applicationName">Application to look in</param>
+            <param name="roleName">Name of the role.</param>
+            <returns>
+            A list of user names.
+            </returns>
         </member>
         <member name="T:Griffin.MvcContrib.RavenDb.Localization.TypePromptDocument">
             <summary>

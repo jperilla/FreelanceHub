@@ -10,7 +10,7 @@ using Raven.Abstractions.Smuggler;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Agency, FullTime, PartTime, Administrator")]
     public class CustomSearchController : BaseController
     {
         public CustomSearchController(IDocumentSession documentSession)

@@ -6,6 +6,7 @@ using Griffin.MvcContrib.Providers.Membership.PasswordStrategies;
 using Web.Factories;
 using Raven.Client;
 using Griffin.MvcContrib.Providers.Membership;
+using Griffin.MvcContrib.Providers.Roles;
 
 namespace Web
 {
@@ -37,6 +38,7 @@ namespace Web
             container.RegisterType<IDocumentSession>(new HierarchicalLifetimeManager(), new InjectionFactory(c => c.Resolve<IDocumentStore>().OpenSession()));
             container.RegisterType<IPasswordStrategy, HashPasswordStrategy>();
             container.RegisterType<IAccountRepository, RavenDbAccountRepository>();
+            container.RegisterType<IRoleRepository, RavenDbRoleRepository>();
         }
     }
 }

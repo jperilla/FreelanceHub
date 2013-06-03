@@ -1,0 +1,43 @@
+﻿@model IEnumerable<String>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSignedIn.cshtml";
+}
+
+
+<section class="page_section">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Add User to Role", "AddUserToRole")
+</p>
+<table>
+    <tr>
+        <th>
+            Role Name
+        </th>
+        <th></th>
+    </tr>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+}
+
+</table>
+</section>
