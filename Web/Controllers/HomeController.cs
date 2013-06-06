@@ -2,10 +2,11 @@
 using System.Web.Mvc;
 using Web.Models;
 using Raven.Client;
+using Web.Attribute;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles = "Basic, Agency, FullTime, PartTime, Administrator")]
     public class HomeController : BaseController
     {
         public HomeController(IDocumentSession documentSession)

@@ -42,6 +42,7 @@ namespace Web.Models
         public const string PARTTIME_ROLE = "PartTime";
         public const string FULLTIME_ROLE = "FullTime";
         public const string AGENCY_ROLE = "Agency";
+        public const string INACTIVE_ROLE = "Inactive";
 
         #endregion
 

@@ -49,7 +49,7 @@
                      <tr>
                         <td>
                             <label><b>Current Status:</b></label>&nbsp;&nbsp; @Html.DisplayFor(m => m.CustomerSubscriptionStatus)
-                                                                &nbsp;&nbsp;@if (Model.CustomerSubscriptionStatus == "Canceled")
+                                                                &nbsp;&nbsp;@if (!Model.IsAccountCurrent())
                                                                             {
                                                                                 @Html.ActionLink("Reactivate", "Reactivate", Model)
                                                                             }

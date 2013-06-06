@@ -7,10 +7,11 @@ using Web.Models;
 using Raven.Client;
 using System.Text;
 using System.Web.Security;
+using Web.Attribute;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles = "Basic, Agency, FullTime, PartTime, Administrator")]
     public class BookmarkletController : BaseController
     {
         public BookmarkletController(IDocumentSession documentSession)

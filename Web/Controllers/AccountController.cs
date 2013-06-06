@@ -11,6 +11,7 @@ using System.Web;
 using Raven.Client;
 using ChargifyNET;
 using System.Text;
+using Web.Attribute;
 
 namespace Web.Controllers
 {
@@ -61,7 +62,12 @@ namespace Web.Controllers
                     }
                     else
                     {
-                        FormsAuthentication.SetAuthCookie(login.Email, false); // TODO: Role will be suspended, so that they can't get anywhere else
+                        FormsAuthentication.SetAuthCookie(login.Email, false);
+                        // Set role to inactive, if not already
+                        string[] roles = Roles.GetRolesForUser(login.Email);
+                        if(null != roles && roles.Count() > 0)
+                            Roles.RemoveUserFromRoles(login.Email, roles);
+                        Roles.AddUserToRole(login.Email, Account.INACTIVE_ROLE);
                         redirect = Url.Action("Index", "Account");
                     }
 
@@ -249,6 +255,10 @@ namespace Web.Controllers
                 if (customerSubscription.Product.Handle != Account.FREE_PLAN_HANDLE)
                 {
                     Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREE_PLAN_HANDLE);
+                    string[] roles = Roles.GetRolesForUser(email);
+                    if (null != roles && roles.Count() > 0)
+                        Roles.RemoveUserFromRoles(email, roles);
+                    Roles.AddUserToRole(email, Account.BASIC_ROLE);
                 }
             }
 
@@ -267,6 +277,8 @@ namespace Web.Controllers
                 if (customerSubscription.Product.Handle != Account.BUDGET_MONTHLY_PLAN_HANDLE)
                 {
                     Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.BUDGET_MONTHLY_PLAN_HANDLE);
+                    Roles.RemoveUserFromRoles(email, Roles.GetRolesForUser());
+                    Roles.AddUserToRole(email, Account.PARTTIME_ROLE);
                 }
 
                 // If they are currently on the free plan, force them to enter a credit card
@@ -290,7 +302,11 @@ namespace Web.Controllers
                 ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
                 if (customerSubscription.Product.Handle != Account.FREELANCER_MONTHLY_PLAN_HANDLE)
                 {
-                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREELANCER_MONTHLY_PLAN_HANDLE); 
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.FREELANCER_MONTHLY_PLAN_HANDLE);
+                    string[] roles = Roles.GetRolesForUser(email);
+                    if (null != roles && roles.Count() > 0)
+                        Roles.RemoveUserFromRoles(email, roles);
+                    Roles.AddUserToRole(email, Account.FULLTIME_ROLE);
                 }
 
                 // If they are currently on the free plan, force them to enter a credit card
@@ -314,7 +330,11 @@ namespace Web.Controllers
                 ChargifyNET.ISubscription customerSubscription = account.CustomerSubscriptions.Values.FirstOrDefault();
                 if (customerSubscription.Product.Handle != Account.AGENCY_MONTHLY_PLAN_HANDLE)
                 {
-                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.AGENCY_MONTHLY_PLAN_HANDLE); 
+                    Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.AGENCY_MONTHLY_PLAN_HANDLE);
+                    string[] roles = Roles.GetRolesForUser(email);
+                    if (null != roles && roles.Count() > 0)
+                        Roles.RemoveUserFromRoles(email, roles);
+                    Roles.AddUserToRole(email, Account.AGENCY_ROLE);
                 }
 
                 // If they are currently on the free plan, force them to enter a credit card
@@ -366,6 +386,25 @@ namespace Web.Controllers
                     customerSubscription.DelayedCancelAt.Year != 0001)
                 {
                     Account.Chargify.ReactivateSubscription(customerSubscription.SubscriptionID, false);
+                    string[] roles = Roles.GetRolesForUser(email);
+                    if (null != roles && roles.Count() > 0)
+                        Roles.RemoveUserFromRoles(email, roles);
+                    if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                    {
+                        Roles.AddUserToRole(email, Account.BASIC_ROLE);
+                    }
+                    else if (customerSubscription.Product.Handle == Account.BUDGET_MONTHLY_PLAN_HANDLE)
+                    {
+                        Roles.AddUserToRole(email, Account.PARTTIME_ROLE);
+                    }
+                    else if (customerSubscription.Product.Handle == Account.FREELANCER_MONTHLY_PLAN_HANDLE)
+                    {
+                        Roles.AddUserToRole(email, Account.FULLTIME_ROLE);
+                    }
+                    else if (customerSubscription.Product.Handle == Account.AGENCY_MONTHLY_PLAN_HANDLE)
+                    {
+                        Roles.AddUserToRole(email, Account.AGENCY_ROLE);
+                    }
                 }
             }
 

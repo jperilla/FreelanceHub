@@ -8,7 +8,7 @@ using Griffin.MvcContrib.Providers.Roles;
 
 namespace Web.Controllers
 {   
-    [Authorize(Roles="Administrator")]
+    [Authorize(Users="julie.perilla@gmail.com")]
     public class AdminController : BaseController
     {
 

@@ -10,7 +10,7 @@ using BingSearchAPI;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Basic, Agency, FullTime, PartTime, Administrator")]
     public class SearchController : BaseController
     {
         public SearchController(IDocumentSession documentSession)

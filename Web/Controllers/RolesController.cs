@@ -7,18 +7,17 @@ using Griffin.MvcContrib.RavenDb.Providers;
 using Griffin.MvcContrib.Providers.Roles;
 using Raven.Client;
 using Web.Models;
+using System.Web.Security;
+using Web.Attribute;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles="Administrator")]
+    [Authorize(Users = "julie.perilla@gmail.com")]
     public class RolesController : BaseController
     {
-        public IRoleRepository RoleRepository { get; private set; }
-
-        public RolesController(IDocumentSession documentSession, IRoleRepository roleRepository)
+        public RolesController(IDocumentSession documentSession)
             : base(documentSession)
         {
-            RoleRepository = roleRepository;
         }
 
 
@@ -28,7 +27,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             // Get all the roles
-            IEnumerable<String> roles = RoleRepository.GetRoleNames(null);
+            IEnumerable<String> roles = Roles.GetAllRoles();
 
             if (roles == null)
                 roles = new List<String>();
@@ -52,7 +51,7 @@ namespace Web.Controllers
         {
             try
             {
-                RoleRepository.CreateRole(null, role.Name);
+                Roles.CreateRole(role.Name);
                 return RedirectToAction("Index");
             }
             catch
@@ -77,7 +76,7 @@ namespace Web.Controllers
         {
             try
             {
-                RoleRepository.RemoveRole(null, roleName);
+                Roles.DeleteRole(roleName);
 
                 return RedirectToAction("Index");
             }
@@ -97,7 +96,7 @@ namespace Web.Controllers
         {
             try
             {
-                RoleRepository.AddUserToRole(null, userRole.Role, userRole.Username);
+                Roles.AddUserToRole(userRole.Username, userRole.Role);
                 return View("Index");
             }
             catch

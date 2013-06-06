@@ -7,10 +7,11 @@ using System.Web.Mvc;
 using Web.Models;
 using Raven.Client;
 using Bing;
+using Web.Attribute;
 
 namespace Web.Controllers
-{ 
-    [Authorize]
+{
+    [CustomAuthorize(Roles = "Basic, Agency, FullTime, PartTime, Administrator")]
     public class JobsController : BaseController
     {
         public JobsController(IDocumentSession documentSession)

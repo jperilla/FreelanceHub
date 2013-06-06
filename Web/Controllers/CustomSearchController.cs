@@ -7,10 +7,11 @@ using Web.Models;
 using Raven.Client;
 using Raven.Abstractions.Data;
 using Raven.Abstractions.Smuggler;
+using Web.Attribute;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles="Agency, FullTime, PartTime, Administrator")]
+    [CustomAuthorize(Roles = "Agency, FullTime, PartTime, Administrator")]
     public class CustomSearchController : BaseController
     {
         public CustomSearchController(IDocumentSession documentSession)
