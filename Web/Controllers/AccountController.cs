@@ -241,6 +241,9 @@ namespace Web.Controllers
 
         public ActionResult ChangePlanToFree(string email)
         {
+            if (email == null)
+                email = User.Identity.Name;
+
             Account account = new Account(email);
 
             // If plan changed, update customer subscription
@@ -263,6 +266,9 @@ namespace Web.Controllers
 
         public ActionResult ChangePlanToBudget(string email)
         {
+            if (email == null)
+                email = User.Identity.Name;
+
             Account account = new Account(email);
 
             // If plan changed, update customer subscription
@@ -289,6 +295,9 @@ namespace Web.Controllers
 
         public ActionResult ChangePlanToFreelancer(string email)
         {
+            if (email == null)
+                email = User.Identity.Name;
+
             Account account = new Account(email);
 
             // If plan changed, update customer subscription
@@ -317,6 +326,9 @@ namespace Web.Controllers
 
         public ActionResult ChangePlanToAgency(string email)
         {
+            if (email == null)
+                email = User.Identity.Name;
+
             Account account = new Account(email);
 
             // If plan changed, update customer subscription

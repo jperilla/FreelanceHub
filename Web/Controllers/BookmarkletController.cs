@@ -112,6 +112,12 @@ namespace Web.Controllers
                     return View("Error", null, "You have already saved this job.");
                 }
 
+                // Check if the user has met their saved job limit
+                if (account.HasMetSavedJobLimit())
+                {
+                    return View("Upgrade");
+                }
+
                 // Create the job
                 job = new Job
                 {

@@ -37,6 +37,9 @@ namespace Web.Models
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
         public readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
         public static readonly string APP_BASE_URL_STATIC = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
+        public static readonly string BASIC_MAX_NUM_JOBS = ConfigurationManager.AppSettings["basicMaxNumJobs"];
+        public static readonly string PARTTIME_MAX_NUM_JOBS =  ConfigurationManager.AppSettings["parttimeMaxNumJobs"];
+        public static readonly string FULLTIME_MAX_NUM_JOBS =  ConfigurationManager.AppSettings["fulltimeMaxNumJobs"];
         public const string ADMIN_ROLE = "Administrator";
         public const string BASIC_ROLE = "Basic";
         public const string PARTTIME_ROLE = "PartTime";
@@ -358,6 +361,37 @@ namespace Web.Models
             }           
            
             return isCurrent;
+        }
+
+        public bool HasMetSavedJobLimit()
+        {
+            bool metLimit = false;
+
+            // Check Limit Based on Role
+            ISubscription customerSubscription = this.CustomerSubscriptions.Values.FirstOrDefault();
+            if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+            {
+                if (Jobs.Count() >= Int32.Parse(BASIC_MAX_NUM_JOBS))
+                {
+                    metLimit = true;
+                }
+            }
+            else if (customerSubscription.Product.Handle == Account.BUDGET_MONTHLY_PLAN_HANDLE)
+            {
+                if (Jobs.Count() >= Int32.Parse(PARTTIME_MAX_NUM_JOBS))
+                {
+                    metLimit = true;
+                }
+            }
+            else if (customerSubscription.Product.Handle == Account.FREELANCER_MONTHLY_PLAN_HANDLE)
+            {
+                if (Jobs.Count() >= Int32.Parse(FULLTIME_MAX_NUM_JOBS))
+                {
+                    metLimit = true;
+                }
+            }
+
+            return metLimit;
         }
 
         public void GenerateCseFile(IDocumentSession session)

@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Save Job Message";
+    Layout = "~/Views/Shared/_LayoutBookmarklet.cshtml";
+}
+
+<p>You have reached your save limit. Upgrade to save more jobs!</p>
+<p>@Html.ActionLink("Upgrade Now!", "Upgrade", "Account", null, new { @target = "_blank" })</p>
+<p>@Html.ActionLink("View My Jobs", "Index", "Jobs", null, new { @target = "_blank" })</p>

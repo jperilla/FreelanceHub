@@ -365,6 +365,7 @@
     <Content Include="Views\Roles\Delete.cshtml" />
     <Content Include="Views\Roles\AddUserToRole.cshtml" />
     <Content Include="Views\AccessDenied\Index.cshtml" />
+    <Content Include="Views\Bookmarklet\Upgrade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

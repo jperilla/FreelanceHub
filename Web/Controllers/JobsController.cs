@@ -35,7 +35,6 @@ namespace Web.Controllers
 
         public JsonResult SaveFavorite(Job jobClicked)
         {
-            // Check if job was already saved
             // Load the current account
             Account account = Account.GetAccount(User.Identity.Name, RavenSession);
             if (account != null)
@@ -44,11 +43,18 @@ namespace Web.Controllers
                            where j.URL == jobClicked.URL
                            select j;
 
+                // Check if job was already saved
                 if (jobs != null && jobs.Count() > 0)
                 {
                     return Json("success", JsonRequestBehavior.AllowGet);
                 }
 
+                // Check if the user has met their saved job limit
+                if (account.HasMetSavedJobLimit())
+                {
+                    return Json("error", JsonRequestBehavior.AllowGet);
+                }
+                
                 // Create the job
                 var job = new Job
                 {
