@@ -79,8 +79,19 @@ namespace Web.Controllers
 
         //
         // GET: /SaveExternalJob/
+
+        [AllowAnonymous]
         public ActionResult SaveExternalJob(string url, string title, string description)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                var login = new BookmarkletLogin();
+                login.Description = description;
+                login.Title = title;
+                login.URL = url;
+                return View("Login", login);
+            }
+
             if (url == null || title == null)
             {
                 return View("Error", null, "We were not able to locate a job on this page.");

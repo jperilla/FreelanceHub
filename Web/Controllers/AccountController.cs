@@ -26,12 +26,7 @@ namespace Web.Controllers
 
         public ActionResult Index(Account account)
         {
-            if(account == null)
-                account = Account.GetAccount(User.Identity.Name, RavenSession);
-            else if (account.Email == null && User.Identity.IsAuthenticated)
-            {
-                account.Email = User.Identity.Name;
-            }
+            account = Account.GetAccount(User.Identity.Name, RavenSession);            
 
             if (account != null)
             {

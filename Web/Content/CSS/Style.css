@@ -201,6 +201,21 @@ input.blue, button.blue {
     margin-right: 1.041667%;
 }
 
+.indent
+{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.editor-label2 label 
+{
+    display: block;
+    width: 80px;
+    float: left;
+    text-align: right;
+    margin-right: 1.041667%;
+}
+
 .bookmarklet-login div.editor-label label 
 {
     display: block;

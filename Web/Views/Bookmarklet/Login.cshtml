@@ -1,4 +1,4 @@
-﻿@model Web.Models.Login
+﻿@model Web.Models.BookmarkletLogin
 
 @{
     ViewBag.Title = "Login";
@@ -26,6 +26,12 @@
         @Html.PasswordFor(model => model.Password)
         @Html.ValidationMessageFor(model => model.Password)
     </div>
+    
+     <div class="editor-field">
+        @Html.HiddenFor(model => model.Title, new { @id = "title" })
+        @Html.HiddenFor(model => model.Description, new { @id = "description" })
+        @Html.HiddenFor(model => model.URL, new { @id = "url" })
+    </div>
     <input id="login-bookmarklet" type="submit" class="red medium" value="Login" />
 }
 </div>
@@ -47,15 +53,12 @@
                     if (data.Success == "1") {
                         if ((data.Redirect !== undefined) && (data.Redirect !== null))
                             window.location.href = data.Redirect;
-                        else { 
+                        else {
                             // all is well, proceed to bookmarklet code
-                            var parentDoc = window.parent.getDocument();
-                            var title = encodeURIComponent(parentDoc.title);
-                            var url = encodeURIComponent(parentDoc.location);
+                            var title = encodeURIComponent($('#title').val());
+                            var url = encodeURIComponent($('#url').val());
+                            var description = encodeURIComponent($('#description').val());
 
-                            // Try to get description
-                            var description = window.parent.getElementsByTagName('meta[name="description"]')[0].attr('content');
-                            description = encodeURIComponent(description);
                             window.location.href = "http://localhost:61413/Bookmarklet/SaveExternalJob?&title=" + title + "&url=" + url + "&description=" + description;
                         }
                     }
