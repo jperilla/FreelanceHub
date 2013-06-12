@@ -1,0 +1,11 @@
+﻿@model String
+
+@{
+    ViewBag.Title = "Freelance Hub";
+    Layout = "~/Views/Shared/_LayoutReset.cshtml";
+}
+
+<section class="page_section">
+<h3>@Model</h3>
+@Html.ActionLink("Login Now", "Login", "LandingPage", null, null)
+</section>

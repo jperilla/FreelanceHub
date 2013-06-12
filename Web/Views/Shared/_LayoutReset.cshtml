@@ -1,0 +1,72 @@
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale:1.0" />  
+        <meta name="google-site-verification" content="B-HEDnoZKaq5vfPMAJXBtdfbocudFFSn7Jr7zQDwfWU" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="@Url.Content("~/favicon.ico")">
+
+        <!-- Css style sheets -->
+        
+        <!-- DC Pricing Tables CSS -->
+        <link type="text/css" rel="stylesheet" href="http://www.dreamtemplate.com/dreamcodes/pricingtables/css/tsc_pricingtables.css" />
+        <!-- DC Pricing Tables JS -->
+        <script type="text/javascript" src="http://www.dreamtemplate.com/dreamcodes/pricingtables/js/tsc_pricingtables.js"></script>
+
+             
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Reset.css")" />  
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Style.css")" />     
+        <link rel="stylesheet" href="@Url.Content("~/Content/CSS/osx.css")" />         
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:600|Arvo' />
+
+        <!-- JQuery libraries -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.simplemodal.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/osx.js")"></script>
+
+       <!--[if lt IE 9]>
+             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>             
+             <link rel="stylesheet" href="@Url.Content("~/Content/CSS/iefixes.css")" />  
+       <![endif]-->
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <section class="sub-content">       
+                    <nav>
+                        <ul id="nav-list">
+                            <li id="home">@Html.ActionLink("back to freelanceHub", "Index", "LandingPage")</li>
+                        </ul>
+                    </nav>
+                </section>
+            </header>
+            
+            <div id="content">
+                <div class="sub-content">
+                    @RenderBody()
+                </div>
+            </div>
+            
+            <footer>
+                <div id="sub-content">
+                    <p>Copyright ©  <a href="http://www.geekgirlsoftware.com">Geek Girl Software</a> 2012-2013<a href="http://www.privacychoice.org/policy/mobile?policy=3aba934cd01fbf1933ca804d37400984">Privacy Policy</a></p>
+                    <ul id="social-media">
+                        <li id="gmail"><a href="mailto:julie@geekgirlsoftware.com" target="_blank"><img alt="gmail" src="/Content/images/gmail.png" /></a></li>
+                        <li id="facebook"><a href="https://www.facebook.com/freelancehub.io" target="_blank"><img alt="facebook" src="/Content/images/facebook.png" /></a></li>
+                        <li id="twitter"><a href="https://twitter.com/FreelanceHubio" target="_blank"><img alt="twitter" src="/Content/images/twitter.png" /></a></li>                   
+                    </ul>
+                </div>
+            </footer>
+        </div>
+     
+    </body>
+</html>
+
+

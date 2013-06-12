@@ -12,7 +12,7 @@
     <h2>Want to search directly on your favorite sites?</h2>
     <p><a class="red large" href="javascript:(function(){if(window.freelanceBookmarklet!==undefined){freelanceBookmarklet();}else{document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='@Model.APP_BASE_URL/Scripts/freelance-hub-bookmarklet.js';}})();">Save to Freelance Hub</a></p>
     <p>Drag this button to your toolbar. When you are searching directly on a job board, you can click it to save jobs to your job list.</p>
-    <h2>Want to choose which sites ?</h2>@Html.ActionLink("Customize Your Search", "Index", "CustomSearch")  
+    <h2>Want to choose which sites you search?</h2><h3>@Html.ActionLink("Customize Your Search", "UserView", "CustomSearch") </h3> 
     </section>
     <section id="left-side">
         <h2>Recently Saved Leads</h2>

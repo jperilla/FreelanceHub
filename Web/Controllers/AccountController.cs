@@ -12,6 +12,7 @@ using Raven.Client;
 using ChargifyNET;
 using System.Text;
 using Web.Attribute;
+using System.Diagnostics;
 
 namespace Web.Controllers
 {
@@ -417,6 +418,73 @@ namespace Web.Controllers
 
             // Go back to account view
             return RedirectToAction("Index", account);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult RequestPasswordReset()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult RequestPasswordReset(RequestPasswordReset model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!String.IsNullOrEmpty(model.Email))
+                {
+                    // This is a helper function that sends an email with a token (an MD5).
+                    NotificationHelper.SendPasswordRetrieval(model.Email, this.ControllerContext);
+                }
+                else
+                {
+                    Trace.WriteLine(String.Format("*** WARNING:  A user tried to retrieve their password but the email address used '{0}' does not exist in the database.", model.Email));
+                    return View("Error");
+                }
+            }
+
+            return View("AccountMessage", null, "A reset password email was sent, it may take a few minutes to arrive.");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult AccountMessage(string message)
+        {
+            return View(message);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string email)
+        {
+            ResetPassword reset = new ResetPassword();
+            reset.Email = email;
+            return View(reset);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ResetPassword(ResetPassword model)
+        {
+            if (!String.IsNullOrEmpty(model.Email))
+            {
+                // Get the user and approve it.s
+                MembershipUser user = Membership.GetUser(model.Email);
+                user.IsApproved = true;
+                user.ChangePassword("mickey", model.Password);
+                Membership.UpdateUser(user);
+                
+                // Since it was a successful validation, authenticate the user.
+                FormsAuthentication.SetAuthCookie(model.Email, false);
+            }
+            else
+            {
+                return View("Error");
+            }
+
+            return View("AccountMessage", null, "You successfully changed your password!");
         }
 
         #region SimpleSocialAuth

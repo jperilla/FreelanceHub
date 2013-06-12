@@ -23,7 +23,7 @@
     <ImageSearchSettings enable="false" />
     <autocomplete_settings />
     <sort_by_keys key="date" label="Date" />
-    <Annotations total="9" num="9" start="0">
+    <Annotations total="11" num="11" start="0">
       <Annotation about="jobs.freelanceswitch.com/jobs/*">
         <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
@@ -49,6 +49,12 @@
         <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
       <Annotation about="*.logomyway.com/contestView.php?contestId=*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.krop.com/#!/jobs/*">
+        <Label name="_cse_dl-lwlywdoi" />
+      </Annotation>
+      <Annotation about="*.coroflot.com/jobs/*">
         <Label name="_cse_dl-lwlywdoi" />
       </Annotation>
     </Annotations>

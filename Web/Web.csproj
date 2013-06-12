@@ -220,12 +220,15 @@
     <Compile Include="Models\JobStatus.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\RequestPasswordReset.cs" />
+    <Compile Include="Models\ResetPassword.cs" />
     <Compile Include="Models\Search.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\Signup.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CustomerUtilities.cs" />
+    <Compile Include="Utilities\NotificationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -366,6 +369,11 @@
     <Content Include="Views\Roles\AddUserToRole.cshtml" />
     <Content Include="Views\AccessDenied\Index.cshtml" />
     <Content Include="Views\Bookmarklet\Upgrade.cshtml" />
+    <Content Include="Views\Account\RequestPasswordReset.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\Shared\_LayoutReset.cshtml" />
+    <Content Include="Views\Account\AccountMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
