@@ -10,30 +10,20 @@
 @using (@Html.BeginForm("Login", "Bookmarklet", FormMethod.Post, new { id = "loginform" }))
 {   
     <div><span id="message"></span></div>
-    <h3>Login now!</h3>
-    <div class="editor-label">
+    <h3>Login to Freelance Hub</h3>
         @Html.Label("Email")
-    </div>
-    <div class="editor-field">
         @Html.EditorFor(model => model.Email)
-        @Html.ValidationMessageFor(model => model.Email)
-    </div>
-        
-    <div class="editor-label">
+        @Html.ValidationMessageFor(model => model.Email)<br />    
         @Html.Label("Password")
-    </div>
-    <div class="editor-field">
         @Html.PasswordFor(model => model.Password)
-        @Html.ValidationMessageFor(model => model.Password)
-    </div>
-    
-     <div class="editor-field">
+        @Html.ValidationMessageFor(model => model.Password)<br />
         @Html.HiddenFor(model => model.Title, new { @id = "title" })
         @Html.HiddenFor(model => model.Description, new { @id = "description" })
         @Html.HiddenFor(model => model.URL, new { @id = "url" })
-    </div>
-    <input id="login-bookmarklet" type="submit" class="red medium" value="Login" />
+    <input id="login-bookmarklet" type="submit" class="red medium" value="Login" />  <br />  
+    @Html.ActionLink("Forgot your password?", "RequestPasswordReset", "Account", null, null)
 }
+
 </div>
 
 <script type="text/javascript">

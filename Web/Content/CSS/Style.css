@@ -422,7 +422,7 @@ section#logo
 {    
     height: 115px;
     width: 100%;
-    background: url('../images/logo.png') no-repeat center;
+    background: url('../images/betalogo_large.png') no-repeat center;
     font-family: 'Raleway', sans-serif;
     font-size: 3.2em;
     color: #b93831;
@@ -432,7 +432,7 @@ section#logo
 {    
     height: 90px;
     width: 40%;
-    background: url('../images/logomedium.png') no-repeat left;
+    background: url('../images/betalogo.png') no-repeat left;
     float: left;
     position: relative;
     left: -20px;
@@ -442,7 +442,7 @@ section#logo
 {    
     height: 90px;
     width: 100%;
-    background: url('../images/logomedium.png') no-repeat center;
+    background: url('../images/betalogo.png') no-repeat center;
 }
 
 .gofer span

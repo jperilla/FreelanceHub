@@ -242,6 +242,8 @@
     <Content Include="Content\CSS\Style.css" />
     <Content Include="Content\html\results.html" />
     <Content Include="Content\images\apply.png" />
+    <Content Include="Content\images\betalogo.png" />
+    <Content Include="Content\images\betalogo_large.png" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
     <Content Include="Content\images\logo.png" />
