@@ -19,7 +19,7 @@ namespace Web.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 // Load Account
-                var account = new Account(User.Identity.Name);
+                var account = Account.GetAccount(User.Identity.Name, RavenSession);
                 return View("_Home", account);
             }
 
@@ -33,7 +33,7 @@ namespace Web.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 // Load Account
-                var account = new Account(User.Identity.Name);
+                var account = Account.GetAccount(User.Identity.Name, RavenSession);
                 return View("_Home", account);
             }
 

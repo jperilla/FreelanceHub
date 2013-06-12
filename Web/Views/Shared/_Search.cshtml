@@ -106,7 +106,7 @@
             if (jsonReturnArgs == "success")
             { $(id).html("Saved!"); }
             else if (jsonReturnArgs == "error")
-            { $(id).html("You have reached your save limit. <a href='/Account/Upgrade'>Upgrade</a> to save more jobs!").css('color', 'green'); }
+            { $(id).html("You have reached your save limit. <a href='/Account/Upgrade'>Upgrade</a> to save more jobs!").css('color', '#50C6ED'); }
         }).error(function (data) {
             $(id).html("Oops! Try again.");
         });

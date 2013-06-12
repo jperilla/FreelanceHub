@@ -7,7 +7,83 @@
 
 
 <section id="home_main">
-Drag this button to your toolbar -->
-<a class="red large" href="javascript:(function(){if(window.freelanceBookmarklet!==undefined){freelanceBookmarklet();}else{document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='@Model.APP_BASE_URL/Scripts/freelance-hub-bookmarklet.js';}})();">Save to Freelance Hub</a>
+    <section id="right-side">
+    <h2>Ready to find work?</h2>@Html.ActionLink("Search Now!", "GoogleSearch", "Search", null, new { @class="light-blue large" })<br /><br />
+    <h2>Want to search directly on your favorite sites?</h2>
+    <p><a class="red large" href="javascript:(function(){if(window.freelanceBookmarklet!==undefined){freelanceBookmarklet();}else{document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='@Model.APP_BASE_URL/Scripts/freelance-hub-bookmarklet.js';}})();">Save to Freelance Hub</a></p>
+    <p>Drag this button to your toolbar. When you are searching directly on a job board, you can click it to save jobs to your job list.</p>
+    <h2>Want to choose which sites ?</h2>@Html.ActionLink("Customize Your Search", "Index", "CustomSearch")  
+    </section>
+    <section id="left-side">
+        <h2>Recently Saved Leads</h2>
+         @if (Model.Jobs.Where(model => model.JobStatus.Status == "Lead").Count() == 0) {
+             <h4>You have no leads saved. Want to try @Html.ActionLink("searching", "GoogleSearch", "Search", null, null)?</h4>
+        }
+        else
+        {
+            <table class="minimalist" cellpadding="0" cellspacing="0">
+                
+                <tbody>
+                @for (int i = 0; i < 3; i++)
+                {
+                    if (i < Model.Jobs.Where(model => model.JobStatus.Status == "Lead").Count())
+                    {
+                        var item = Model.Jobs.Where(model => model.JobStatus.Status == "Lead").Reverse().ToList()[i];
+                        if ((item.JobStatus != null) && (item.JobStatus.Status == "Lead"))
+                        {
+                            <tr>
+                                <td>
+                                    <a class="search-result-title" href="@item.URL" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                                    <span class="search-result-desc">@Html.Raw(@item.ShortDescription)</span><br />            
+                                    <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                
+                </tbody>
 
+            </table>
+            
+            <p>@Html.ActionLink("View All Jobs", "Index", "Jobs", null, new { @target = "_blank" })</p>
+        }
+
+        <br /><br />
+        <h2>Jobs You've Recently Applied To</h2>
+        @if (Model.Jobs.Where(model => model.JobStatus.Status == "Applied").Count() == 0)
+        {
+			<h4>You haven't applied to any jobs lately.</h4>					        
+        }
+        else
+        {   
+            <div class="jobs_table">
+                <table class="minimalist" cellpadding="0" cellspacing="0">
+                     
+                    <tbody>
+
+                    @for (int j = 0; j < 3; j++)
+                    {
+                        if (j < Model.Jobs.Where(model => model.JobStatus.Status == "Applied").Count())
+                        {
+                            var item = Model.Jobs.Where(model => model.JobStatus.Status == "Applied").Reverse().ToList()[j];
+                            if ((item.JobStatus != null) && (item.JobStatus.Status == "Applied"))
+                            {
+                                <tr>
+                                   <td>
+                                        <a class="search-result-title" href="@item.URL" target="_blank">@Html.Raw(@item.Title)</a><br /> 
+                                        <span class="search-result-desc">@Html.Raw(@item.ShortDescription)</span><br />            
+                                        <a href="@item.DisplaySite" target="_blank">@Html.Raw(@item.DisplaySite)</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                    </tbody>
+                </table>
+                
+                <p>@Html.ActionLink("View All Jobs", "Index", "Jobs", null, new { @target = "_blank" })</p>
+            </div>
+        }
+    </section>
 </section>

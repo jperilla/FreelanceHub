@@ -107,13 +107,14 @@ a.red
 
 a.light-blue, button.light-blue,  input.light-blue
 {
-    font-family: 'Arvo', serif;
     border: 1px solid #ccc;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     position:relative;
     z-index:0;
+    font-family: 'Arvo', serif;
+    font-size: 1.2em;    
     behavior: url(/Scripts/css-fixes/PIE.htc);
     background-image: linear-gradient(to bottom, #9CDBF6, #50C6ED);
     background-color: #9CDBF6;
@@ -830,6 +831,20 @@ section#home_main
     margin-top: 0;
     padding-top: 50px;
     padding-left: 20px;
+}
+
+section#right-side 
+{
+    width: 25%;
+    float: right;
+    margin-right: 5%;	
+}
+
+section#left-side 
+{
+    width: 68%;
+    float: left;
+    margin-right: 2%;	
 }
 
 /* My Jobs Page */

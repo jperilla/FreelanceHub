@@ -124,7 +124,7 @@
         $('input#saveSearches').click(function (e) {
             e.preventDefault();
 
-            $('span#message').html("Saving...").css('color', 'green');
+            $('span#message').html("Saving...").css('color', '#9CDBF6');
 
             // At least one checkbox must be checked
             var checked = $("#custom-form input:checked").length > 0;
@@ -139,7 +139,7 @@
                     cache: false,
                     dataType: "json",
                     success: function (data) {
-                        $('span#message').html("Saved").css('color', 'green');
+                        $('span#message').html("Saved").css('color', '#50C6ED');
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $('span#message').html("There was an error saving. Please, try again.").css('color', 'red');
