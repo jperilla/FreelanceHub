@@ -379,6 +379,9 @@
     <Content Include="Views\Shared\_LayoutReset.cshtml" />
     <Content Include="Views\Account\AccountMessage.cshtml" />
     <Content Include="Views\Account\TermsOfService.cshtml" />
+    <Content Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">
