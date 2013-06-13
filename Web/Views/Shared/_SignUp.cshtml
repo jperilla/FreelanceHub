@@ -47,6 +47,7 @@
                 @Html.HiddenFor(model => model.Plan, new { @id = "plan" })
             </div>
             
+            <p>@Html.ActionLink("Terms of Service", "TermsOfService", "Account", null, new { @target = "_blank" })</p>
             <input id="signup-modal" type="submit" class="red medium" value="Sign Up!" />
         }
         

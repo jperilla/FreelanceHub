@@ -378,6 +378,7 @@
     <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\Shared\_LayoutReset.cshtml" />
     <Content Include="Views\Account\AccountMessage.cshtml" />
+    <Content Include="Views\Account\TermsOfService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingSearchAPI\BingSearchAPI.csproj">

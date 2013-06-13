@@ -450,6 +450,13 @@ namespace Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        public ActionResult TermsOfService()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult AccountMessage(string message)
         {
             return View(message);
