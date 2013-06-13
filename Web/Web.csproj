@@ -244,13 +244,16 @@
     <Content Include="Content\images\apply.png" />
     <Content Include="Content\images\betalogo.png" />
     <Content Include="Content\images\betalogo_large.png" />
+    <Content Include="Content\images\custom_search.png" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
+    <Content Include="Content\images\home.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logomedium.png" />
     <Content Include="Content\images\logo_tiny.png" />
     <Content Include="Content\images\medium-red-arrow.png" />
+    <Content Include="Content\images\MyJobs.png" />
     <Content Include="Content\images\my_jobs.png" />
     <Content Include="Content\images\my_jobs_large.png" />
     <Content Include="Content\images\plaid.png" />
