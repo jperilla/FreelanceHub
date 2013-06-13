@@ -244,6 +244,8 @@
     <Content Include="Content\images\apply.png" />
     <Content Include="Content\images\betalogo.png" />
     <Content Include="Content\images\betalogo_large.png" />
+    <Content Include="Content\images\search_large.png" />
+    <Content Include="Content\images\myjobs_large.png" />
     <Content Include="Content\images\custom_search.png" />
     <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\gmail.png" />
@@ -253,17 +255,13 @@
     <Content Include="Content\images\logomedium.png" />
     <Content Include="Content\images\logo_tiny.png" />
     <Content Include="Content\images\medium-red-arrow.png" />
-    <Content Include="Content\images\MyJobs.png" />
-    <Content Include="Content\images\my_jobs.png" />
-    <Content Include="Content\images\my_jobs_large.png" />
+    <Content Include="Content\images\myjobs.png" />
     <Content Include="Content\images\plaid.png" />
     <Content Include="Content\images\plaid_dark.png" />
     <Content Include="Content\images\relax.png" />
     <Content Include="Content\images\ricepaper2.png" />
     <Content Include="Content\images\save.png" />
     <Content Include="Content\images\search.png" />
-    <Content Include="Content\images\search_screenshot.png" />
-    <Content Include="Content\images\search_screenshot_large.png" />
     <Content Include="Content\images\star-gold32.png" />
     <Content Include="Content\images\star-green32.png" />
     <Content Include="Content\images\star-orange32.png" />
