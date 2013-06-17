@@ -35,6 +35,7 @@ namespace Web.Models
         public static readonly string BUDGET_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyBudgetMonthlyPlanHandle"];
         public static readonly string FREELANCER_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyFreelancerMonthlyPlanHandle"];
         public static readonly string AGENCY_MONTHLY_PLAN_HANDLE = ConfigurationManager.AppSettings["ChargifyAgencyMonthlyPlanHandle"];
+        [JsonIgnore]
         public readonly string APP_BASE_URL = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
         public static readonly string APP_BASE_URL_STATIC = ConfigurationManager.AppSettings["applicationBasePath"]; // Didn't make this static because I need to access it in the view
         public static readonly string BASIC_MAX_NUM_JOBS = ConfigurationManager.AppSettings["basicMaxNumJobs"];
@@ -53,6 +54,7 @@ namespace Web.Models
 
         public int Id { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string PathToGoogleCseFile { get; set; }
         public IList<Job> Jobs { get; set; }
         public IList<string> Searches { get; set; }
