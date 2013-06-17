@@ -29,7 +29,7 @@ namespace Web.Utilities
                 emailMessage.Append("<br />");
 
                 MailMessage email = new MailMessage();
-                email.From = new MailAddress("info@geekgirlsoftware.com");
+                email.From = new MailAddress("support@freelancehub.io");
                 email.To.Add(new MailAddress(emailAddress));
                 email.Subject = "Freelance Hub Password Recovery";
                 email.Body = emailMessage.ToString();
