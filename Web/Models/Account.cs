@@ -54,7 +54,6 @@ namespace Web.Models
 
         public int Id { get; set; }
         public string Email { get; set; }
-        [JsonIgnore]
         public string PathToGoogleCseFile { get; set; }
         public IList<Job> Jobs { get; set; }
         public IList<string> Searches { get; set; }
