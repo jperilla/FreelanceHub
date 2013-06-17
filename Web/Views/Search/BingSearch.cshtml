@@ -18,7 +18,7 @@
         <div class="editor-field left xlong">
             @Html.TextBoxFor(model => model.Query, new { @class = "whole tall" })
             
-            <div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
+            <div class="right-small-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Select the Sites You Want to Search", "UserView", "CustomSearch", null, null)</div>
         </div>        
         
         <input type="submit" class="right red medium" value="Search" />    

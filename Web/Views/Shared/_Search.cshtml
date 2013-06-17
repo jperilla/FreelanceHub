@@ -4,7 +4,7 @@
 <h2>What type of work are you looking for, @Model.CustomerFirstName?</h2>
 <input type="hidden" id="custom-sites" name="sites" value="@Model.SitesToSearchString" />
 
-<div class="right-large-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Customize Your Search", "UserView", "CustomSearch", null, null)</div>
+<div class="right-large-margin"><small> @Html.Raw("Not happy with your search results?")</small> @Html.ActionLink("Select the Sites You Want to Search", "UserView", "CustomSearch", null, null)</div>
 
 <div id="cse" style="width:100%;"></div>
 <div style="display:none">
