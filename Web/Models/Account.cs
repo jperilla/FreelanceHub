@@ -192,7 +192,7 @@ namespace Web.Models
         {
             get
             {  
-                return ("You currently have " + Jobs.Count + " Jobs saved and " + Searches.Count + " Searches saved.");
+                return ("You currently have " + Jobs.Count + " Jobs saved.");
             }
         }
 
