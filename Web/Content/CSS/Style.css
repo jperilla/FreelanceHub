@@ -755,7 +755,7 @@ h1.right-half
     margin: auto;
 }
 
-#pricing_main h2 {
+#pricing_main h2, #pricing_main h3 {
     text-align: center;
 }
 
