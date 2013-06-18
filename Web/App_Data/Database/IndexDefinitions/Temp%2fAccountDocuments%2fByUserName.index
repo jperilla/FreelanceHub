@@ -1,0 +1,18 @@
+{
+  "Name": "Temp/AccountDocuments/ByUserName",
+  "Map": "from doc in docs.AccountDocuments\r\nselect new { UserName = doc.UserName }",
+  "Maps": [
+    "from doc in docs.AccountDocuments\r\nselect new { UserName = doc.UserName }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}

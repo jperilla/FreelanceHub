@@ -14,6 +14,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Web;
+using System.Web.Security;
 
 namespace Web.Models
 {
@@ -323,8 +324,60 @@ namespace Web.Models
         public void LoadChargifyInfo()
         {
             ChargifyCustomer = Chargify.LoadCustomer(Email);
-            if(ChargifyCustomer != null)
+            if (ChargifyCustomer != null)
+            {
                 _customerSubscriptions = Chargify.GetSubscriptionListForCustomer(ChargifyCustomer.ChargifyID);
+
+                // Make sure the role matches the chargify account
+                /*ISubscription customerSubscription = _customerSubscriptions.Values.FirstOrDefault();
+                
+                if(customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                {
+                    if(!Roles.IsUserInRole(Account.BASIC_ROLE))
+                    {
+                        string [] roles = Roles.GetRolesForUser();
+                        if (roles != null && roles.Count() > 0)
+                            Roles.RemoveUserFromRoles(this.Email, roles);
+                        Roles.AddUserToRole(this.Email, Account.BASIC_ROLE);
+                    }
+                }
+                else if(customerSubscription.Product.Handle == Account.BUDGET_MONTHLY_PLAN_HANDLE)
+                {
+                    if(!Roles.IsUserInRole(Account.PARTTIME_ROLE))
+                    {
+                        string[] roles = Roles.GetRolesForUser();
+                        if (roles != null && roles.Count() > 0)
+                            Roles.RemoveUserFromRoles(this.Email, roles);
+                        Roles.AddUserToRole(this.Email, Account.PARTTIME_ROLE);
+                    }
+                }
+                else if(customerSubscription.Product.Handle == Account.FREELANCER_MONTHLY_PLAN_HANDLE)
+                {
+                    if (!Roles.IsUserInRole(Account.FULLTIME_ROLE))
+                    {
+                        string[] roles = Roles.GetRolesForUser();
+                        if (roles != null && roles.Count() > 0)
+                            Roles.RemoveUserFromRoles(this.Email, roles);
+                        Roles.AddUserToRole(this.Email, Account.FULLTIME_ROLE);
+                    }
+                }
+                else if(customerSubscription.Product.Handle == Account.AGENCY_MONTHLY_PLAN_HANDLE)
+                {
+                    if(!Roles.IsUserInRole(Account.AGENCY_ROLE))
+                    {
+                        string[] roles = Roles.GetRolesForUser();
+                        if (roles != null && roles.Count() > 0)
+                            Roles.RemoveUserFromRoles(this.Email, roles);
+                        Roles.AddUserToRole(this.Email, Account.AGENCY_ROLE);
+                    }
+                }
+                else
+                {
+                    string[] roles = Roles.GetRolesForUser();
+                    if (roles != null)
+                        Roles.RemoveUserFromRoles(this.Email, roles);
+                }*/
+            }
         }
 
         public bool HasJob(string url)

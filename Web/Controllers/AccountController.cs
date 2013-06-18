@@ -279,12 +279,14 @@ namespace Web.Controllers
                 if (customerSubscription.Product.Handle != Account.BUDGET_MONTHLY_PLAN_HANDLE)
                 {
                     Account.Chargify.EditSubscriptionProduct(customerSubscription.SubscriptionID, Account.BUDGET_MONTHLY_PLAN_HANDLE);
-                    Roles.RemoveUserFromRoles(email, Roles.GetRolesForUser());
+                    string[] roles = Roles.GetRolesForUser();
+                    if (roles != null && roles.Count() > 0)
+                        Roles.RemoveUserFromRoles(email, roles);
                     Roles.AddUserToRole(email, Account.PARTTIME_ROLE);
                 }
 
-                // If they are currently on the free plan, force them to enter a credit card
-                if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE)
+                // If they are currently on the free plan, and we don't have a credit card, force them to enter a credit card
+                if (customerSubscription.Product.Handle == Account.FREE_PLAN_HANDLE && customerSubscription.CreditCard == null)
                 {
                     return new RedirectResult (account.UpdatePaymentLink);
                 }                
