@@ -11,7 +11,7 @@ using Web.Attribute;
 
 namespace Web.Controllers
 {
-    [CustomAuthorize(Roles = "Agency, FullTime, PartTime, Administrator")]
+    [CustomAuthorize(Roles = "Basic, Agency, FullTime, PartTime, Administrator")]
     public class CustomSearchController : BaseController
     {
         public CustomSearchController(IDocumentSession documentSession)
