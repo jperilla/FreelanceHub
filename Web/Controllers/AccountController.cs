@@ -59,11 +59,9 @@ namespace Web.Controllers
                     else
                     {
                         FormsAuthentication.SetAuthCookie(login.Email, false);
-                        // Set role to inactive, if not already
                         string[] roles = Roles.GetRolesForUser(login.Email);
                         if(null != roles && roles.Count() > 0)
                             Roles.RemoveUserFromRoles(login.Email, roles);
-                        Roles.AddUserToRole(login.Email, Account.INACTIVE_ROLE);
                         redirect = Url.Action("Index", "Account");
                     }
 
