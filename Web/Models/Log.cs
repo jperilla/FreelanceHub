@@ -11,5 +11,6 @@ namespace Web.Models
         public string Exception { get; set; }
         public string Message { get; set; }
         public DateTime Timestamp { get; set; }
+        public string StackTrace { get; set; }
     }
 }
