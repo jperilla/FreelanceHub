@@ -10,6 +10,7 @@ namespace Web.Models
     public class Signup : IValidatableObject
     {
         [Required(ErrorMessage = "Please enter your email.")]
+        [RegularExpression("^([0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$", ErrorMessage = "Invalid Email Adresss" )]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your name.")]
