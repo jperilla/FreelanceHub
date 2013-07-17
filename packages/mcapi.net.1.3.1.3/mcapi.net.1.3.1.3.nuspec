@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>mcapi.net</id>
+    <version>1.3.1.3</version>
+    <title>Mailchimp API for .NET</title>
+    <authors>Denis K.O.</authors>
+    <owners>Denis K.O.</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .NET wrapper for the MailChimp API 1.3, Export API 1.0 and Mandrill API 1.0.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>MailChimp Mandrill Webhooks</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework3.5">
+        <dependency id="FSharp.Core" version="[2.0]" />
+      </group>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="FSharp.Core" version="[4.0]" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

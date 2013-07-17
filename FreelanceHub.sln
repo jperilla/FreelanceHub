@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingSearchAPI", "BingSearchAPI\BingSearchAPI.csproj", "{15C5E9A8-C1BA-4F61-BB4A-5C8470F06923}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C5B7BA8F-6C4D-4508-836C-B3A655324DF3}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FreelanceHub.vsmdi

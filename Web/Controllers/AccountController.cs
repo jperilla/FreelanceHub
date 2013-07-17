@@ -494,6 +494,20 @@ namespace Web.Controllers
             return View("AccountMessage", null, "You successfully changed your password!");
         }
 
+        [HttpPost]
+        public ActionResult SaveEmailPreferences(Account account)
+        {
+            var retrievedAccount = Account.GetAccount(account.Email, RavenSession);
+            if (null != retrievedAccount)
+            {
+                retrievedAccount.SendEmailUpdates = account.SendEmailUpdates;
+                RavenSession.Store(retrievedAccount);
+                return View("Index", retrievedAccount);
+            }
+
+            return View("Error", null, "Oops! An error occurred Saving your Account.");
+        }
+
         #region SimpleSocialAuth
 
         [HttpPost]

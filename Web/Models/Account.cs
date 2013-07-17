@@ -59,6 +59,7 @@ namespace Web.Models
         public IList<Job> Jobs { get; set; }
         public IList<string> Searches { get; set; }
         public IList<string> SitesToSearch { get; set; }
+        public bool SendEmailUpdates { get; set; }
 
         [JsonIgnore]
         public string SitesToSearchString { get; set; }
@@ -595,7 +596,7 @@ namespace Web.Models
 
         #region Private Methods
 
-        private void LoadSitesToSearchString(IDocumentSession session)
+        public void LoadSitesToSearchString(IDocumentSession session)
         {
             StringBuilder sitesToSearch = new StringBuilder();
             foreach (var site in this.SitesToSearch)

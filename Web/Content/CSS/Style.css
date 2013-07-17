@@ -208,6 +208,11 @@ input.blue, button.blue {
     margin-top: 10px;
 }
 
+.space
+{
+    margin-left: 10px;
+}
+
 .editor-label2 label 
 {
     display: block;
