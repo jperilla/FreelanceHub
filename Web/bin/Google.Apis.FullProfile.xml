@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Apis.FullProfile</name>
+    </assembly>
+    <members>
+        <member name="T:Google.Apis.Logging.Log4NetLogger">
+            <summary> A logger implementation which makes use of the log4net library. </summary>
+        </member>
+        <member name="M:Google.Apis.Logging.Log4NetLogger.#ctor">
+            <summary> Creates a new default log4net logger. </summary>
+        </member>
+        <member name="M:Google.Apis.Logging.Log4NetLogger.#ctor(System.Type)">
+            <summary> Creates a new log4net logger and associates it with the specified type. </summary>
+        </member>
+    </members>
+</doc>
