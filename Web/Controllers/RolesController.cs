@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Griffin.MvcContrib.RavenDb.Providers;
-using Griffin.MvcContrib.Providers.Roles;
 using Raven.Client;
 using Web.Models;
 using System.Web.Security;
-using Web.Attribute;
 
 namespace Web.Controllers
 {

@@ -1,20 +1,14 @@
-﻿using System.Security.Principal;
-using System.ComponentModel.DataAnnotations;
-using Raven.Client;
+﻿using Raven.Client;
 using Raven.Client.Linq;
 using ChargifyNET;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
-using Griffin.MvcContrib.Providers.Membership;
 using Raven.Imports.Newtonsoft.Json;
 using System;
-using System.Security.Cryptography;
 using System.IO;
 using System.Text;
-using System.Xml;
 using System.Web;
-using System.Web.Security;
 
 namespace Web.Models
 {

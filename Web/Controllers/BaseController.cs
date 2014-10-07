@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Raven.Client;
-using Web.Logging;
 
 namespace Web.Controllers
 {   

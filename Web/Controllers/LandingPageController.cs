@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Web.Models;
-using System.Web.Security;
 using Raven.Client;
 
 namespace Web.Controllers

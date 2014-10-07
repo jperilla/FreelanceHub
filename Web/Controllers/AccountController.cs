@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
 using Web.Models;
 using Web.Utilities;
-using System.Collections.Generic;
 using System.Linq;
 using SimpleSocialAuth.MVC3;
 using System.Web;
 using Raven.Client;
 using ChargifyNET;
 using System.Text;
-using Web.Attribute;
 using System.Diagnostics;
 
 namespace Web.Controllers
